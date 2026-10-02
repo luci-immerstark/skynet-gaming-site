@@ -1,0 +1,41 @@
+---
+import Icon from './Icon.astro';
+import { site } from '../config/site';
+import { useT } from '../i18n/utils';
+import { type Lang } from '../i18n/ui';
+const { lang } = Astro.props as { lang: Lang };
+const t = useT(lang);
+const nums = [1, 2, 3, 4, 5, 6, 7] as const;
+---
+<section class="section rules" id="regras" aria-labelledby="rules-title">
+  <div class="container">
+    <h2 class="section-title" id="rules-title">{t('rules.title')}</h2>
+    <ol class="grid">
+      {nums.map((n) => (
+        <li class="rule">
+          <span class="n" aria-hidden="true">{n}</span>
+          <h3>{t(`rules.${n}.title` as const)}</h3>
+          <p>{t(`rules.${n}.desc` as const)}</p>
+        </li>
+      ))}
+    </ol>
+    <div class="report">
+      <p>{t('rules.report')}</p>
+      <a class="btn btn-discord" href={site.discordUrl} target="_blank" rel="noopener noreferrer">
+        <Icon name="discord" size={24} />Discord<span class="sr"> ({t('external')})</span>
+      </a>
+    </div>
+  </div>
+</section>
+<style>
+  .rules { scroll-margin-top: 56px; }
+  .grid { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); gap: 1.25rem; }
+  .rule { position: relative; background: var(--surface); border: 1px solid rgba(255,255,255,.08); border-radius: var(--radius); padding: 1.4rem 1.3rem 1.4rem 4.2rem; transition: border-color .25s; }
+  .rule:hover { border-color: var(--gold); }
+  .n { position: absolute; left: 1.1rem; top: 1.2rem; width: 2.2rem; height: 2.2rem; display: grid; place-items: center; border-radius: 50%; background: var(--gold); color: #111; font: 700 1.2rem/1 var(--font-display); }
+  h3 { font-size: 1.35rem; color: var(--gold); margin-bottom: .4rem; }
+  p { margin: 0; color: #d6d9de; }
+  .report { margin-top: 2rem; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 1rem 1.5rem; padding: 1.4rem; border: 2px solid var(--discord); border-radius: var(--radius); background: rgba(88,101,242,.12); text-align: center; }
+  .report p { font-weight: 600; font-size: 1.1rem; color: var(--text); }
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+</style>

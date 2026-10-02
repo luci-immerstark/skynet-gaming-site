@@ -15,6 +15,7 @@ const names: Record<Lang, string> = { 'pt-br': 'PortuguÃªs (Brasil)', es: 'EspaÃ
       <Image src={logo} alt="" width={36} height={36} densities={[1, 2]} loading="eager" />
       <span>SKYNET GAMING</span>
     </a>
+    <nav class="nav" aria-label="Menu"><a href={`${localePath(lang)}#regras`}>{t('nav.rules')}</a></nav>
     <div class="lang" role="group" aria-label={t('nav.lang')}>
       {(['pt-br', 'es', 'en'] as Lang[]).map((l) => (
         <a href={alt[l]} data-lang={l} hreflang={htmlLang(l)} lang={htmlLang(l)}
@@ -30,8 +31,10 @@ const names: Record<Lang, string> = { 'pt-br': 'PortuguÃªs (Brasil)', es: 'EspaÃ
   .bar { display: flex; align-items: center; justify-content: space-between; height: 56px; }
   .brand { display: flex; align-items: center; gap: .6rem; font-family: var(--font-display); font-weight: 700; letter-spacing: .08em; color: var(--text); text-decoration: none; }
   .brand img { border-radius: 6px; }
+  .nav { margin-left: auto; margin-right: 1.2rem; } .nav a { color: var(--text); text-decoration: none; font: 700 1rem var(--font-display); letter-spacing: .08em; text-transform: uppercase; padding: .3rem .2rem; } .nav a:hover { color: var(--gold); }
   .lang { display: flex; gap: .5rem; }
   .lang a { display: block; line-height: 0; padding: 4px; border-radius: 6px; border: 2px solid transparent; opacity: .55; transition: opacity .2s, border-color .2s; }
   .lang a:hover { opacity: .9; }
   .lang a[aria-pressed='true'] { opacity: 1; border-color: var(--gold); }
+  @media (max-width: 480px) { .brand span { display: none; } .nav { margin-right: .6rem; } .lang { gap: .15rem; } }
 </style>
