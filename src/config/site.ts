@@ -24,6 +24,11 @@ export const site = {
         prize: '¡R$ 500 en premios para el TOP 5 del ranking!',
         dates: 'Del 30/10 a las 20h al 02/11 a las 20h (hora de Brasil, UTC-3)',
       },
+      en: {
+        title: 'GRAND OPENING EVENT',
+        prize: 'R$ 500 in prizes for the ranking TOP 5!',
+        dates: 'From Oct 30 at 8 PM to Nov 2 at 8 PM (Brasília time, UTC-3)',
+      },
     },
   },
 } as const;

@@ -6,11 +6,11 @@ import { ui } from '../i18n/ui';
   <section class="nf">
     <div class="container">
       <p class="code">404</p>
-      {(['pt-br', 'es'] as const).map((l) => (
-        <div class="msg" data-l={l} hidden={l === 'es'}>
+      {(['pt-br', 'es', 'en'] as const).map((l) => (
+        <div class="msg" data-l={l} hidden={l !== 'pt-br'}>
           <h1>{ui[l]['404.title']}</h1>
           <p>{ui[l]['404.text']}</p>
-          <a class="btn btn-gold" href={l === 'es' ? '/es/' : '/'}>{ui[l]['404.home']}</a>
+          <a class="btn btn-gold" href={l === 'pt-br' ? '/' : `/${l}/`}>{ui[l]['404.home']}</a>
         </div>
       ))}
     </div>
@@ -23,7 +23,8 @@ import { ui } from '../i18n/ui';
   .msg p { margin: 0 0 1.5rem; color: var(--muted); }
 </style>
 <script>
-  const es = location.pathname === '/es' || location.pathname.startsWith('/es/');
-  document.querySelectorAll<HTMLElement>('.msg').forEach((m) => (m.hidden = (m.dataset.l === 'es') !== es));
-  if (es) document.documentElement.lang = 'es';
+  const m = location.pathname.match(/^\/(es|en)(\/|$)/);
+  const cur = m ? m[1] : 'pt-br';
+  document.querySelectorAll<HTMLElement>('.msg').forEach((el) => (el.hidden = el.dataset.l !== cur));
+  document.documentElement.lang = cur === 'pt-br' ? 'pt-BR' : cur;
 </script>

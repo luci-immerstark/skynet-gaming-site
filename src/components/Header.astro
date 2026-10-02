@@ -2,11 +2,12 @@
 import { Image } from 'astro:assets';
 import logo from '../assets/img/logo-robo.png';
 import Flag from './Flag.astro';
-import { localePath, useT } from '../i18n/utils';
+import { localePath, useT, htmlLang } from '../i18n/utils';
 import { type Lang } from '../i18n/ui';
 interface Props { lang: Lang; alt: Record<Lang, string>; }
 const { lang, alt } = Astro.props;
 const t = useT(lang);
+const names: Record<Lang, string> = { 'pt-br': 'Português (Brasil)', es: 'Español', en: 'English' };
 ---
 <header class="site-header">
   <div class="container bar">
@@ -15,10 +16,9 @@ const t = useT(lang);
       <span>SKYNET GAMING</span>
     </a>
     <div class="lang" role="group" aria-label={t('nav.lang')}>
-      {(['pt-br', 'es'] as Lang[]).map((l) => (
-        <a href={alt[l]} data-lang={l} hreflang={l === 'pt-br' ? 'pt-BR' : 'es'} lang={l === 'pt-br' ? 'pt-BR' : 'es'}
-           aria-pressed={l === lang ? 'true' : 'false'} aria-label={l === 'pt-br' ? 'Português (Brasil)' : 'Español'}
-           title={l === 'pt-br' ? 'Português' : 'Español'}>
+      {(['pt-br', 'es', 'en'] as Lang[]).map((l) => (
+        <a href={alt[l]} data-lang={l} hreflang={htmlLang(l)} lang={htmlLang(l)}
+           aria-pressed={l === lang ? 'true' : 'false'} aria-label={names[l]} title={names[l]}>
           <Flag lang={l} />
         </a>
       ))}

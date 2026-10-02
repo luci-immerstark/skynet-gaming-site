@@ -11,7 +11,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { site } from '../config/site';
 import { type Lang } from '../i18n/ui';
-import { localePath } from '../i18n/utils';
+import { localePath, htmlLang } from '../i18n/utils';
 
 interface Props { lang: Lang; title: string; description: string; path: string; }
 const { lang, title, description, path } = Astro.props;
@@ -19,11 +19,11 @@ const og = await getImage({ src: ogImg, width: 1200, format: 'jpg' });
 const fav32 = await getImage({ src: favImg, width: 32, height: 32, format: 'png' });
 const fav180 = await getImage({ src: favImg, width: 180, height: 180, format: 'png' });
 const abs = (p: string) => new URL(p, site.url).href;
-const alt = { 'pt-br': localePath('pt-br', path), es: localePath('es', path) };
+const alt = { 'pt-br': localePath('pt-br', path), es: localePath('es', path), en: localePath('en', path) };
 const canonical = abs(alt[lang]);
 ---
 <!doctype html>
-<html lang={lang === 'pt-br' ? 'pt-BR' : 'es'}>
+<html lang={htmlLang(lang)}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -33,6 +33,7 @@ const canonical = abs(alt[lang]);
     <link rel="canonical" href={canonical} />
     <link rel="alternate" hreflang="pt-BR" href={abs(alt['pt-br'])} />
     <link rel="alternate" hreflang="es" href={abs(alt.es)} />
+    <link rel="alternate" hreflang="en" href={abs(alt.en)} />
     <link rel="alternate" hreflang="x-default" href={abs(alt['pt-br'])} />
     <link rel="icon" type="image/png" sizes="32x32" href={fav32.src} />
     <link rel="apple-touch-icon" href={fav180.src} />
@@ -42,7 +43,7 @@ const canonical = abs(alt[lang]);
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={abs(og.src)} />
-    <meta property="og:locale" content={lang === 'pt-br' ? 'pt_BR' : 'es_ES'} />
+    <meta property="og:locale" content={{ 'pt-br': 'pt_BR', es: 'es_ES', en: 'en_US' }[lang]} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
@@ -50,7 +51,7 @@ const canonical = abs(alt[lang]);
     <script is:inline src="/lang.js"></script>
   </head>
   <body>
-    <a class="skip" href="#main">{lang === 'pt-br' ? 'Pular para o conteúdo' : 'Saltar al contenido'}</a>
+    <a class="skip" href="#main">{{ 'pt-br': 'Pular para o conteúdo', es: 'Saltar al contenido', en: 'Skip to content' }[lang]}</a>
     <Header lang={lang} alt={alt} />
     <main id="main"><slot /></main>
     <Footer lang={lang} />
