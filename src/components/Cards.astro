@@ -13,7 +13,7 @@ import { type Lang } from '../i18n/ui';
 const { lang } = Astro.props as { lang: Lang };
 const t = useT(lang);
 const cards = [
-  { k: 'blog', img: blog, href: localePath(lang, '/blog'), ext: false, soon: true, alt: 'Engenheiro em Dustbowl' },
+  { k: 'blog', img: blog, href: localePath(lang, '/blog'), ext: false, soon: false, alt: 'Engenheiro em Dustbowl' },
   { k: 'ranking', img: ranking, href: site.rankingUrl, ext: true, soon: false, alt: 'Heavy robô' },
   { k: 'sourcebans', img: sourcebans, href: site.sourcebansUrl, ext: true, soon: false, alt: 'Heavy' },
   { k: 'steam', img: steam, href: site.steamGroupUrl, ext: true, soon: false, steam: true, alt: 'Todas as classes do TF2' },

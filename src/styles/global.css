@@ -42,3 +42,8 @@ main { min-height: 60vh; }
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
 }
+
+.connect-line { display: inline-flex; align-items: center; gap: .6rem; flex-wrap: wrap; vertical-align: middle; }
+.prose code { background: #000; padding: .2rem .5rem; border-radius: 6px; font-size: .95em; }
+.copy-inline { padding: .35rem .8rem; font-size: .9rem; }
+.prose ul { padding-left: 1.3rem; } .prose li::marker { color: var(--gold); }

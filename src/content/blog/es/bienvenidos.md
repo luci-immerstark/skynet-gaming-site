@@ -1,0 +1,61 @@
+---
+title: "¡Bienvenidos a SKYNET GAMING BRASIL & LATAM!"
+description: "Conoce el servidor, la rotación de mapas, el evento de inauguración con R$ 500 en premios, el ranking y cómo entrar."
+date: 2026-10-02
+cover: ../../../assets/img/og-banner.jpg
+draft: false
+---
+
+## 🎮 SKYNET GAMING BRASIL — TF2 Classic Maps
+
+¡Bienvenido a la comunidad SKYNET GAMING! Somos un servidor dedicado de Team Fortress 2 hecho para quienes disfrutan del TF2 clásico: partidas llenas, mapas tradicionales y un ambiente competitivo, pero siempre con respeto.
+
+## ⚙️ El servidor
+
+- 40 slots y reaparición instantánea
+- 100 tick: registro de disparos más preciso que el estándar
+- Alojado en São Paulo, con ping bajo para todo Brasil y Sudamérica
+- Ranking en vivo: cada kill y cada objetivo suman puntos
+- Admins activos y sistema de bans transparente
+
+## 🗺️ Rotación de mapas
+
+Badwater, Dustbowl, Upward, Goldrush y 2Fort.
+
+*Nota: el servidor tiene más de 20 mapas instalados. Los mapas fuera de la rotación pueden activarse a criterio de los administradores, solo en ocasiones especiales.*
+
+## 🏆 Evento de inauguración
+
+**¡R$ 500 en premios para el TOP 5 del ranking!**
+
+- Inicio: 30/10 a las 20h (hora de Brasil, UTC-3)
+- Cierre: 02/11 a las 20h (hora de Brasil, UTC-3)
+- Horario de Brasilia
+
+Para participar, solo tienes que jugar en el servidor. Los 5 primeros del ranking al final del evento se llevan los premios.
+
+## 📊 Ranking
+
+Escribe en el chat del juego: `rank`, `top10`, `session` o `place`.
+Ranking completo: [stats.skynet-tf2.com.br](https://stats.skynet-tf2.com.br)
+
+## 📜 Reglas
+
+- Respeta a todos los jugadores
+- Prohibido el uso de cheats, exploits o cualquier tipo de trampa
+- Sin spam en el chat ni en el micrófono
+- ¿Viste algo mal? Usa `!report` en el chat o llama a un admin
+
+Bans aplicados: [bans.skynet-tf2.com.br](https://bans.skynet-tf2.com.br)
+
+## 👥 Equipo
+
+luci, Unmei, misha y Nissan.
+
+## 🔗 Cómo entrar
+
+Abre la consola del juego y escribe:
+
+`connect 212.38.89.226:27015`
+
+Consejo: ¡agrega el servidor a tus favoritos para no perderte ninguna partida!
