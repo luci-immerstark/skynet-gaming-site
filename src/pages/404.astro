@@ -2,7 +2,7 @@
 import Base from '../layouts/Base.astro';
 import { ui } from '../i18n/ui';
 ---
-<Base lang="pt-br" title={ui['pt-br']['meta.404.title']} description={ui['pt-br']['404.text']} path="/404" noindex>
+<Base lang="pt-br" title={ui['pt-br']['meta.404.title']} description={ui['pt-br']['404.text']} path="/404" noindex missing={["pt-br", "es", "en"]} fallback="/">
   <section class="nf">
     <div class="container">
       <p class="code">404</p>

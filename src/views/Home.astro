@@ -5,6 +5,7 @@ import EventBanner from '../components/EventBanner.astro';
 import Cards from '../components/Cards.astro';
 import About from '../components/About.astro';
 import Rules from '../components/Rules.astro';
+import Summary from '../components/Summary.astro';
 import Faq from '../components/Faq.astro';
 import { site } from '../config/site';
 import { useT } from '../i18n/utils';
@@ -26,6 +27,7 @@ const jsonLd = [
 ---
 <Base lang={lang} title={t('meta.home.title')} description={t('meta.home.description')} path="/" jsonLd={jsonLd}>
   <Hero lang={lang} />
+  <Summary lang={lang} />
   <EventBanner lang={lang} />
   <Cards lang={lang} />
   <About lang={lang} />

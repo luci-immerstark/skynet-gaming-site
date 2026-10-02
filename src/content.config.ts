@@ -10,6 +10,7 @@ const blog = defineCollection({
       seoTitle: z.string().optional(), // <title> da página (até ~60 caracteres); padrão: title
       description: z.string(),
       date: z.coerce.date(),
+      updated: z.coerce.date().optional(), // última atualização do post; padrão: date
       cover: image().optional(),
       draft: z.boolean().default(false),
     }),

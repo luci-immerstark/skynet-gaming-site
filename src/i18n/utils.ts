@@ -38,3 +38,11 @@ export function formatLaunch(iso: string, lang: Lang): string {
     : { day: '2-digit', month: '2-digit', year: 'numeric', timeZone: 'UTC' };
   return new Intl.DateTimeFormat(lang === 'en' ? 'en-US' : lang === 'es' ? 'es-419' : 'pt-BR', opts).format(d);
 }
+
+/** Data longa no idioma da página: 2 de outubro de 2026 / 2 de octubre de 2026 / October 2, 2026. */
+export function formatLong(date: Date | string, lang: Lang, timeZone = 'America/Sao_Paulo'): string {
+  const d = typeof date === 'string' ? new Date(`${date}T12:00:00Z`) : date;
+  return new Intl.DateTimeFormat(lang === 'en' ? 'en-US' : lang === 'es' ? 'es-419' : 'pt-BR', {
+    day: 'numeric', month: 'long', year: 'numeric', timeZone,
+  }).format(d);
+}

@@ -1,0 +1,45 @@
+# SKYNET Gaming Brasil
+
+> Servidor dedicado e comunitário de Team Fortress 2 (TF2) para Brasil e América Latina: 40 slots, 100 tick, hospedado em São Paulo, mapas clássicos e ranking ao vivo (HLstatsZ). Online desde 2 de outubro de 2026. / Community-run dedicated Team Fortress 2 server for Brazil and Latin America, online since October 2, 2026.
+
+O site está em português (padrão), espanhol da América Latina e inglês. Cada página abaixo existe nos três idiomas: `/` (pt-BR), `/es/` (es-419) e `/en/` (en).
+
+## Dados do servidor
+
+- Jogo: Team Fortress 2 (gratuito na Steam)
+- Endereço (IP:porta): 212.38.89.226:27015
+- Comando para conectar no console do jogo: `connect 212.38.89.226:27015`
+- Link para abrir o jogo já conectado: steam://connect/212.38.89.226:27015
+- Região: Brasil e América Latina; hospedagem em São Paulo, Brasil
+- Capacidade: 40 slots
+- Tickrate: 100 tick
+- Rotação de mapas: Badwater, Dustbowl, Upward, Goldrush e 2Fort (o servidor tem 20+ mapas instalados, usados só em ocasiões especiais, a critério da administração)
+- Ranking: HLstatsZ, ao vivo; comandos no chat do jogo: rank, top10, session, place
+- Data de lançamento: 2 de outubro de 2026 (2026-10-02)
+- Evento de inauguração: de 30/10/2026 às 20h até 02/11/2026 às 20h (horário de Brasília, UTC-3); R$ 500 em prêmios para o TOP 5 do ranking
+
+## Páginas principais
+
+- [Página inicial](https://skynet-tf2.com.br/): resumo do servidor, evento de inauguração, dados do servidor e IP para copiar. Versões: [es](https://skynet-tf2.com.br/es/), [en](https://skynet-tf2.com.br/en/).
+- [Regras do servidor](https://skynet-tf2.com.br/#regras): as 9 regras da comunidade (respeito, sem conteúdo impróprio, sem spam, cheats = banimento, entre outras). Versões: [es](https://skynet-tf2.com.br/es/#regras), [en](https://skynet-tf2.com.br/en/#regras).
+- [Perguntas frequentes](https://skynet-tf2.com.br/#faq): como entrar, qual é o IP, se é preciso baixar algo, como funciona o ranking e como denunciar. Versões: [es](https://skynet-tf2.com.br/es/#faq), [en](https://skynet-tf2.com.br/en/#faq).
+- [Blog](https://skynet-tf2.com.br/blog/): novidades, atualizações e guias da comunidade. Versões: [es](https://skynet-tf2.com.br/es/blog/), [en](https://skynet-tf2.com.br/en/blog/).
+
+## Guias no blog
+
+- [Bem-vindos ao SKYNET GAMING BRASIL & LATAM!](https://skynet-tf2.com.br/blog/welcome/): apresentação do servidor, rotação de mapas, evento e equipe.
+- [Como entrar em um servidor comunitário de TF2?](https://skynet-tf2.com.br/blog/how-to-join-tf2-community-server/): passo a passo pelo console e pelo navegador de servidores.
+- [O que é tickrate e por que um servidor de 100 tick faz diferença no TF2?](https://skynet-tf2.com.br/blog/what-is-tickrate-tf2/): explicação de tickrate, 66 vs 100 tick.
+- [Como funciona o ranking do servidor?](https://skynet-tf2.com.br/blog/how-the-ranking-works/): pontos, comandos do chat e onde ver o ranking.
+
+## Links da comunidade
+
+- [Ranking (HLstatsZ)](https://stats.skynet-tf2.com.br/hlstats.php): posição e estatísticas de todos os jogadores.
+- [SourceBans](https://bans.skynet-tf2.com.br/index.php?p=home): lista pública de bans e punições aplicados.
+- [Discord oficial](https://discord.gg/HV7d6x8pEK): comunidade, suporte, anúncios e denúncias.
+- [Grupo na Steam](https://steamcommunity.com/groups/skynetgaming-tf2): grupo da comunidade e eventos pela Steam.
+
+## Notas
+
+- Team Fortress 2 é uma marca registrada da Valve Corporation. Este site não é afiliado à Valve.
+- Sitemap: https://skynet-tf2.com.br/sitemap.xml

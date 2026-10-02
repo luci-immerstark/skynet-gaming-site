@@ -22,7 +22,7 @@ export default function rehypeConnectCopy() {
     walk(tree, (parent, child) => {
       if (child.type !== 'element' || child.tagName !== 'code' || parent.tagName === 'pre') return child;
       const text = (child.children ?? []).map((c) => c.value ?? '').join('');
-      const m = text.match(/^connect\s+(\S+)$/);
+      const m = text.match(/^connect\s+(\d{1,3}(?:\.\d{1,3}){3}:\d+)$/);
       if (!m) return child;
       return {
         type: 'element', tagName: 'span', properties: { className: ['connect-line'] },

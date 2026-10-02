@@ -2,10 +2,13 @@
 import { Image } from 'astro:assets';
 import logo from '../assets/img/logo-robo.png';
 import { site } from '../config/site';
-import { useT } from '../i18n/utils';
+import { useT, formatLong } from '../i18n/utils';
 import { type Lang } from '../i18n/ui';
 const { lang } = Astro.props as { lang: Lang };
 const t = useT(lang);
+// Data gerada no build (fuso de Brasília), formatada conforme o idioma.
+const built = new Date();
+const builtIso = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Sao_Paulo' }).format(built);
 const links = [
   { href: site.discordUrl, label: t('link.discord') },
   { href: site.steamGroupUrl, label: t('link.steam') },
@@ -22,6 +25,7 @@ const links = [
     </nav>
     <p class="copy">{t('footer.rights')}</p>
     <p class="valve">{t('footer.valve')}</p>
+    <p class="upd"><time datetime={builtIso}>{t('footer.updated').replace('{date}', formatLong(built, lang))}</time></p>
   </div>
 </footer>
 <style>
@@ -31,5 +35,6 @@ const links = [
   ul { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: .5rem 1.5rem; padding: 0; margin: .5rem 0; }
   a { color: var(--text); text-decoration: none; } a:hover { color: var(--gold); text-decoration: underline; }
   .copy, .valve { margin: 0; color: var(--muted); font-size: .88rem; }
+  .upd { margin: 0; color: var(--muted); font-size: .8rem; }
   .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
 </style>

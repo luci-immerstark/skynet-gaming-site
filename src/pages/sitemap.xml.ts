@@ -12,7 +12,7 @@ const abs = (p: string) => new URL(p, site.url).href;
 export const GET: APIRoute = async () => {
   const posts = (await getCollection('blog', (p) => !p.data.draft)).map((p) => {
     const [lang, ...rest] = p.id.split('/');
-    return { lang: lang as Lang, slug: rest.join('/'), date: p.data.date };
+    return { lang: lang as Lang, slug: rest.join('/'), date: p.data.updated ?? p.data.date };
   });
   const slugs = [...new Set(posts.map((p) => p.slug))];
   const entries: { path: string; date?: Date; has: (l: Lang) => boolean }[] = [

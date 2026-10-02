@@ -4,7 +4,7 @@ import { Image, getImage } from 'astro:assets';
 import ogFallback from '../assets/img/og-banner.jpg';
 import { site } from '../config/site';
 import Base from '../layouts/Base.astro';
-import { useT, localePath, formatDate, htmlLang } from '../i18n/utils';
+import { useT, localePath, formatDate, formatLong, htmlLang } from '../i18n/utils';
 import { type Lang } from '../i18n/ui';
 interface Props { lang: Lang; post: CollectionEntry<'blog'>; slug: string; }
 const { lang, post, slug } = Astro.props;
@@ -15,10 +15,11 @@ const missing = (['pt-br', 'es', 'en'] as Lang[]).filter((l) => !all.some((p) =>
 const abs = (p: string) => new URL(p, site.url).href;
 const img = await getImage({ src: post.data.cover ?? ogFallback, width: 1200, format: 'jpg' });
 const url = abs(localePath(lang, `/blog/${slug}`));
+const modified = post.data.updated ?? post.data.date;
 const jsonLd = [{
   '@context': 'https://schema.org', '@type': 'BlogPosting', '@id': `${url}#post`, mainEntityOfPage: { '@type': 'WebPage', '@id': url },
   headline: post.data.title, description: post.data.description, image: [abs(img.src)],
-  datePublished: post.data.date.toISOString(), dateModified: post.data.date.toISOString(),
+  datePublished: post.data.date.toISOString(), dateModified: modified.toISOString(),
   inLanguage: htmlLang(lang), url,
   author: { '@id': abs('/#organization') }, publisher: { '@id': abs('/#organization') },
 }];
@@ -27,6 +28,7 @@ const jsonLd = [{
   <div class="container article">
     <p class="back"><a href={localePath(lang, '/blog')}>{t('blog.back')}</a></p>
     <time datetime={post.data.date.toISOString()}>{formatDate(post.data.date, lang)}</time>
+    {<span class="mod"> · <time datetime={modified.toISOString()}>{t('footer.updated').replace('{date}', formatLong(modified, lang, 'UTC'))}</time></span>}
     <h1>{post.data.title}</h1>
     {post.data.cover && <Image src={post.data.cover} alt="" widths={[640, 1000]} sizes="(min-width: 800px) 760px, 100vw" loading="eager" fetchpriority="high" />}
     <div class="prose"><Content /></div>
@@ -36,7 +38,7 @@ const jsonLd = [{
 <style>
   .article { padding: 7rem 0 4rem; max-width: 800px; }
   h1 { font-size: clamp(2rem, 5vw, 3rem); color: var(--gold); margin: .3rem 0 1.5rem; }
-  time { color: var(--muted); }
+  time, .mod { color: var(--muted); }
   .article :global(> img) { border-radius: var(--radius); margin-bottom: 2rem; }
   .back a { color: var(--text); }
 </style>

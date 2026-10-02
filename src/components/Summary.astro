@@ -1,0 +1,19 @@
+---
+import { site } from '../config/site';
+import { useT, formatLong } from '../i18n/utils';
+import { type Lang } from '../i18n/ui';
+const { lang } = Astro.props as { lang: Lang };
+const t = useT(lang);
+// Definição em uma frase, útil para leitores e para buscadores com IA.
+const [before, after] = t('summary.text').replace('{date}', formatLong(site.launchDate, lang)).split('connect {ip}');
+---
+<section class="summary" aria-label="SKYNET Gaming">
+  <div class="container">
+    <p>{before}<code>connect {site.serverIp}</code>{after}</p>
+  </div>
+</section>
+<style>
+  .summary { padding: 2rem 0 0; }
+  p { max-width: 900px; margin: 0 auto; text-align: center; color: #d6d9de; font-size: 1.05rem; line-height: 1.7; }
+  code { background: #000; padding: .15rem .45rem; border-radius: 6px; white-space: nowrap; }
+</style>

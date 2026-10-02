@@ -3,6 +3,8 @@ export type Lang = keyof typeof languages;
 export const defaultLang: Lang = 'pt-br';
 
 const pt = {
+  'summary.text': 'A SKYNET Gaming Brasil é um servidor dedicado e comunitário de Team Fortress 2, hospedado em São Paulo, com 40 slots, 100 tick, rotação de mapas clássicos e ranking ao vivo (HLstatsZ). Está online desde {date} e atende jogadores do Brasil e da América Latina. Para jogar: connect {ip}.',
+  'footer.updated': 'Última atualização: {date}',
   'meta.blog.title': 'Blog do Servidor de TF2 | SKYNET Gaming',
   'meta.blog.description': 'Novidades, atualizações, eventos e guias do servidor brasileiro de Team Fortress 2 da SKYNET Gaming. Acompanhe a comunidade.',
   'meta.eventos.title': 'Eventos de TF2 no Brasil | SKYNET Gaming',
@@ -119,6 +121,8 @@ const pt = {
 type Keys = keyof typeof pt;
 
 const es: Record<Keys, string> = {
+  'summary.text': 'SKYNET Gaming Brasil es un servidor dedicado y comunitario de Team Fortress 2, alojado en São Paulo, con 40 slots, 100 tick, rotación de mapas clásicos y ranking en vivo (HLstatsZ). Está en línea desde el {date} y atiende a jugadores de Brasil y Latinoamérica. Para jugar: connect {ip}.',
+  'footer.updated': 'Última actualización: {date}',
   'meta.blog.title': 'Blog del Servidor de TF2 | SKYNET Gaming',
   'meta.blog.description': 'Noticias, actualizaciones, eventos y guías del servidor de Team Fortress 2 de SKYNET Gaming para Latinoamérica. Sigue a la comunidad.',
   'meta.eventos.title': 'Eventos de TF2 en Latinoamérica | SKYNET Gaming',
@@ -234,6 +238,8 @@ const es: Record<Keys, string> = {
 
 
 const en: Record<Keys, string> = {
+  'summary.text': 'SKYNET Gaming Brasil is a dedicated, community-run Team Fortress 2 server hosted in São Paulo, with 40 slots, 100 tick, a classic map rotation and a live ranking (HLstatsZ). It has been online since {date} and serves players from Brazil and Latin America. To play: connect {ip}.',
+  'footer.updated': 'Last updated: {date}',
   'meta.blog.title': 'TF2 Server Blog | SKYNET Gaming',
   'meta.blog.description': 'News, updates, events and guides from SKYNET Gaming\'s Team Fortress 2 server for Brazil and Latin America. Follow the community.',
   'meta.eventos.title': 'TF2 Events for Brazil & LATAM | SKYNET Gaming',
