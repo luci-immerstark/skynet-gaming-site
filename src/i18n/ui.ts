@@ -3,6 +3,8 @@ export type Lang = keyof typeof languages;
 export const defaultLang: Lang = 'pt-br';
 
 const pt = {
+  'hero.online': 'Servidor online desde {date}',
+  'event.intro': 'O servidor já está no ar! O evento de inauguração, valendo prêmios, é a nossa comemoração.',
   'meta.home.title': 'SKYNET GAMING BRASIL — Servidor TF2 Brasil e LATAM',
   'meta.home.description': 'Servidor dedicado de Team Fortress 2 no Brasil e América Latina: 40 slots, 100 tick, São Paulo, mapas clássicos e ranking HLstatsZ.',
   'nav.home': 'Início',
@@ -79,6 +81,8 @@ const pt = {
 type Keys = keyof typeof pt;
 
 const es: Record<Keys, string> = {
+  'hero.online': 'Servidor en línea desde el {date}',
+  'event.intro': '¡El servidor ya está en línea! El evento de inauguración, con premios, es nuestra celebración.',
   'meta.home.title': 'SKYNET GAMING BRASIL — Servidor TF2 Brasil y LATAM',
   'meta.home.description': 'Servidor dedicado de Team Fortress 2 en Brasil y Latinoamérica: 40 slots, 100 tick, São Paulo, mapas clásicos y ranking HLstatsZ.',
   'nav.home': 'Inicio',
@@ -154,6 +158,8 @@ const es: Record<Keys, string> = {
 
 
 const en: Record<Keys, string> = {
+  'hero.online': 'Server online since {date}',
+  'event.intro': 'The server is already live! The grand opening event, with prizes, is our celebration.',
   'meta.home.title': 'SKYNET GAMING BRASIL — TF2 Server for Brazil & LATAM',
   'meta.home.description': 'Dedicated Team Fortress 2 server for Brazil and Latin America: 40 slots, 100 tick, hosted in São Paulo, classic maps and HLstatsZ ranking.',
   'nav.home': 'Home',

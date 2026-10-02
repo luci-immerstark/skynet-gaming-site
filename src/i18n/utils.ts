@@ -27,3 +27,12 @@ export function formatDate(date: Date, lang: Lang): string {
 export function htmlLang(lang: Lang): string {
   return lang === 'pt-br' ? 'pt-BR' : lang;
 }
+
+/** Data de lançamento no formato de cada idioma: 02/10/2026, 02/10/2026, Oct 2, 2026. */
+export function formatLaunch(iso: string, lang: Lang): string {
+  const d = new Date(`${iso}T12:00:00Z`);
+  const opts: Intl.DateTimeFormatOptions = lang === 'en'
+    ? { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' }
+    : { day: '2-digit', month: '2-digit', year: 'numeric', timeZone: 'UTC' };
+  return new Intl.DateTimeFormat(lang === 'en' ? 'en-US' : lang === 'es' ? 'es-ES' : 'pt-BR', opts).format(d);
+}

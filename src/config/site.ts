@@ -6,6 +6,7 @@ export const site = {
   steamGroupUrl: 'https://steamcommunity.com/groups/skynetgaming-tf2',
   rankingUrl: 'https://stats.skynet-tf2.com.br/hlstats.php',
   sourcebansUrl: 'https://bans.skynet-tf2.com.br/index.php?p=home',
+  launchDate: '2026-10-02', // servidor no ar desde
   serverIp: '212.38.89.226:27015',
   // Evento em destaque. Para o próximo evento, edite só este bloco.
   // enabled: false esconde o banner. start/end: ISO com fuso fixo.
