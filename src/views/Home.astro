@@ -5,15 +5,30 @@ import EventBanner from '../components/EventBanner.astro';
 import Cards from '../components/Cards.astro';
 import About from '../components/About.astro';
 import Rules from '../components/Rules.astro';
+import Faq from '../components/Faq.astro';
+import { site } from '../config/site';
 import { useT } from '../i18n/utils';
 import { type Lang } from '../i18n/ui';
 const { lang } = Astro.props as { lang: Lang };
 const t = useT(lang);
+const abs = (p: string) => new URL(p, site.url).href;
+const faqLd = {
+  '@context': 'https://schema.org', '@type': 'FAQPage', inLanguage: lang === 'pt-br' ? 'pt-BR' : lang === 'es' ? 'es-419' : 'en',
+  mainEntity: ([1, 2, 3, 4, 5] as const).map((n) => ({
+    '@type': 'Question', name: t(`faq.${n}.q` as const),
+    acceptedAnswer: { '@type': 'Answer', text: t(`faq.${n}.a` as const).replaceAll('{ip}', site.serverIp) },
+  })),
+};
+const jsonLd = [
+  { '@context': 'https://schema.org', '@type': 'WebSite', '@id': abs('/#website'), url: abs(lang === 'pt-br' ? '/' : `/${lang}/`), name: 'SKYNET GAMING BRASIL', description: t('meta.home.description'), inLanguage: lang === 'pt-br' ? 'pt-BR' : lang === 'es' ? 'es-419' : 'en', publisher: { '@id': abs('/#organization') } },
+  faqLd,
+];
 ---
-<Base lang={lang} title={t('meta.home.title')} description={t('meta.home.description')} path="/">
+<Base lang={lang} title={t('meta.home.title')} description={t('meta.home.description')} path="/" jsonLd={jsonLd}>
   <Hero lang={lang} />
   <EventBanner lang={lang} />
   <Cards lang={lang} />
   <About lang={lang} />
   <Rules lang={lang} />
+  <Faq lang={lang} />
 </Base>

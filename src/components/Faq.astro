@@ -1,0 +1,32 @@
+---
+import { site } from '../config/site';
+import { useT } from '../i18n/utils';
+import { type Lang } from '../i18n/ui';
+const { lang } = Astro.props as { lang: Lang };
+const t = useT(lang);
+const items = ([1, 2, 3, 4, 5] as const).map((n) => ({
+  q: t(`faq.${n}.q` as const),
+  a: t(`faq.${n}.a` as const).replaceAll('{ip}', site.serverIp),
+}));
+---
+<section class="section faq" id="faq" aria-labelledby="faq-title">
+  <div class="container narrow">
+    <h2 class="section-title" id="faq-title">{t('faq.title')}</h2>
+    {items.map((i) => (
+      <details>
+        <summary>{i.q}</summary>
+        <p>{i.a}</p>
+      </details>
+    ))}
+  </div>
+</section>
+<style>
+  .narrow { max-width: 860px; }
+  details { background: var(--surface); border: 1px solid rgba(255,255,255,.08); border-radius: var(--radius); margin-bottom: .8rem; transition: border-color .25s; }
+  details[open], details:hover { border-color: rgba(255,215,0,.5); }
+  summary { cursor: pointer; padding: 1rem 1.2rem; font: 700 1.25rem var(--font-display); letter-spacing: .03em; color: var(--gold); list-style: none; display: flex; justify-content: space-between; gap: 1rem; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: '+'; font-size: 1.5rem; line-height: 1; }
+  details[open] summary::after { content: '–'; }
+  p { margin: 0; padding: 0 1.2rem 1.1rem; color: #d6d9de; }
+</style>

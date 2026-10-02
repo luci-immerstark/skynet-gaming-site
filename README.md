@@ -17,7 +17,8 @@ Crie **um arquivo `.md` com o mesmo nome** em cada pasta: `src/content/blog/pt-b
 ```md
 ---
 title: "Título do post"
-description: "Resumo exibido na listagem"
+seoTitle: "Título para o Google (até ~60 caracteres)"   # opcional
+description: "Resumo exibido na listagem e no Google (até ~155 caracteres)"
 date: 2026-11-05
 cover: ../../../assets/img/minha-capa.jpg   # opcional
 draft: false                                # true = não aparece
@@ -38,3 +39,9 @@ As imagens estão em `src/assets/img/`. Substitua o arquivo mantendo o mesmo nom
 
 ## Trocar o link do Discord (e outros links/IP)
 `discordUrl` em `src/config/site.ts` (também `steamGroupUrl`, `rankingUrl`, `sourcebansUrl`, `serverIp`).
+
+## SEO, analytics e sitemap
+- Idiomas no HTML/hreflang: `pt-BR`, `es-419` e `en` (URLs `/`, `/es/`, `/en/`). Títulos e descrições das páginas ficam em `src/i18n/ui.ts` (`meta.*`); os de posts, no frontmatter.
+- Dados estruturados (JSON-LD): Organization em todas as páginas; WebSite, Event (gerado de `site.event`) e FAQPage na inicial; BlogPosting nos posts.
+- O sitemap é gerado por `src/pages/sitemap.xml.ts` (o plugin oficial não aceita `es-419`) e está referenciado em `public/robots.txt`.
+- Cloudflare Web Analytics: preencha `analyticsToken` em `src/config/site.ts`. Vazio = nenhum script. A CSP em `public/_headers` já permite o script.

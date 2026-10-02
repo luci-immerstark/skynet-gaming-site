@@ -10,7 +10,7 @@ const t = useT(lang);
 const posts = (await getCollection('blog', (p) => p.id.startsWith(`${lang}/`) && !p.data.draft))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
-<Base lang={lang} title={`${t('blog.title')} — SKYNET GAMING`} description={t('blog.description')} path="/blog">
+<Base lang={lang} title={t('meta.blog.title')} description={t('meta.blog.description')} path="/blog">
   <header class="page-head">
     <Image src={fallback} alt="" widths={[800, 1400, 1920]} sizes="100vw" loading="eager" fetchpriority="high" />
     <div class="container"><h1>{t('blog.title')}</h1></div>

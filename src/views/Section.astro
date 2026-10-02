@@ -11,7 +11,7 @@ const t = useT(lang);
 const img = page === 'eventos' ? eventos : dodgeball;
 const title = t(`${page}.title` as const);
 ---
-<Base lang={lang} title={`${title} — SKYNET GAMING`} description={t(`${page}.description` as const)} path={`/${page}`}>
+<Base lang={lang} title={t(`meta.${page}.title` as const)} description={t(`meta.${page}.description` as const)} path={`/${page}`}>
   <header class="page-head">
     <Image src={img} alt="" widths={[800, 1400, 1920]} sizes="100vw" loading="eager" fetchpriority="high" />
     <div class="container"><h1>{title}</h1><p><span class="badge">{t('badge.soon')}</span></p></div>

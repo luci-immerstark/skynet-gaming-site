@@ -27,7 +27,7 @@ Salve e faça o deploy. O primeiro endereço fica em `skynet-gaming-site.<sua-co
 Os subdomínios `stats.`, `bans.` e `play.` não são afetados.
 
 ## 4. Conferir depois do deploy
-- `https://skynet-tf2.com.br/`, `/es/`, `/en/`, `/sitemap-index.xml` e `/robots.txt`.
+- `https://skynet-tf2.com.br/`, `/es/`, `/en/`, `/sitemap.xml` e `/robots.txt`.
 - Uma URL inexistente (ex.: `/xyz`) deve mostrar a página 404 do site, com status 404.
 - Os cabeçalhos (CSP, `X-Content-Type-Options` etc.) aparecem na resposta e `/_astro/*` vem com cache de 1 ano.
 

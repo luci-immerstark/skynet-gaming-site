@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://skynet-tf2.com.br/sitemap-index.xml
+Sitemap: https://skynet-tf2.com.br/sitemap.xml

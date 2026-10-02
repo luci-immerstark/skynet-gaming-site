@@ -7,6 +7,7 @@ const blog = defineCollection({
   schema: ({ image }) =>
     z.object({
       title: z.string(),
+      seoTitle: z.string().optional(), // <title> da página (até ~60 caracteres); padrão: title
       description: z.string(),
       date: z.coerce.date(),
       cover: image().optional(),

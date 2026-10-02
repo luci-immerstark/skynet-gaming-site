@@ -7,6 +7,8 @@ export const site = {
   rankingUrl: 'https://stats.skynet-tf2.com.br/hlstats.php',
   sourcebansUrl: 'https://bans.skynet-tf2.com.br/index.php?p=home',
   launchDate: '2026-10-02', // servidor no ar desde
+  // Cloudflare Web Analytics: cole o token aqui (Analytics & Logs → Web Analytics → Manage site). Vazio = sem script.
+  analyticsToken: '' as string,
   serverIp: '212.38.89.226:27015',
   // Evento em destaque. Para o próximo evento, edite só este bloco.
   // enabled: false esconde o banner. start/end: ISO com fuso fixo.

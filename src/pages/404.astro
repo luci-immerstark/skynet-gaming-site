@@ -2,7 +2,7 @@
 import Base from '../layouts/Base.astro';
 import { ui } from '../i18n/ui';
 ---
-<Base lang="pt-br" title={ui['pt-br']['meta.404.title']} description={ui['pt-br']['404.text']} path="/404">
+<Base lang="pt-br" title={ui['pt-br']['meta.404.title']} description={ui['pt-br']['404.text']} path="/404" noindex>
   <section class="nf">
     <div class="container">
       <p class="code">404</p>
@@ -26,5 +26,5 @@ import { ui } from '../i18n/ui';
   const m = location.pathname.match(/^\/(es|en)(\/|$)/);
   const cur = m ? m[1] : 'pt-br';
   document.querySelectorAll<HTMLElement>('.msg').forEach((el) => (el.hidden = el.dataset.l !== cur));
-  document.documentElement.lang = cur === 'pt-br' ? 'pt-BR' : cur;
+  document.documentElement.lang = ({ 'pt-br': 'pt-BR', es: 'es-419', en: 'en' } as Record<string, string>)[cur];
 </script>

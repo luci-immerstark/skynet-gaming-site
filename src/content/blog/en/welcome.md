@@ -1,6 +1,7 @@
 ---
 title: "Welcome to SKYNET GAMING BRASIL & LATAM!"
-description: "Meet the server, the map rotation, the grand opening event with R$ 500 in prizes, the ranking and how to join."
+seoTitle: "TF2 Server Brazil & LATAM: Welcome & Event | SKYNET"
+description: "Meet our 100 tick TF2 server in São Paulo: classic map rotation, live ranking, rules and the grand opening event with R$ 500 in prizes."
 date: 2026-10-02
 cover: ../../../assets/img/og-banner.jpg
 draft: false
