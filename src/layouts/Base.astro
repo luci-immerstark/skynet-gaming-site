@@ -1,0 +1,71 @@
+---
+import '@fontsource/rajdhani/500.css';
+import '@fontsource/rajdhani/700.css';
+import '@fontsource/inter/400.css';
+import '@fontsource/inter/600.css';
+import '../styles/global.css';
+import { getImage } from 'astro:assets';
+import ogImg from '../assets/img/og-banner.jpg';
+import favImg from '../assets/img/logo-robo.png';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { site } from '../config/site';
+import { type Lang } from '../i18n/ui';
+import { localePath } from '../i18n/utils';
+
+interface Props { lang: Lang; title: string; description: string; path: string; }
+const { lang, title, description, path } = Astro.props;
+const og = await getImage({ src: ogImg, width: 1200, format: 'jpg' });
+const fav32 = await getImage({ src: favImg, width: 32, height: 32, format: 'png' });
+const fav180 = await getImage({ src: favImg, width: 180, height: 180, format: 'png' });
+const abs = (p: string) => new URL(p, site.url).href;
+const alt = { 'pt-br': localePath('pt-br', path), es: localePath('es', path) };
+const canonical = abs(alt[lang]);
+---
+<!doctype html>
+<html lang={lang === 'pt-br' ? 'pt-BR' : 'es'}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#0d0f12" />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="pt-BR" href={abs(alt['pt-br'])} />
+    <link rel="alternate" hreflang="es" href={abs(alt.es)} />
+    <link rel="alternate" hreflang="x-default" href={abs(alt['pt-br'])} />
+    <link rel="icon" type="image/png" sizes="32x32" href={fav32.src} />
+    <link rel="apple-touch-icon" href={fav180.src} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={abs(og.src)} />
+    <meta property="og:locale" content={lang === 'pt-br' ? 'pt_BR' : 'es_ES'} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={abs(og.src)} />
+    <script is:inline src="/lang.js"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">{lang === 'pt-br' ? 'Pular para o conteúdo' : 'Saltar al contenido'}</a>
+    <Header lang={lang} alt={alt} />
+    <main id="main"><slot /></main>
+    <Footer lang={lang} />
+    <script>
+      document.querySelectorAll<HTMLAnchorElement>('.lang a').forEach((a) =>
+        a.addEventListener('click', () => { try { localStorage.setItem('lang', a.dataset.lang || 'pt-br'); } catch {} }));
+      document.querySelectorAll<HTMLButtonElement>('[data-copy]').forEach((btn) => {
+        const label = btn.querySelector('.copy-label');
+        const orig = label?.textContent ?? '';
+        btn.addEventListener('click', async () => {
+          const text = 'connect ' + btn.dataset.copy;
+          try { await navigator.clipboard.writeText(text); } catch { /* sem permissão: ignora */ }
+          if (label) { label.textContent = btn.dataset.done ?? ''; setTimeout(() => (label.textContent = orig), 2000); }
+        });
+      });
+    </script>
+  </body>
+</html>

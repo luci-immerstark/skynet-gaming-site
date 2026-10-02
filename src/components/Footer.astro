@@ -1,0 +1,35 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/img/logo-robo.png';
+import { site } from '../config/site';
+import { useT } from '../i18n/utils';
+import { type Lang } from '../i18n/ui';
+const { lang } = Astro.props as { lang: Lang };
+const t = useT(lang);
+const links = [
+  { href: site.discordUrl, label: t('link.discord') },
+  { href: site.steamGroupUrl, label: t('link.steam') },
+  { href: site.rankingUrl, label: t('link.ranking') },
+  { href: site.sourcebansUrl, label: t('link.sourcebans') },
+];
+---
+<footer class="footer">
+  <div class="container inner">
+    <Image src={logo} alt="Logo SKYNET GAMING" width={56} height={56} densities={[1, 2]} loading="lazy" />
+    <p class="name">SKYNET GAMING TF2</p>
+    <nav aria-label={t('footer.links')}>
+      <ul>{links.map((l) => <li><a href={l.href} target="_blank" rel="noopener noreferrer">{l.label}<span class="sr"> ({t('external')})</span></a></li>)}</ul>
+    </nav>
+    <p class="copy">{t('footer.rights')}</p>
+    <p class="valve">{t('footer.valve')}</p>
+  </div>
+</footer>
+<style>
+  .footer { background: var(--surface); border-top: 1px solid rgba(255,215,0,.15); padding: 3rem 0; text-align: center; }
+  .inner { display: flex; flex-direction: column; align-items: center; gap: .8rem; }
+  .name { font-family: var(--font-display); font-weight: 700; letter-spacing: .12em; font-size: 1.3rem; margin: 0; }
+  ul { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: .5rem 1.5rem; padding: 0; margin: .5rem 0; }
+  a { color: var(--text); text-decoration: none; } a:hover { color: var(--gold); text-decoration: underline; }
+  .copy, .valve { margin: 0; color: var(--muted); font-size: .88rem; }
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+</style>

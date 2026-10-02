@@ -1,0 +1,55 @@
+---
+import { Image } from 'astro:assets';
+import Icon from './Icon.astro';
+import blog from '../assets/img/card-blog.jpg';
+import ranking from '../assets/img/card-ranking.jpg';
+import sourcebans from '../assets/img/card-sourcebans.jpg';
+import steam from '../assets/img/card-steam.jpg';
+import eventos from '../assets/img/card-eventos.jpg';
+import dodgeball from '../assets/img/card-dodgeball.jpg';
+import { site } from '../config/site';
+import { useT, localePath } from '../i18n/utils';
+import { type Lang } from '../i18n/ui';
+const { lang } = Astro.props as { lang: Lang };
+const t = useT(lang);
+const cards = [
+  { k: 'blog', img: blog, href: localePath(lang, '/blog'), ext: false, soon: true, alt: 'Engenheiro em Dustbowl' },
+  { k: 'ranking', img: ranking, href: site.rankingUrl, ext: true, soon: false, alt: 'Heavy robô' },
+  { k: 'sourcebans', img: sourcebans, href: site.sourcebansUrl, ext: true, soon: false, alt: 'Heavy' },
+  { k: 'steam', img: steam, href: site.steamGroupUrl, ext: true, soon: false, steam: true, alt: 'Todas as classes do TF2' },
+  { k: 'eventos', img: eventos, href: localePath(lang, '/eventos'), ext: false, soon: true, alt: 'Personagens em evento sazonal' },
+  { k: 'dodgeball', img: dodgeball, href: localePath(lang, '/dodgeball'), ext: false, soon: true, alt: 'Pyro' },
+] as const;
+---
+<section class="section" aria-label="Links">
+  <div class="container grid">
+    {cards.map((c) => (
+      <a class="card" href={c.href} {...(c.ext ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>
+        <Image src={c.img} alt={c.alt} widths={[400, 700, 1000]} sizes="(min-width: 960px) 380px, (min-width: 640px) 50vw, 100vw" loading="lazy" />
+        <div class="shade"></div>
+        {c.soon && <span class="badge soon">{t('badge.soon')}</span>}
+        {c.ext && <span class="ext"><Icon name="external" size={18} /><span class="sr">{t('external')}</span></span>}
+        <div class="text">
+          <h3>{'steam' in c && c.steam && <Icon name="steam" size={22} />} {t(`card.${c.k}.title` as const)}</h3>
+          <p>{t(`card.${c.k}.desc` as const)}</p>
+        </div>
+      </a>
+    ))}
+  </div>
+</section>
+<style>
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+  .card { position: relative; display: block; aspect-ratio: 16 / 10; border-radius: var(--radius); overflow: hidden; border: 2px solid transparent; color: var(--text); text-decoration: none; background: var(--surface); transition: border-color .25s, box-shadow .25s; }
+  .card :global(img) { width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
+  .shade { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,.92) 0%, rgba(0,0,0,.45) 50%, rgba(0,0,0,.1) 100%); }
+  .card:hover, .card:focus-visible { border-color: var(--gold); box-shadow: 0 0 22px rgba(255,215,0,.25); }
+  .card:hover :global(img), .card:focus-visible :global(img) { transform: scale(1.07); }
+  .text { position: absolute; inset: auto 0 0 0; padding: 1rem 1.1rem; }
+  h3 { font-size: 1.5rem; display: flex; align-items: center; gap: .4rem; }
+  p { margin: .25rem 0 0; font-size: .92rem; color: #d6d9de; }
+  .soon { position: absolute; top: .8rem; left: .8rem; }
+  .ext { position: absolute; top: .8rem; right: .8rem; background: rgba(0,0,0,.65); border-radius: 8px; padding: .3rem; line-height: 0; }
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  @media (max-width: 959px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 639px) { .grid { grid-template-columns: 1fr; } }
+</style>

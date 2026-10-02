@@ -1,0 +1,44 @@
+---
+import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import fallback from '../assets/img/card-blog.jpg';
+import { useT, localePath, formatDate } from '../i18n/utils';
+import { type Lang } from '../i18n/ui';
+const { lang } = Astro.props as { lang: Lang };
+const t = useT(lang);
+const posts = (await getCollection('blog', (p) => p.id.startsWith(`${lang}/`) && !p.data.draft))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+<Base lang={lang} title={`${t('blog.title')} — SKYNET GAMING`} description={t('blog.description')} path="/blog">
+  <header class="page-head">
+    <Image src={fallback} alt="" widths={[800, 1400, 1920]} sizes="100vw" loading="eager" fetchpriority="high" />
+    <div class="container"><h1>{t('blog.title')}</h1></div>
+  </header>
+  <div class="section"><div class="container">
+    {posts.length === 0 ? <p>{t('blog.empty')}</p> : (
+      <div class="list">
+        {posts.map((p) => (
+          <a class="post" href={localePath(lang, `/blog/${p.id.split('/').slice(1).join('/').replace(/\.md$/, '')}`)}>
+            <Image src={p.data.cover ?? fallback} alt="" widths={[400, 700]} sizes="(min-width: 960px) 380px, 100vw" loading="lazy" />
+            <div class="meta">
+              <time datetime={p.data.date.toISOString()}>{formatDate(p.data.date, lang)}</time>
+              <h2>{p.data.title}</h2>
+              <p>{p.data.description}</p>
+            </div>
+          </a>
+        ))}
+      </div>
+    )}
+  </div></div>
+</Base>
+<style>
+  .list { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); gap: 1.25rem; }
+  .post { display: block; background: var(--surface); border: 2px solid transparent; border-radius: var(--radius); overflow: hidden; color: var(--text); text-decoration: none; transition: border-color .25s; }
+  .post:hover, .post:focus-visible { border-color: var(--gold); }
+  .post :global(img) { width: 100%; aspect-ratio: 16/9; object-fit: cover; }
+  .meta { padding: 1rem 1.1rem 1.3rem; }
+  time { color: var(--muted); font-size: .85rem; }
+  h2 { font-size: 1.5rem; margin: .3rem 0 .5rem; color: var(--gold); }
+  p { margin: 0; color: #d6d9de; }
+</style>

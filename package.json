@@ -1,0 +1,25 @@
+{
+  "name": "skynet-gaming-site",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "engines": {
+    "node": ">=22 <23"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.9.10",
+    "@astrojs/sitemap": "^3.7.4",
+    "@fontsource/inter": "^5.3.0",
+    "@fontsource/rajdhani": "^5.3.0",
+    "astro": "^7.3.5",
+    "sharp": "^0.35.5",
+    "simple-icons": "^16.33.0",
+    "typescript": "^6.0.3"
+  }
+}

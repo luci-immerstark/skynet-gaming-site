@@ -1,0 +1,29 @@
+---
+import Base from '../layouts/Base.astro';
+import { ui } from '../i18n/ui';
+---
+<Base lang="pt-br" title={ui['pt-br']['meta.404.title']} description={ui['pt-br']['404.text']} path="/404">
+  <section class="nf">
+    <div class="container">
+      <p class="code">404</p>
+      {(['pt-br', 'es'] as const).map((l) => (
+        <div class="msg" data-l={l} hidden={l === 'es'}>
+          <h1>{ui[l]['404.title']}</h1>
+          <p>{ui[l]['404.text']}</p>
+          <a class="btn btn-gold" href={l === 'es' ? '/es/' : '/'}>{ui[l]['404.home']}</a>
+        </div>
+      ))}
+    </div>
+  </section>
+</Base>
+<style>
+  .nf { min-height: 100svh; display: grid; place-items: center; text-align: center; padding: 6rem 0 3rem; }
+  .code { font: 700 clamp(6rem, 25vw, 12rem)/1 var(--font-display); color: var(--gold); margin: 0; text-shadow: 0 0 40px rgba(255,215,0,.35); }
+  h1 { font-size: clamp(1.8rem, 5vw, 3rem); margin-bottom: .8rem; }
+  .msg p { margin: 0 0 1.5rem; color: var(--muted); }
+</style>
+<script>
+  const es = location.pathname === '/es' || location.pathname.startsWith('/es/');
+  document.querySelectorAll<HTMLElement>('.msg').forEach((m) => (m.hidden = (m.dataset.l === 'es') !== es));
+  if (es) document.documentElement.lang = 'es';
+</script>

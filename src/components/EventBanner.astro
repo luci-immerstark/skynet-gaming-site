@@ -1,0 +1,93 @@
+---
+import Icon from './Icon.astro';
+import { site } from '../config/site';
+import { useT } from '../i18n/utils';
+import { type Lang } from '../i18n/ui';
+const { lang } = Astro.props as { lang: Lang };
+const t = useT(lang);
+const ev = site.event;
+const txt = ev.text[lang];
+const units = [['d', t('unit.days')], ['h', t('unit.hours')], ['m', t('unit.minutes')], ['s', t('unit.seconds')]];
+---
+{ev.enabled && (
+  <section class="event-wrap" aria-labelledby="event-title">
+    <div class="container">
+      <div class="event" data-start={ev.start} data-end={ev.end}>
+        <div class="trophy"><Icon name="trophy" size={64} /></div>
+        <div class="body">
+          <span class="live" hidden>{t('event.live')}</span>
+          <h2 id="event-title">{txt.title}</h2>
+          <p class="prize">{txt.prize}</p>
+          <p class="dates">{txt.dates}</p>
+          <div class="countdown" hidden>
+            <p class="label" data-before={t('event.starts')} data-during={t('event.ends')}></p>
+            <div class="units" role="timer">
+              {units.map(([k, label]) => <div><span class="num" data-u={k}>00</span><span class="u">{label}</span></div>)}
+            </div>
+          </div>
+          <p class="over" data-over={t('event.over')} hidden>{t('event.over')}</p>
+          <div class="actions">
+            <a class="btn btn-gold" href={site.rankingUrl} target="_blank" rel="noopener noreferrer">{t('btn.ranking')}<span class="sr"> ({t('external')})</span></a>
+            <a class="btn btn-ghost" href={`steam://connect/${site.serverIp}`}>{t('btn.play')}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+)}
+<style>
+  .event-wrap { padding: 2.5rem 0 0; }
+  .event { display: flex; gap: 1.5rem; align-items: center; padding: 2rem; border: 2px solid var(--gold); border-radius: 16px; background: linear-gradient(135deg, #1c1a0e, var(--surface)); box-shadow: 0 0 30px rgba(255,215,0,.25), inset 0 0 40px rgba(255,215,0,.06); }
+  .trophy { color: var(--gold); flex: none; filter: drop-shadow(0 0 12px rgba(255,215,0,.6)); }
+  .body { display: flex; flex-direction: column; gap: .5rem; align-items: flex-start; flex: 1; }
+  h2 { color: var(--gold); font-size: clamp(1.8rem, 4vw, 2.8rem); }
+  .prize { font-size: clamp(1.1rem, 2.5vw, 1.5rem); font-weight: 600; margin: 0; }
+  .dates { color: var(--muted); margin: 0; }
+  .live { background: #e5322d; color: #fff; font: 700 .85rem/1 var(--font-display); letter-spacing: .12em; padding: .35rem .8rem; border-radius: 999px; animation: pulse 1.4s infinite; }
+  @keyframes pulse { 0%,100% { box-shadow: 0 0 0 0 rgba(229,50,45,.7); } 50% { box-shadow: 0 0 0 10px rgba(229,50,45,0); } }
+  .label { margin: .5rem 0 .2rem; font-family: var(--font-display); font-size: 1.1rem; letter-spacing: .08em; text-transform: uppercase; }
+  .units { display: flex; gap: .7rem; }
+  .units div { background: rgba(0,0,0,.5); border: 1px solid rgba(255,215,0,.35); border-radius: 10px; padding: .5rem .8rem; min-width: 70px; text-align: center; }
+  .num { display: block; font: 700 2rem/1 var(--font-display); color: var(--gold); font-variant-numeric: tabular-nums; }
+  .u { font-size: .75rem; color: var(--muted); text-transform: uppercase; }
+  .over { font: 700 1.3rem var(--font-display); color: var(--gold); margin: .5rem 0; }
+  .actions { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: .8rem; }
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  @media (max-width: 640px) {
+    .event { flex-direction: column; text-align: center; padding: 1.5rem 1rem; }
+    .body { align-items: center; }
+    .units div { min-width: 62px; padding: .4rem .5rem; }
+    .actions { justify-content: center; }
+  }
+</style>
+<script>
+  const el = document.querySelector<HTMLElement>('.event');
+  if (el) {
+    const start = Date.parse(el.dataset.start!), end = Date.parse(el.dataset.end!);
+    // Só em desenvolvimento: ?fase=antes|durante|depois simula as fases do evento.
+    const forced = import.meta.env.DEV ? new URLSearchParams(location.search).get('fase') : null;
+    const live = el.querySelector<HTMLElement>('.live')!;
+    const cd = el.querySelector<HTMLElement>('.countdown')!;
+    const label = el.querySelector<HTMLElement>('.label')!;
+    const over = el.querySelector<HTMLElement>('.over')!;
+    const nums = Object.fromEntries([...el.querySelectorAll<HTMLElement>('[data-u]')].map((n) => [n.dataset.u!, n]));
+    const pad = (n: number) => String(n).padStart(2, '0');
+    const tick = () => {
+      let now = Date.now();
+      if (forced === 'antes') now = start - 90_061_000;
+      if (forced === 'durante') now = end - 90_061_000;
+      if (forced === 'depois') now = end + 1000;
+      const before = now < start, during = !before && now < end;
+      live.hidden = !during; cd.hidden = !(before || during); over.hidden = before || during;
+      if (before || during) {
+        label.textContent = before ? label.dataset.before! : label.dataset.during!;
+        let s = Math.max(0, Math.floor(((before ? start : end) - now) / 1000));
+        nums.d.textContent = pad(Math.floor(s / 86400)); s %= 86400;
+        nums.h.textContent = pad(Math.floor(s / 3600)); s %= 3600;
+        nums.m.textContent = pad(Math.floor(s / 60)); nums.s.textContent = pad(s % 60);
+      }
+    };
+    tick();
+    setInterval(tick, 1000);
+  }
+</script>

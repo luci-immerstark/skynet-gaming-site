@@ -1,0 +1,36 @@
+---
+import Icon from './Icon.astro';
+import { site } from '../config/site';
+import { useT } from '../i18n/utils';
+import { type Lang } from '../i18n/ui';
+const { lang } = Astro.props as { lang: Lang };
+const t = useT(lang);
+const facts = ['server.slots', 'server.tick', 'server.city', 'server.maps', 'server.ranking', 'server.admins'] as const;
+---
+<section class="section about" aria-labelledby="about-title">
+  <div class="container wrap">
+    <div>
+      <h2 class="section-title" id="about-title">{t('about.title')}</h2>
+      <p class="text">{t('about.text')}</p>
+    </div>
+    <aside class="info" aria-label={t('server.title')}>
+      <h3>{t('server.title')}</h3>
+      <ul>{facts.map((f) => <li>{t(f)}</li>)}</ul>
+      <p class="ipl">{t('server.ip')}</p>
+      <code>{site.serverIp}</code>
+      <button class="btn btn-gold" type="button" data-copy={site.serverIp} data-done={t('btn.copied')}>
+        <Icon name="copy" size={18} /><span class="copy-label" aria-live="polite">{t('btn.copy')}</span>
+      </button>
+    </aside>
+  </div>
+</section>
+<style>
+  .wrap { display: grid; grid-template-columns: 1.4fr 1fr; gap: 2.5rem; align-items: start; }
+  .text { font-size: 1.15rem; line-height: 1.8; margin: 0; }
+  .info { background: var(--surface); border: 1px solid rgba(255,215,0,.25); border-radius: var(--radius); padding: 1.5rem; display: flex; flex-direction: column; gap: .6rem; }
+  h3 { color: var(--gold); font-size: 1.4rem; }
+  ul { margin: 0; padding-left: 1.2rem; } li::marker { color: var(--gold); }
+  .ipl { margin: .6rem 0 0; color: var(--muted); font-size: .85rem; }
+  code { font-size: 1.15rem; background: #000; padding: .5rem .8rem; border-radius: 8px; word-break: break-all; }
+  @media (max-width: 800px) { .wrap { grid-template-columns: 1fr; } }
+</style>

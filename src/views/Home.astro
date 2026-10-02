@@ -1,0 +1,17 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import EventBanner from '../components/EventBanner.astro';
+import Cards from '../components/Cards.astro';
+import About from '../components/About.astro';
+import { useT } from '../i18n/utils';
+import { type Lang } from '../i18n/ui';
+const { lang } = Astro.props as { lang: Lang };
+const t = useT(lang);
+---
+<Base lang={lang} title={t('meta.home.title')} description={t('meta.home.description')} path="/">
+  <Hero lang={lang} />
+  <EventBanner lang={lang} />
+  <Cards lang={lang} />
+  <About lang={lang} />
+</Base>
