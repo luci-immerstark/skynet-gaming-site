@@ -13,13 +13,15 @@ import { site } from '../config/site';
 import { type Lang } from '../i18n/ui';
 import { localePath, htmlLang } from '../i18n/utils';
 
-interface Props { lang: Lang; title: string; description: string; path: string; }
-const { lang, title, description, path } = Astro.props;
+// altPaths: caminho de cada idioma quando difere de `path` (null = sem tradução; o seletor vai para `fallback`).
+interface Props { lang: Lang; title: string; description: string; path: string; missing?: Lang[]; fallback?: string; }
+const { lang, title, description, path, missing = [], fallback = '/' } = Astro.props;
 const og = await getImage({ src: ogImg, width: 1200, format: 'jpg' });
 const fav32 = await getImage({ src: favImg, width: 32, height: 32, format: 'png' });
 const fav180 = await getImage({ src: favImg, width: 180, height: 180, format: 'png' });
 const abs = (p: string) => new URL(p, site.url).href;
-const alt = { 'pt-br': localePath('pt-br', path), es: localePath('es', path), en: localePath('en', path) };
+const alt = Object.fromEntries((['pt-br', 'es', 'en'] as Lang[]).map((l) => [l, localePath(l, missing.includes(l) ? fallback : path)])) as Record<Lang, string>;
+const has = (l: Lang) => !missing.includes(l);
 const canonical = abs(alt[lang]);
 ---
 <!doctype html>
@@ -31,10 +33,10 @@ const canonical = abs(alt[lang]);
     <meta name="description" content={description} />
     <meta name="theme-color" content="#0d0f12" />
     <link rel="canonical" href={canonical} />
-    <link rel="alternate" hreflang="pt-BR" href={abs(alt['pt-br'])} />
-    <link rel="alternate" hreflang="es" href={abs(alt.es)} />
-    <link rel="alternate" hreflang="en" href={abs(alt.en)} />
-    <link rel="alternate" hreflang="x-default" href={abs(alt['pt-br'])} />
+    {has('pt-br') && <link rel="alternate" hreflang="pt-BR" href={abs(alt['pt-br'])} />}
+    {has('es') && <link rel="alternate" hreflang="es" href={abs(alt.es)} />}
+    {has('en') && <link rel="alternate" hreflang="en" href={abs(alt.en)} />}
+    {has('pt-br') && <link rel="alternate" hreflang="x-default" href={abs(alt['pt-br'])} />}
     <link rel="icon" type="image/png" sizes="32x32" href={fav32.src} />
     <link rel="apple-touch-icon" href={fav180.src} />
     <meta property="og:type" content="website" />
