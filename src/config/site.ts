@@ -9,6 +9,8 @@ export const site = {
   launchDate: '2026-10-02', // servidor no ar desde
   // Cloudflare Web Analytics: cole o token aqui (Analytics & Logs → Web Analytics → Manage site). Vazio = sem script.
   analyticsToken: '' as string,
+  // Páginas ainda sem conteúdo real: ficam com noindex e fora do sitemap. Remova a chave quando a página estiver pronta.
+  paginasProvisorias: ['eventos', 'dodgeball'] as string[],
   serverIp: '212.38.89.226:27015',
   // Evento em destaque. Para o próximo evento, edite só este bloco.
   // enabled: false esconde o banner. start/end: ISO com fuso fixo.

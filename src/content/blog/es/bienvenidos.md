@@ -1,4 +1,5 @@
 ---
+translationKey: "welcome"
 title: "¡Bienvenidos a SKYNET GAMING BRASIL & LATAM!"
 seoTitle: "Servidor TF2 Latinoamérica: bienvenida y evento | SKYNET"
 description: "Conoce el servidor de TF2 de 100 tick en São Paulo: rotación de mapas clásicos, ranking en vivo, reglas y el evento de inauguración con R$ 500 en premios."

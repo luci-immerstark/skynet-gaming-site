@@ -1,4 +1,5 @@
 ---
+translationKey: "ranking"
 title: "How does the server ranking work?"
 seoTitle: "How the TF2 Server Ranking Works | SKYNET Gaming"
 description: "How the SKYNET Gaming server's HLstatsZ ranking scores players, which chat commands to use (rank, top10, session, place) and where to see it."

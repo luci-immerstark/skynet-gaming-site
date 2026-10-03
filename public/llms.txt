@@ -27,10 +27,10 @@ O site está em português (padrão), espanhol da América Latina e inglês. Cad
 
 ## Guias no blog
 
-- [Bem-vindos ao SKYNET GAMING BRASIL & LATAM!](https://skynet-tf2.com.br/blog/welcome/): apresentação do servidor, rotação de mapas, evento e equipe.
-- [Como entrar em um servidor comunitário de TF2?](https://skynet-tf2.com.br/blog/how-to-join-tf2-community-server/): passo a passo pelo console e pelo navegador de servidores.
-- [O que é tickrate e por que um servidor de 100 tick faz diferença no TF2?](https://skynet-tf2.com.br/blog/what-is-tickrate-tf2/): explicação de tickrate, 66 vs 100 tick.
-- [Como funciona o ranking do servidor?](https://skynet-tf2.com.br/blog/how-the-ranking-works/): pontos, comandos do chat e onde ver o ranking.
+- [Bem-vindos ao SKYNET GAMING BRASIL & LATAM!](https://skynet-tf2.com.br/blog/bem-vindos/): apresentação do servidor, rotação de mapas, evento e equipe.
+- [Como entrar em um servidor comunitário de TF2?](https://skynet-tf2.com.br/blog/como-entrar-em-servidor-de-tf2/): passo a passo pelo console e pelo navegador de servidores.
+- [O que é tickrate e por que um servidor de 100 tick faz diferença no TF2?](https://skynet-tf2.com.br/blog/o-que-e-tickrate-no-tf2/): explicação de tickrate, 66 vs 100 tick.
+- [Como funciona o ranking do servidor?](https://skynet-tf2.com.br/blog/como-funciona-o-ranking/): pontos, comandos do chat e onde ver o ranking.
 
 ## Links da comunidade
 

@@ -1,4 +1,5 @@
 ---
+translationKey: "tickrate"
 title: "What is tickrate, and why does a 100 tick server matter in TF2?"
 seoTitle: "What Is Tickrate in TF2? Why 100 Tick Matters"
 description: "Learn what tickrate is, the difference between 66 and 100 tick, and what a 100 tick server does (and doesn't) change in Team Fortress 2."
@@ -30,4 +31,4 @@ The server doesn't process the game continuously: it advances in discrete steps 
 
 To benefit from a 100 tick server, you want a stable connection and an FPS comfortably above 100. Your game's `cl_cmdrate` and `cl_updaterate` values also affect the data rate exchanged with the server (which enforces its own limits); you can check your connection in the console with `net_graph 1`, which shows ping, packet loss and the update rate.
 
-The SKYNET Gaming server runs at 100 tick, with 40 slots, hosted in São Paulo. To get in, see [how to join a TF2 community server](/en/blog/how-to-join-tf2-community-server/).
+The SKYNET Gaming server runs at 100 tick, with 40 slots, hosted in São Paulo. To get in, see [how to join a TF2 community server](/en/blog/how-to-join-a-tf2-community-server/).

@@ -1,4 +1,5 @@
 ---
+translationKey: "join-server"
 title: "How do you join a TF2 community server?"
 seoTitle: "How to Join a TF2 Community Server | SKYNET Gaming"
 description: "Step-by-step guide to joining a Team Fortress 2 community server from the console or the server browser, using ours as the example."

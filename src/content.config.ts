@@ -6,6 +6,7 @@ const blog = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/blog' }),
   schema: ({ image }) =>
     z.object({
+      translationKey: z.string(), // liga as versões do mesmo post nos 3 idiomas (o slug é o nome do arquivo e pode variar)
       title: z.string(),
       seoTitle: z.string().optional(), // <title> da página (até ~60 caracteres); padrão: title
       description: z.string(),

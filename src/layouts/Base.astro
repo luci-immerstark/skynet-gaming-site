@@ -14,15 +14,15 @@ import { site } from '../config/site';
 import { type Lang } from '../i18n/ui';
 import { localePath, htmlLang } from '../i18n/utils';
 
-// altPaths: caminho de cada idioma quando difere de `path` (null = sem tradução; o seletor vai para `fallback`).
-interface Props { lang: Lang; title: string; description: string; path: string; missing?: Lang[]; fallback?: string; jsonLd?: Record<string, unknown>[]; noindex?: boolean; }
-const { lang, title, description, path, missing = [], fallback = '/', jsonLd = [], noindex = false } = Astro.props;
+// paths: caminho de cada idioma quando difere de `path`; missing: idiomas sem tradução (o seletor vai para `fallback`).
+interface Props { lang: Lang; title: string; description: string; path: string; missing?: Lang[]; fallback?: string; paths?: Partial<Record<Lang, string>>; jsonLd?: Record<string, unknown>[]; noindex?: boolean; }
+const { lang, title, description, path, missing = [], fallback = '/', paths = {}, jsonLd = [], noindex = false } = Astro.props;
 const og = await getImage({ src: ogImg, width: 1200, format: 'jpg' });
 const fav32 = await getImage({ src: favImg, width: 32, height: 32, format: 'png' });
 const fav180 = await getImage({ src: favImg, width: 180, height: 180, format: 'png' });
 const logo512 = await getImage({ src: favImg, width: 512, height: 512, format: 'png' });
 const abs = (p: string) => new URL(p, site.url).href;
-const alt = Object.fromEntries((['pt-br', 'es', 'en'] as Lang[]).map((l) => [l, localePath(l, missing.includes(l) ? fallback : path)])) as Record<Lang, string>;
+const alt = Object.fromEntries((['pt-br', 'es', 'en'] as Lang[]).map((l) => [l, localePath(l, missing.includes(l) ? fallback : (paths[l] ?? path))])) as Record<Lang, string>;
 const has = (l: Lang) => !missing.includes(l);
 const canonical = abs(alt[lang]);
 const organization = {
@@ -49,7 +49,7 @@ const graph = [organization, ...(eventLd ? [eventLd] : []), ...jsonLd];
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="theme-color" content="#0d0f12" />
-    {noindex && <meta name="robots" content="noindex" />}
+    {noindex && <meta name="robots" content="noindex, follow" />}
     {!noindex && <link rel="canonical" href={canonical} />}
     {!noindex && has('pt-br') && <link rel="alternate" hreflang="pt-BR" href={abs(alt['pt-br'])} />}
     {!noindex && has('es') && <link rel="alternate" hreflang="es-419" href={abs(alt.es)} />}

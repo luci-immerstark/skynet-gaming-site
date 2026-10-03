@@ -1,4 +1,5 @@
 ---
+translationKey: "join-server"
 title: "¿Cómo entrar a un servidor comunitario de TF2?"
 seoTitle: "Cómo entrar a un servidor comunitario de TF2 | SKYNET"
 description: "Paso a paso para entrar a servidores comunitarios de Team Fortress 2 desde la consola o el navegador de servidores, usando el nuestro como ejemplo."

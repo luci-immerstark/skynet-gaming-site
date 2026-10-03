@@ -1,0 +1,25 @@
+# Redirecionamentos 301 dos endereços antigos (Cloudflare Workers Static Assets).
+# Mantenha: links já compartilhados continuam funcionando.
+
+/blog/welcome/ /blog/bem-vindos/ 301
+/blog/welcome /blog/bem-vindos/ 301
+/es/blog/welcome/ /es/blog/bienvenidos/ 301
+/es/blog/welcome /es/blog/bienvenidos/ 301
+/blog/how-the-ranking-works/ /blog/como-funciona-o-ranking/ 301
+/blog/how-the-ranking-works /blog/como-funciona-o-ranking/ 301
+/es/blog/how-the-ranking-works/ /es/blog/como-funciona-el-ranking/ 301
+/es/blog/how-the-ranking-works /es/blog/como-funciona-el-ranking/ 301
+/blog/how-to-join-tf2-community-server/ /blog/como-entrar-em-servidor-de-tf2/ 301
+/blog/how-to-join-tf2-community-server /blog/como-entrar-em-servidor-de-tf2/ 301
+/es/blog/how-to-join-tf2-community-server/ /es/blog/como-entrar-a-un-servidor-de-tf2/ 301
+/es/blog/how-to-join-tf2-community-server /es/blog/como-entrar-a-un-servidor-de-tf2/ 301
+/en/blog/how-to-join-tf2-community-server/ /en/blog/how-to-join-a-tf2-community-server/ 301
+/en/blog/how-to-join-tf2-community-server /en/blog/how-to-join-a-tf2-community-server/ 301
+/blog/what-is-tickrate-tf2/ /blog/o-que-e-tickrate-no-tf2/ 301
+/blog/what-is-tickrate-tf2 /blog/o-que-e-tickrate-no-tf2/ 301
+/es/blog/what-is-tickrate-tf2/ /es/blog/que-es-el-tickrate-en-tf2/ 301
+/es/blog/what-is-tickrate-tf2 /es/blog/que-es-el-tickrate-en-tf2/ 301
+/en/blog/what-is-tickrate-tf2/ /en/blog/what-is-tickrate-in-tf2/ 301
+/en/blog/what-is-tickrate-tf2 /en/blog/what-is-tickrate-in-tf2/ 301
+/en/eventos/ /en/events/ 301
+/en/eventos /en/events/ 301

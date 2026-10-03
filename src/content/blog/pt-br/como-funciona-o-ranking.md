@@ -1,4 +1,5 @@
 ---
+translationKey: "ranking"
 title: "Como funciona o ranking do servidor?"
 seoTitle: "Como funciona o ranking do servidor de TF2 | SKYNET"
 description: "Como o ranking HLstatsZ do servidor SKYNET Gaming pontua jogadores, quais comandos usar no chat (rank, top10, session, place) e onde ver o ranking."

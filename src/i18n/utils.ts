@@ -46,3 +46,16 @@ export function formatLong(date: Date | string, lang: Lang, timeZone = 'America/
     day: 'numeric', month: 'long', year: 'numeric', timeZone,
   }).format(d);
 }
+
+/** Endereço de cada página fixa por idioma (o slug pode ser traduzido). */
+export const pageRoutes = {
+  blog: { 'pt-br': '/blog/', es: '/blog/', en: '/blog/' },
+  eventos: { 'pt-br': '/eventos/', es: '/eventos/', en: '/events/' },
+  dodgeball: { 'pt-br': '/dodgeball/', es: '/dodgeball/', en: '/dodgeball/' },
+} as const;
+export type PageKey = keyof typeof pageRoutes;
+
+/** URL localizada de uma página fixa: pagePath('en', 'eventos') => '/en/events/'. */
+export function pagePath(lang: Lang, page: PageKey): string {
+  return localePath(lang, pageRoutes[page][lang]);
+}

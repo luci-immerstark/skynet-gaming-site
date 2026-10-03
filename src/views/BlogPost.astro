@@ -11,7 +11,11 @@ const { lang, post, slug } = Astro.props;
 const t = useT(lang);
 const { Content } = await render(post);
 const all = await getCollection('blog', (p) => !p.data.draft);
-const missing = (['pt-br', 'es', 'en'] as Lang[]).filter((l) => !all.some((p) => p.id === `${l}/${slug}`));
+// Versões do mesmo post nos outros idiomas, ligadas por translationKey (o slug muda por idioma).
+const slugOf = (l: Lang) => all.find((p) => p.data.translationKey === post.data.translationKey && p.id.startsWith(`${l}/`))?.id.split('/').slice(1).join('/');
+const langs = ['pt-br', 'es', 'en'] as Lang[];
+const missing = langs.filter((l) => !slugOf(l));
+const paths = Object.fromEntries(langs.filter((l) => slugOf(l)).map((l) => [l, `/blog/${slugOf(l)}/`])) as Partial<Record<Lang, string>>;
 const abs = (p: string) => new URL(p, site.url).href;
 const img = await getImage({ src: post.data.cover ?? ogFallback, width: 1200, format: 'jpg' });
 const url = abs(localePath(lang, `/blog/${slug}`));
@@ -24,7 +28,7 @@ const jsonLd = [{
   author: { '@id': abs('/#organization') }, publisher: { '@id': abs('/#organization') },
 }];
 ---
-<Base lang={lang} title={post.data.seoTitle ?? `${post.data.title} | SKYNET Gaming`} jsonLd={jsonLd} description={post.data.description} path={`/blog/${slug}`} missing={missing} fallback="/blog">
+<Base lang={lang} title={post.data.seoTitle ?? `${post.data.title} | SKYNET Gaming`} jsonLd={jsonLd} description={post.data.description} path={`/blog/${slug}`} missing={missing} paths={paths} fallback="/blog/">
   <div class="container article">
     <p class="back"><a href={localePath(lang, '/blog')}>{t('blog.back')}</a></p>
     <time datetime={post.data.date.toISOString()}>{formatDate(post.data.date, lang)}</time>

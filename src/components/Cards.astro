@@ -8,17 +8,17 @@ import steam from '../assets/img/card-steam.jpg';
 import eventos from '../assets/img/card-eventos.jpg';
 import dodgeball from '../assets/img/card-dodgeball.jpg';
 import { site } from '../config/site';
-import { useT, localePath } from '../i18n/utils';
+import { useT, pagePath } from '../i18n/utils';
 import { type Lang } from '../i18n/ui';
 const { lang } = Astro.props as { lang: Lang };
 const t = useT(lang);
 const cards = [
-  { k: 'blog', img: blog, href: localePath(lang, '/blog'), ext: false, soon: false, alt: 'Engenheiro em Dustbowl' },
+  { k: 'blog', img: blog, href: pagePath(lang, 'blog'), ext: false, soon: false, alt: 'Engenheiro em Dustbowl' },
   { k: 'ranking', img: ranking, href: site.rankingUrl, ext: true, soon: false, alt: 'Heavy robô' },
   { k: 'sourcebans', img: sourcebans, href: site.sourcebansUrl, ext: true, soon: false, alt: 'Heavy' },
   { k: 'steam', img: steam, href: site.steamGroupUrl, ext: true, soon: false, steam: true, alt: 'Todas as classes do TF2' },
-  { k: 'eventos', img: eventos, href: localePath(lang, '/eventos'), ext: false, soon: true, alt: 'Personagens em evento sazonal' },
-  { k: 'dodgeball', img: dodgeball, href: localePath(lang, '/dodgeball'), ext: false, soon: true, alt: 'Pyro' },
+  { k: 'eventos', img: eventos, href: pagePath(lang, 'eventos'), ext: false, soon: true, alt: 'Personagens em evento sazonal' },
+  { k: 'dodgeball', img: dodgeball, href: pagePath(lang, 'dodgeball'), ext: false, soon: true, alt: 'Pyro' },
 ] as const;
 ---
 <section class="section" aria-label="Links">

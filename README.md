@@ -13,9 +13,10 @@ npm run preview  # serve o dist/
 Para testar as fases do evento, em desenvolvimento abra `/?fase=antes`, `/?fase=durante` ou `/?fase=depois`.
 
 ## Novo post no blog (pt-br, es e en)
-Crie **um arquivo `.md` com o mesmo nome** em cada pasta: `src/content/blog/pt-br/`, `src/content/blog/es/` e `src/content/blog/en/`. O nome do arquivo vira a URL (`/blog/nome`, `/es/blog/nome`, `/en/blog/nome`) e é o que liga as três versões no seletor de idioma. Se faltar uma tradução, o seletor leva para a listagem do blog daquele idioma.
+Crie um arquivo `.md` em cada pasta: `src/content/blog/pt-br/`, `src/content/blog/es/` e `src/content/blog/en/`. O **nome do arquivo é o endereço** de cada idioma e pode ser traduzido (`/blog/bem-vindos/`, `/es/blog/bienvenidos/`, `/en/blog/welcome/`). As três versões são ligadas pelo mesmo `translationKey` no frontmatter, que o seletor de idioma e as tags hreflang usam. Se faltar uma tradução, o seletor leva para a listagem do blog daquele idioma. Ao renomear um post já publicado, adicione um 301 em `public/_redirects`.
 ```md
 ---
+translationKey: "chave-unica-do-post"   # igual nos 3 idiomas
 title: "Título do post"
 seoTitle: "Título para o Google (até ~60 caracteres)"   # opcional
 description: "Resumo exibido na listagem e no Google (até ~155 caracteres)"
@@ -45,3 +46,6 @@ As imagens estão em `src/assets/img/`. Substitua o arquivo mantendo o mesmo nom
 - Dados estruturados (JSON-LD): Organization em todas as páginas; WebSite, Event (gerado de `site.event`) e FAQPage na inicial; BlogPosting nos posts.
 - O sitemap é gerado por `src/pages/sitemap.xml.ts` (o plugin oficial não aceita `es-419`) e está referenciado em `public/robots.txt`.
 - Cloudflare Web Analytics: preencha `analyticsToken` em `src/config/site.ts`. Vazio = nenhum script. A CSP em `public/_headers` já permite o script.
+
+## Páginas provisórias (noindex)
+`paginasProvisorias` em `src/config/site.ts` lista as páginas sem conteúdo real (hoje `eventos` e `dodgeball`). Elas recebem `noindex, follow` e ficam fora do sitemap. Quando uma página ganhar conteúdo, remova a chave da lista: ela volta a ser indexada e entra no sitemap. Os endereços fixos de cada idioma estão em `pageRoutes` (`src/i18n/utils.ts`), por exemplo `/en/events/`.
