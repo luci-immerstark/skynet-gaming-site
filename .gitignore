@@ -5,3 +5,4 @@ fotos/
 .DS_Store
 *.log
 screenshots/
+.wrangler/
