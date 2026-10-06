@@ -1,6 +1,6 @@
 ---
 import logo from '../assets/img/logo-grande-nome-branco.svg';
-import { site } from '../config/site';
+import { site, serverList } from '../config/site';
 import { useT, formatLong } from '../i18n/utils';
 import { type Lang } from '../i18n/ui';
 const { lang } = Astro.props as { lang: Lang };
@@ -22,6 +22,7 @@ const links = [
     <nav aria-label={t('footer.links')}>
       <ul>{links.map((l) => <li><a href={l.href} target="_blank" rel="noopener noreferrer">{l.label}<span class="sr"> ({t('external')})</span></a></li>)}</ul>
     </nav>
+    <p class="ips">{serverList.map((s, i) => <>{i > 0 && ' · '}{s.id === 'classic' ? 'Classic Maps' : 'Dodgeball'}: <code>{s.ip}</code></>)}</p>
     <p class="copy">{t('footer.rights')}</p>
     <p class="valve">{t('footer.valve')}</p>
     <p class="upd"><time datetime={builtIso}>{t('footer.updated').replace('{date}', formatLong(built, lang))}</time></p>
@@ -34,6 +35,7 @@ const links = [
   .name { font-family: var(--font-display); font-weight: 700; letter-spacing: .12em; font-size: 1.3rem; margin: 0; }
   ul { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: .5rem 1.5rem; padding: 0; margin: .5rem 0; }
   a { color: var(--text); text-decoration: none; } a:hover { color: var(--gold); text-decoration: underline; }
+  .ips { margin: 0; color: var(--muted); font-size: .9rem; } .ips code { color: var(--text); }
   .copy, .valve { margin: 0; color: var(--muted); font-size: .88rem; }
   .upd { margin: 0; color: var(--muted); font-size: .8rem; }
   .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }

@@ -10,6 +10,7 @@ const nums = [1, 2, 3, 4, 5, 6, 7, 8, 9] as const;
 <section class="section rules" id="regras" aria-labelledby="rules-title">
   <div class="container">
     <h2 class="section-title" id="rules-title">{t('rules.title')}</h2>
+    <p class="scope">{t('rules.scope')}</p>
     <ol class="grid">
       {nums.map((n) => (
         <li class="rule">
@@ -29,6 +30,7 @@ const nums = [1, 2, 3, 4, 5, 6, 7, 8, 9] as const;
 </section>
 <style>
   .rules { scroll-margin-top: 56px; }
+  .scope { margin: -.8rem 0 1.5rem; color: var(--muted); font-size: 1.05rem; }
   .grid { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; align-items: stretch; }
   @media (max-width: 959px) { .grid { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 639px) { .grid { grid-template-columns: 1fr; } }

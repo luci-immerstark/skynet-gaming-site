@@ -2,14 +2,13 @@
 import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import eventos from '../assets/img/card-eventos.jpg';
-import dodgeball from '../assets/img/card-dodgeball.jpg';
 import { useT, localePath, pageRoutes } from '../i18n/utils';
 import { site } from '../config/site';
 import { type Lang } from '../i18n/ui';
-interface Props { lang: Lang; page: 'eventos' | 'dodgeball'; }
+interface Props { lang: Lang; page: 'eventos'; }
 const { lang, page } = Astro.props;
 const t = useT(lang);
-const img = page === 'eventos' ? eventos : dodgeball;
+const img = eventos;
 const title = t(`${page}.title` as const);
 ---
 <Base lang={lang} title={t(`meta.${page}.title` as const)} description={t(`meta.${page}.description` as const)} path={pageRoutes[page][lang]} paths={pageRoutes[page]} noindex={site.paginasProvisorias.includes(page)}>

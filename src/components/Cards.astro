@@ -8,17 +8,17 @@ import steam from '../assets/img/card-steam.jpg';
 import eventos from '../assets/img/card-eventos.jpg';
 import dodgeball from '../assets/img/card-dodgeball.jpg';
 import { site } from '../config/site';
-import { useT, pagePath } from '../i18n/utils';
+import { useT, pagePath, postPath } from '../i18n/utils';
 import { type Lang } from '../i18n/ui';
 const { lang } = Astro.props as { lang: Lang };
 const t = useT(lang);
 const cards = [
-  { k: 'blog', img: blog, href: pagePath(lang, 'blog'), ext: false, soon: false, alt: 'Engenheiro em Dustbowl' },
-  { k: 'ranking', img: ranking, href: site.rankingUrl, ext: true, soon: false, alt: 'Heavy robô' },
-  { k: 'sourcebans', img: sourcebans, href: site.sourcebansUrl, ext: true, soon: false, alt: 'Heavy' },
-  { k: 'steam', img: steam, href: site.steamGroupUrl, ext: true, soon: false, steam: true, alt: 'Todas as classes do TF2' },
-  { k: 'eventos', img: eventos, href: pagePath(lang, 'eventos'), ext: false, soon: true, alt: 'Personagens em evento sazonal' },
-  { k: 'dodgeball', img: dodgeball, href: pagePath(lang, 'dodgeball'), ext: false, soon: true, alt: 'Pyro' },
+  { k: 'blog', img: blog, href: pagePath(lang, 'blog'), ext: false, badge: null, alt: 'Engenheiro em Dustbowl' },
+  { k: 'ranking', img: ranking, href: site.rankingUrl, ext: true, badge: null, alt: 'Heavy robô' },
+  { k: 'sourcebans', img: sourcebans, href: site.sourcebansUrl, ext: true, badge: null, alt: 'Heavy' },
+  { k: 'steam', img: steam, href: site.steamGroupUrl, ext: true, badge: null, steam: true, alt: 'Todas as classes do TF2' },
+  { k: 'eventos', img: eventos, href: pagePath(lang, 'eventos'), ext: false, badge: 'soon', alt: 'Personagens em evento sazonal' },
+  { k: 'dodgeball', img: dodgeball, href: postPath(lang, 'dodgeball'), ext: false, badge: 'new', alt: 'Pyro' },
 ] as const;
 ---
 <section class="section" aria-label="Links">
@@ -27,7 +27,7 @@ const cards = [
       <a class="card" href={c.href} {...(c.ext ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>
         <Image src={c.img} alt={c.alt} widths={[400, 700, 1000]} sizes="(min-width: 960px) 380px, (min-width: 640px) 50vw, 100vw" loading="lazy" />
         <div class="shade"></div>
-        {c.soon && <span class="badge soon">{t('badge.soon')}</span>}
+        {c.badge && <span class="badge soon">{t(`badge.${c.badge}` as const)}</span>}
         {c.ext && <span class="ext"><Icon name="external" size={18} /><span class="sr">{t('external')}</span></span>}
         <div class="text">
           <h3>{'steam' in c && c.steam && <Icon name="steam" size={22} />} {t(`card.${c.k}.title` as const)}</h3>

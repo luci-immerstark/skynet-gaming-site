@@ -1,13 +1,9 @@
 ---
-import { site } from '../config/site';
-import { useT } from '../i18n/utils';
+import { useT, faqItems, postPath } from '../i18n/utils';
 import { type Lang } from '../i18n/ui';
 const { lang } = Astro.props as { lang: Lang };
 const t = useT(lang);
-const items = ([1, 2, 3, 4, 5] as const).map((n) => ({
-  q: t(`faq.${n}.q` as const),
-  a: t(`faq.${n}.a` as const).replaceAll('{ip}', site.serverIp),
-}));
+const items = faqItems(lang);
 ---
 <section class="section faq" id="faq" aria-labelledby="faq-title">
   <div class="container narrow">
@@ -15,7 +11,7 @@ const items = ([1, 2, 3, 4, 5] as const).map((n) => ({
     {items.map((i) => (
       <details>
         <summary>{i.q}</summary>
-        <p>{i.a}</p>
+        <p>{i.a}{i.n === 6 && <> <a href={postPath(lang, 'dodgeball')}>{t('faq.6.link')}</a></>}</p>
       </details>
     ))}
   </div>
@@ -29,4 +25,5 @@ const items = ([1, 2, 3, 4, 5] as const).map((n) => ({
   summary::after { content: '+'; font-size: 1.5rem; line-height: 1; }
   details[open] summary::after { content: '–'; }
   p { margin: 0; padding: 0 1.2rem 1.1rem; color: #d6d9de; }
+  p a { font-weight: 600; }
 </style>

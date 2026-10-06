@@ -1,8 +1,8 @@
 // Coloca um botão "Copiar" ao lado de qualquer `connect IP:porta` em código inline nos posts.
 const labels = {
-  'pt-br': ['Copiar', 'Copiado!'],
-  es: ['Copiar', '¡Copiado!'],
-  en: ['Copy', 'Copied!'],
+  'pt-br': ['Copiar IP', 'IP copiado!'],
+  es: ['Copiar IP', '¡IP copiada!'],
+  en: ['Copy IP', 'IP copied!'],
 };
 
 function walk(node, fn) {

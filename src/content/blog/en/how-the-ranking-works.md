@@ -4,10 +4,12 @@ title: "How does the server ranking work?"
 seoTitle: "How the TF2 Server Ranking Works | SKYNET Gaming"
 description: "How the SKYNET Gaming server's HLstatsZ ranking scores players, which chat commands to use (rank, top10, session, place) and where to see it."
 date: 2026-10-02
-updated: 2026-10-02
+updated: 2026-10-06
 cover: ../../../assets/img/card-ranking.jpg
 draft: false
 ---
+
+This guide explains the Classic Maps server ranking. The Dodgeball server has its own ranking with different scoring (see [What Is TF2 Dodgeball](/en/blog/what-is-tf2-dodgeball/)).
 
 The server ranking runs on HLstatsZ: every kill and every match objective (such as capturing points or carrying the intel) adds points to your score. You can follow it from the in-game chat, using the `rank`, `top10`, `session` and `place` commands, or on the ranking website.
 
@@ -30,8 +32,8 @@ Type in the in-game chat:
 
 ## Where to see the full ranking
 
-The full ranking, with stats per player, weapon and map, is at [stats.skynet-tf2.com.br](https://stats.skynet-tf2.com.br/hlstats.php).
+The full ranking, with stats per player, weapon and map, is at [stats.skynet-tf2.com.br](https://stats.skynet-tf2.com.br/hlstats.php?game=tf).
 
 ## Ranking and the grand opening event
 
-In the grand opening event (Oct 30 at 8 PM to Nov 2 at 8 PM, Brasília time, UTC-3), the ranking TOP 5 at the end of the event win **R$ 500 in prizes**. To take part, just play on the server. First, read the [server rules](/en/#regras): using cheats gets you banned.
+In the grand opening event (Oct 30 at 8 PM to Nov 2 at 8 PM, Brasília time, UTC-3), the Classic Maps ranking TOP 5 at the end of the event win **R$ 500 in prizes**. To take part, just play on Classic Maps. The Dodgeball ranking doesn't count for the event. First, read the [server rules](/en/#regras): using cheats gets you banned.

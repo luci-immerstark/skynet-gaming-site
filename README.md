@@ -39,7 +39,7 @@ Edite o bloco `event` em `src/config/site.ts`: `enabled` (esconde o banner), `st
 As imagens estão em `src/assets/img/`. Substitua o arquivo mantendo o mesmo nome (`hero-bg.jpg`, `card-*.jpg`). O logo são 4 SVGs (viewBox 1000×1000) em `src/assets/img/`: `logo-pequeno-colorido.svg` (cabeçalho e favicon), `logo-grande-colorido.svg` (hero e 404), `logo-grande-nome-branco.svg` (rodapé) e `logo-grande-colorido-nome-branco.svg` (imagem de compartilhamento). Depois de trocar um SVG, rode `npm run brand`: ele regenera `public/favicon.svg`, `favicon.ico`, `apple-touch-icon.png`, `icon-192/512.png`, `icon-maskable-512.png`, `manifest.webmanifest` e `src/assets/img/og-image.jpg` (hero-bg escurecido + logo). O favicon de 32 e 48 px do `.ico` vem de `scripts/brand/`.
 
 ## Trocar o link do Discord (e outros links/IP)
-`discordUrl` em `src/config/site.ts` (também `steamGroupUrl`, `rankingUrl`, `sourcebansUrl`, `serverIp`).
+`discordUrl` em `src/config/site.ts` (também `steamGroupUrl`, `rankingUrl`, `sourcebansUrl`, `servers`: IP, slots e ranking de cada servidor).
 
 ## SEO, analytics e sitemap
 - Idiomas no HTML/hreflang: `pt-BR`, `es-419` e `en` (URLs `/`, `/es/`, `/en/`). Títulos e descrições das páginas ficam em `src/i18n/ui.ts` (`meta.*`); os de posts, no frontmatter.
@@ -48,4 +48,4 @@ As imagens estão em `src/assets/img/`. Substitua o arquivo mantendo o mesmo nom
 - Cloudflare Web Analytics: preencha `analyticsToken` em `src/config/site.ts`. Vazio = nenhum script. A CSP em `public/_headers` já permite o script.
 
 ## Páginas provisórias (noindex)
-`paginasProvisorias` em `src/config/site.ts` lista as páginas sem conteúdo real (hoje `eventos` e `dodgeball`). Elas recebem `noindex, follow` e ficam fora do sitemap. Quando uma página ganhar conteúdo, remova a chave da lista: ela volta a ser indexada e entra no sitemap. Os endereços fixos de cada idioma estão em `pageRoutes` (`src/i18n/utils.ts`), por exemplo `/en/events/`.
+`paginasProvisorias` em `src/config/site.ts` lista as páginas sem conteúdo real (hoje só `eventos`). Elas recebem `noindex, follow` e ficam fora do sitemap. Quando uma página ganhar conteúdo, remova a chave da lista: ela volta a ser indexada e entra no sitemap. Os endereços fixos de cada idioma estão em `pageRoutes` (`src/i18n/utils.ts`), por exemplo `/en/events/`.

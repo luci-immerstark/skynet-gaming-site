@@ -1,11 +1,9 @@
 ---
-import Icon from './Icon.astro';
-import { site } from '../config/site';
 import { useT } from '../i18n/utils';
 import { type Lang } from '../i18n/ui';
 const { lang } = Astro.props as { lang: Lang };
 const t = useT(lang);
-const facts = ['server.slots', 'server.tick', 'server.city', 'server.maps', 'server.ranking', 'server.admins'] as const;
+const facts = ['about.fact.1', 'about.fact.2', 'about.fact.3', 'about.fact.4', 'about.fact.5'] as const;
 ---
 <section class="section about" aria-labelledby="about-title">
   <div class="container wrap">
@@ -16,11 +14,7 @@ const facts = ['server.slots', 'server.tick', 'server.city', 'server.maps', 'ser
     <aside class="info" aria-label={t('server.title')}>
       <h3>{t('server.title')}</h3>
       <ul>{facts.map((f) => <li>{t(f)}</li>)}</ul>
-      <p class="ipl">{t('server.ip')}</p>
-      <code>{site.serverIp}</code>
-      <button class="btn btn-gold" type="button" data-copy={site.serverIp} data-done={t('btn.copied')}>
-        <Icon name="copy" size={18} /><span class="copy-label" aria-live="polite">{t('btn.copy')}</span>
-      </button>
+      <a class="btn btn-gold" href="#servidores">{t('about.cta')}</a>
     </aside>
   </div>
 </section>
@@ -30,7 +24,6 @@ const facts = ['server.slots', 'server.tick', 'server.city', 'server.maps', 'ser
   .info { background: var(--surface); border: 1px solid rgba(255,215,0,.25); border-radius: var(--radius); padding: 1.5rem; display: flex; flex-direction: column; gap: .6rem; }
   h3 { color: var(--gold); font-size: 1.4rem; }
   ul { margin: 0; padding-left: 1.2rem; } li::marker { color: var(--gold); }
-  .ipl { margin: .6rem 0 0; color: var(--muted); font-size: .85rem; }
-  code { font-size: 1.15rem; background: #000; padding: .5rem .8rem; border-radius: 8px; word-break: break-all; }
+  .btn { margin-top: .6rem; align-self: flex-start; }
   @media (max-width: 800px) { .wrap { grid-template-columns: 1fr; } }
 </style>

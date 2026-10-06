@@ -4,6 +4,7 @@ title: "Welcome to SKYNET GAMING BRASIL & LATAM!"
 seoTitle: "TF2 Server Brazil & LATAM: Welcome & Event | SKYNET"
 description: "Meet our 100 tick TF2 server in São Paulo: classic map rotation, live ranking, rules and the grand opening event with R$ 500 in prizes."
 date: 2026-10-02
+updated: 2026-10-06
 cover: ../../../assets/img/hero-bg.jpg
 draft: false
 ---
@@ -26,14 +27,18 @@ Badwater, Dustbowl, Upward, Goldrush and 2Fort.
 
 *Note: the server has 20+ maps installed. Maps outside the rotation may be added at the admins' discretion, on special occasions only.*
 
+## 🚀 New: Dodgeball server
+
+SKYNET GAMING now has a second server: **Dodgeball**, where everyone plays Pyro and deflects homing rockets. It has 8 slots, 100 tick, its own ranking and has been online since 10/06/2026. To join, type `connect 212.38.89.226:27025`. Want to understand the mode? Read [What Is TF2 Dodgeball](/en/blog/what-is-tf2-dodgeball/).
+
 ## 🏆 Grand opening event
 
-**R$ 500 in prizes for the ranking TOP 5!**
+**R$ 500 in prizes for the TOP 5 of the Classic Maps server ranking!**
 
 - Start: Oct 30 at 8 PM (Brasília time, UTC-3)
 - End: Nov 2 at 8 PM (Brasília time, UTC-3)
 
-To take part, just play on the server. The top 5 players on the ranking when the event ends win the prizes.
+To take part, just play on the server. The top 5 players on the Classic Maps ranking when the event ends win the prizes. The Dodgeball ranking is separate and doesn't count for the event.
 
 ## 📊 Ranking
 
@@ -53,7 +58,7 @@ Bans issued: [bans.skynet-tf2.com.br](https://bans.skynet-tf2.com.br)
 
 luci, Unmei, misha and Nissan.
 
-## 🔗 How to join
+## 🔗 How to join Classic Maps
 
 Open the game console and type:
 

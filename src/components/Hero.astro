@@ -3,12 +3,12 @@ import { Image } from 'astro:assets';
 import bg from '../assets/img/hero-bg.jpg';
 import logo from '../assets/img/logo-grande-colorido.svg';
 import Icon from './Icon.astro';
-import { site } from '../config/site';
+import { site, steamConnect } from '../config/site';
 import { useT, formatLaunch } from '../i18n/utils';
 import { type Lang } from '../i18n/ui';
 const { lang } = Astro.props as { lang: Lang };
 const t = useT(lang);
-const online = t('hero.online').replace('{date}', formatLaunch(site.launchDate, lang));
+const online = t('hero.online').replace('{date}', formatLaunch(site.servers.classic.launchDate, lang));
 const chips = ['chips.slots', 'chips.tick', 'chips.city', 'chips.maps', 'chips.ranking'] as const;
 ---
 <section class="hero">
@@ -23,11 +23,12 @@ const chips = ['chips.slots', 'chips.tick', 'chips.city', 'chips.maps', 'chips.r
       <Icon name="discord" size={26} />{t('btn.discord')}<span class="sr"> ({t('external')})</span>
     </a>
     <div class="secondary">
-      <a class="btn btn-ghost" href={`steam://connect/${site.serverIp}`}><Icon name="play" size={18} />{t('btn.play')}</a>
-      <button class="btn btn-ghost" type="button" data-copy={site.serverIp} data-done={t('btn.copied')}>
+      <a class="btn btn-ghost" href={steamConnect(site.servers.classic)}><Icon name="play" size={18} />{t('btn.play')}</a>
+      <button class="btn btn-ghost" type="button" data-copy={site.servers.classic.ip} data-done={t('btn.copied')}>
         <Icon name="copy" size={18} /><span class="copy-label" aria-live="polite">{t('btn.copy')}</span>
       </button>
     </div>
+    <a class="new" href="#servidores">{t('hero.new')}</a>
   </div>
 </section>
 <style>
@@ -58,5 +59,7 @@ const chips = ['chips.slots', 'chips.tick', 'chips.city', 'chips.maps', 'chips.r
   .chips { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: .5rem; padding: 0; margin: 0; }
   .chips li { background: rgba(0,0,0,.55); border: 1px solid rgba(255,215,0,.4); border-radius: 999px; padding: .3rem .9rem; font-size: .9rem; }
   .secondary { display: flex; flex-wrap: wrap; justify-content: center; gap: .8rem; }
+  .new { display: inline-flex; align-items: center; gap: .55rem; padding: .3rem 1rem; border-radius: 999px; background: rgba(0,0,0,.55); border: 1px solid rgba(255,215,0,.55); font-weight: 600; color: var(--text); font-size: .88rem; text-decoration: none; transition: border-color .2s, color .2s; }
+  .new:hover { border-color: var(--gold); color: var(--gold); }
   .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
 </style>

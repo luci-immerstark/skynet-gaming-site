@@ -5,11 +5,18 @@ import { type Lang } from '../i18n/ui';
 const { lang } = Astro.props as { lang: Lang };
 const t = useT(lang);
 // Definição em uma frase, útil para leitores e para buscadores com IA.
-const [before, after] = t('summary.text').replace('{date}', formatLong(site.launchDate, lang)).split('connect {ip}');
+const text = t('summary.text')
+  .replace('{classicDate}', formatLong(site.servers.classic.launchDate, lang))
+  .replace('{dodgeballDate}', formatLong(site.servers.dodgeball.launchDate, lang));
+// Os comandos connect viram <code>; os IPs vêm de site.servers.
+const parts = text.split(/(connect \{(?:classic|dodgeball)\})/).map((p) => {
+  const m = p.match(/^connect \{(classic|dodgeball)\}$/);
+  return m ? { code: `connect ${site.servers[m[1] as 'classic' | 'dodgeball'].ip}` } : { text: p };
+});
 ---
 <section class="summary" aria-label="SKYNET Gaming">
   <div class="container">
-    <p>{before}<code>connect {site.serverIp}</code>{after}</p>
+    <p>{parts.map((p) => ('code' in p ? <code>{p.code}</code> : p.text))}</p>
   </div>
 </section>
 <style>

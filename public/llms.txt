@@ -1,40 +1,57 @@
 # SKYNET Gaming Brasil
 
-> Servidor dedicado e comunitário de Team Fortress 2 (TF2) para Brasil e América Latina: 40 slots, 100 tick, hospedado em São Paulo, mapas clássicos e ranking ao vivo (HLstatsZ). Online desde 2 de outubro de 2026. / Community-run dedicated Team Fortress 2 server for Brazil and Latin America, online since October 2, 2026.
+> Comunidade de Team Fortress 2 (TF2) para Brasil e América Latina com dois servidores dedicados de 100 tick, hospedados em São Paulo: Classic Maps (40 slots, mapas clássicos) e Dodgeball (8 slots, só Pyro), cada um com ranking próprio. / Team Fortress 2 community for Brazil and Latin America with two dedicated 100 tick servers hosted in São Paulo: Classic Maps and Dodgeball, each with its own ranking.
 
 O site está em português (padrão), espanhol da América Latina e inglês. Cada página abaixo existe nos três idiomas: `/` (pt-BR), `/es/` (es-419) e `/en/` (en).
 
-## Dados do servidor
+## Servidores
 
-- Jogo: Team Fortress 2 (gratuito na Steam)
+Jogo: Team Fortress 2 (gratuito na Steam). Região: Brasil e América Latina; hospedagem em São Paulo, Brasil. Os dois servidores compartilham SourceBans, administração, regras e o comando !report; um ban vale nos dois.
+
+### SKYNET GAMING BRASIL / LATAM - CLASSIC MAPS
+
 - Endereço (IP:porta): 212.38.89.226:27015
 - Comando para conectar no console do jogo: `connect 212.38.89.226:27015`
 - Link para abrir o jogo já conectado: steam://connect/212.38.89.226:27015
-- Região: Brasil e América Latina; hospedagem em São Paulo, Brasil
-- Capacidade: 40 slots
-- Tickrate: 100 tick
+- Capacidade: 40 slots; tickrate: 100 tick
 - Rotação de mapas: Badwater, Dustbowl, Upward, Goldrush e 2Fort (o servidor tem 20+ mapas instalados, usados só em ocasiões especiais, a critério da administração)
-- Ranking: HLstatsZ, ao vivo; comandos no chat do jogo: rank, top10, session, place
+- Ranking: HLstatsZ, ao vivo, https://stats.skynet-tf2.com.br/hlstats.php?game=tf; comandos no chat do jogo: rank, top10, session, place
 - Data de lançamento: 2 de outubro de 2026 (2026-10-02)
-- Evento de inauguração: de 30/10/2026 às 20h até 02/11/2026 às 20h (horário de Brasília, UTC-3); R$ 500 em prêmios para o TOP 5 do ranking
+
+### SKYNET GAMING BRASIL / LATAM - DODGEBALL
+
+- Endereço (IP:porta): 212.38.89.226:27025
+- Comando para conectar no console do jogo: `connect 212.38.89.226:27025`
+- Link para abrir o jogo já conectado: steam://connect/212.38.89.226:27025
+- Capacidade: 8 slots; tickrate: 100 tick
+- Só Pyro: a classe é escolhida automaticamente ao entrar num time
+- 8 mapas (tfdb_amazon_b1, tfdb_catland_v1, tfdb_gov_spacedodgeball, tfdb_lithium, tfdb_majix, tfdb_ovni_v7, tfdb_potato_v3, tfdb_trainfalls_v3), baixados automaticamente na primeira entrada; cada mapa dura 20 minutos e, faltando 3 minutos, abre uma votação entre 3 mapas
+- Foguetes teleguiados que aceleram a cada rebatida; cerca de 10% são "Nuke" (mais lento, mais dano, explode com onda de choque)
+- Ranking próprio, separado do Classic Maps: https://stats.skynet-tf2.com.br/hlstats.php?game=tfdb. Todos começam com 1000 pontos: +1 por kill, -1 por morte, +2 para cada jogador do time que vence a rodada; só conta com 4 ou mais jogadores no servidor; comandos no chat: rank, top10, session, place
+- Data de lançamento: 6 de outubro de 2026 (2026-10-06)
+
+## Evento de inauguração
+
+De 30/10/2026 às 20h até 02/11/2026 às 20h (horário de Brasília, UTC-3); R$ 500 em prêmios para o TOP 5 do ranking do servidor Classic Maps. O evento vale somente para o ranking do Classic Maps, não para o do Dodgeball.
 
 ## Páginas principais
 
-- [Página inicial](https://skynet-tf2.com.br/): resumo do servidor, evento de inauguração, dados do servidor e IP para copiar. Versões: [es](https://skynet-tf2.com.br/es/), [en](https://skynet-tf2.com.br/en/).
-- [Regras do servidor](https://skynet-tf2.com.br/#regras): as 9 regras da comunidade (respeito, sem conteúdo impróprio, sem spam, cheats = banimento, entre outras). Versões: [es](https://skynet-tf2.com.br/es/#regras), [en](https://skynet-tf2.com.br/en/#regras).
-- [Perguntas frequentes](https://skynet-tf2.com.br/#faq): como entrar, qual é o IP, se é preciso baixar algo, como funciona o ranking e como denunciar. Versões: [es](https://skynet-tf2.com.br/es/#faq), [en](https://skynet-tf2.com.br/en/#faq).
+- [Página inicial](https://skynet-tf2.com.br/): resumo dos dois servidores, seção Nossos servidores (IPs para copiar e jogar), evento de inauguração e links. Versões: [es](https://skynet-tf2.com.br/es/), [en](https://skynet-tf2.com.br/en/).
+- [Regras do servidor](https://skynet-tf2.com.br/#regras): as 9 regras da comunidade, válidas nos dois servidores (respeito, sem conteúdo impróprio, sem spam, cheats = banimento, entre outras). Versões: [es](https://skynet-tf2.com.br/es/#regras), [en](https://skynet-tf2.com.br/en/#regras).
+- [Perguntas frequentes](https://skynet-tf2.com.br/#faq): como entrar, qual é o IP de cada servidor, se é preciso baixar algo, como funcionam os dois rankings, o que é o servidor de Dodgeball e como denunciar. Versões: [es](https://skynet-tf2.com.br/es/#faq), [en](https://skynet-tf2.com.br/en/#faq).
 - [Blog](https://skynet-tf2.com.br/blog/): novidades, atualizações e guias da comunidade. Versões: [es](https://skynet-tf2.com.br/es/blog/), [en](https://skynet-tf2.com.br/en/blog/).
 
 ## Guias no blog
 
-- [Bem-vindos ao SKYNET GAMING BRASIL & LATAM!](https://skynet-tf2.com.br/blog/bem-vindos/): apresentação do servidor, rotação de mapas, evento e equipe.
+- [O que é Dodgeball no TF2: como surgiu e como jogar](https://skynet-tf2.com.br/blog/o-que-e-dodgeball-no-tf2/): o modo Dodgeball, sua origem, como jogar e como é o nosso servidor. Versões: [es](https://skynet-tf2.com.br/es/blog/que-es-dodgeball-en-tf2/), [en](https://skynet-tf2.com.br/en/blog/what-is-tf2-dodgeball/).
+- [Bem-vindos ao SKYNET GAMING BRASIL & LATAM!](https://skynet-tf2.com.br/blog/bem-vindos/): apresentação dos servidores, rotação de mapas, evento e equipe.
 - [Como entrar em um servidor comunitário de TF2?](https://skynet-tf2.com.br/blog/como-entrar-em-servidor-de-tf2/): passo a passo pelo console e pelo navegador de servidores.
 - [O que é tickrate e por que um servidor de 100 tick faz diferença no TF2?](https://skynet-tf2.com.br/blog/o-que-e-tickrate-no-tf2/): explicação de tickrate, 66 vs 100 tick.
-- [Como funciona o ranking do servidor?](https://skynet-tf2.com.br/blog/como-funciona-o-ranking/): pontos, comandos do chat e onde ver o ranking.
+- [Como funciona o ranking do servidor?](https://skynet-tf2.com.br/blog/como-funciona-o-ranking/): pontos, comandos do chat e onde ver o ranking do Classic Maps.
 
 ## Links da comunidade
 
-- [Ranking (HLstatsZ)](https://stats.skynet-tf2.com.br/hlstats.php): posição e estatísticas de todos os jogadores.
+- [Ranking (HLstatsZ)](https://stats.skynet-tf2.com.br/hlstats.php): escolha entre o ranking do Classic Maps (?game=tf) e o do Dodgeball (?game=tfdb).
 - [SourceBans](https://bans.skynet-tf2.com.br/index.php?p=home): lista pública de bans e punições aplicados.
 - [Discord oficial](https://discord.gg/HV7d6x8pEK): comunidade, suporte, anúncios e denúncias.
 - [Grupo na Steam](https://steamcommunity.com/groups/skynetgaming-tf2): grupo da comunidade e eventos pela Steam.
