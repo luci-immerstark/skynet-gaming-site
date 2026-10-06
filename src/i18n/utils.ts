@@ -70,9 +70,9 @@ export function postPath(lang: Lang, post: keyof typeof postSlugs): string {
   return localePath(lang, `/blog/${postSlugs[post][lang]}`);
 }
 
-/** Troca {classic} e {dodgeball} pelo IP:porta de cada servidor (os IPs ficam só em site.ts). */
+/** Troca {classic}, {dodgeball} e {l4d2} pelo IP:porta de cada servidor (os IPs ficam só em site.ts). */
 export function fillIps(text: string): string {
-  return text.replaceAll('{classic}', site.servers.classic.ip).replaceAll('{dodgeball}', site.servers.dodgeball.ip);
+  return text.replaceAll('{classic}', site.servers.classic.ip).replaceAll('{dodgeball}', site.servers.dodgeball.ip).replaceAll('{l4d2}', site.servers.l4d2.ip);
 }
 
 /** Perguntas do FAQ (página inicial e dados estruturados), com os IPs já preenchidos. */

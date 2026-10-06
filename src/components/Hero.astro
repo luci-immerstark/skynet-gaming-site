@@ -1,6 +1,7 @@
 ---
-import { Image } from 'astro:assets';
+import { Image, getImage } from 'astro:assets';
 import bg from '../assets/img/hero-bg.jpg';
+import bgL4d2 from '../assets/img/hero-l4d2.jpg';
 import logo from '../assets/img/logo-grande-colorido.svg';
 import Icon from './Icon.astro';
 import { site, steamConnect } from '../config/site';
@@ -9,55 +10,254 @@ import { type Lang } from '../i18n/ui';
 const { lang } = Astro.props as { lang: Lang };
 const t = useT(lang);
 const online = t('hero.online').replace('{date}', formatLaunch(site.servers.classic.launchDate, lang));
-const chips = ['chips.slots', 'chips.tick', 'chips.city', 'chips.maps', 'chips.ranking'] as const;
+// Um slide por jogo. O de TF2 é o primeiro e carrega a imagem principal da página (eager, prioridade alta);
+// o do Left só busca a imagem depois do `load` (ver o script abaixo).
+// Mesmo pipeline do hero de TF2 (astro:assets, webp, tamanhos responsivos), mas o HTML não leva `src` nem `srcset`:
+// o navegador não tem como pedir essa imagem junto com o carregamento inicial. O script preenche depois do `load`.
+const l4d2Img = await getImage({ src: bgL4d2, widths: [640, 1024, 1600, 2048, 2560], format: 'webp' });
+const l4d2Sizes = '(max-width: 767px) 140vh, 100vw';
+const slides = [
+  {
+    id: 'tf2', server: site.servers.classic, tab: t('hero.tab.tf2'), title: t('hero.title'), tagline: t('hero.tagline'),
+    chips: ['chips.slots', 'chips.tick', 'chips.city', 'chips.maps', 'chips.ranking'] as const,
+    newText: t('hero.new'), newHref: '#servidores', online,
+  },
+  {
+    id: 'l4d2', server: site.servers.l4d2, tab: t('hero.tab.l4d2'), title: t('hero.l4d2.title'), tagline: t('hero.l4d2.tagline'),
+    chips: ['chips.l4d2.players', 'chips.tick', 'server.chip.coop', 'chips.l4d2.expert', 'chips.l4d2.shop', 'server.chip.ranking'] as const,
+    newText: t('hero.l4d2.new'), newHref: '#srv-l4d2', online: null,
+  },
+];
 ---
-<section class="hero">
-  <Image class="bg" src={bg} alt="" widths={[640, 1024, 1600, 1920, 2560, 3840]} sizes="100vw" loading="eager" fetchpriority="high" />
-  <div class="container content">
-    <div class="logo"><img src={logo.src} alt="Logo da SKYNET GAMING" width="180" height="180" /></div>
-    <h1>{t('hero.title')}</h1>
-    <p class="tagline">{t('hero.tagline')}</p>
-    <p class="online"><span class="dot" aria-hidden="true"></span>{online}</p>
-    <ul class="chips">{chips.map((c) => <li>{t(c)}</li>)}</ul>
-    <a class="btn btn-discord" href={site.discordUrl} target="_blank" rel="noopener noreferrer">
-      <Icon name="discord" size={26} />{t('btn.discord')}<span class="sr"> ({t('external')})</span>
-    </a>
-    <div class="secondary">
-      <a class="btn btn-ghost" href={steamConnect(site.servers.classic)}><Icon name="play" size={18} />{t('btn.play')}</a>
-      <button class="btn btn-ghost" type="button" data-copy={site.servers.classic.ip} data-done={t('btn.copied')}>
-        <Icon name="copy" size={18} /><span class="copy-label" aria-live="polite">{t('btn.copy')}</span>
-      </button>
+<section class="hero" data-hero aria-roledescription="carousel" aria-label={t('hero.carousel')}>
+  <div class="controls">
+    <div class="tabs" role="tablist" aria-label={t('hero.tabs')}>
+      {slides.map((s, i) => (
+        <button class="tab" type="button" role="tab" id={`hero-tab-${s.id}`} aria-controls={`hero-slide-${s.id}`} aria-selected={i === 0 ? 'true' : 'false'} tabindex={i === 0 ? 0 : -1} data-tab={s.id}>{s.tab}</button>
+      ))}
     </div>
-    <a class="new" href="#servidores">{t('hero.new')}</a>
+    <button class="round rotate" type="button" data-rotate data-label-pause={t('hero.pause')} data-label-play={t('hero.play')} aria-label={t('hero.pause')}>
+      <span class="i-pause"><Icon name="pause" size={18} /></span><span class="i-play"><Icon name="play" size={18} /></span>
+    </button>
+  </div>
+  <button class="round arrow arrow-prev" type="button" data-prev aria-label={t('hero.prev')}><Icon name="prev" size={22} /></button>
+  <button class="round arrow arrow-next" type="button" data-next aria-label={t('hero.next')}><Icon name="next" size={22} /></button>
+
+  <div class="viewport" data-viewport aria-live="off">
+    {slides.map((s, i) => (
+      <div class={`slide slide-${s.id}`} role="tabpanel" aria-roledescription={t('hero.roledesc')} id={`hero-slide-${s.id}`} aria-labelledby={`hero-tab-${s.id}`} data-slide={s.id}>
+        {i === 0
+          ? <Image class="bg" src={bg} alt="" widths={[640, 1024, 1600, 1920, 2560, 3840]} sizes="100vw" loading="eager" fetchpriority="high" />
+          : <>
+              <img class="bg bg-cover" alt="" width={l4d2Img.attributes.width} height={l4d2Img.attributes.height} decoding="async" fetchpriority="low" data-defer data-src={l4d2Img.src} data-srcset={l4d2Img.srcSet.attribute} data-sizes={l4d2Sizes} />
+              <noscript><img class="bg bg-cover" alt="" src={l4d2Img.src} srcset={l4d2Img.srcSet.attribute} sizes={l4d2Sizes} width={l4d2Img.attributes.width} height={l4d2Img.attributes.height} loading="lazy" decoding="async" /></noscript>
+            </>}
+        <div class="container content">
+          <div class="logo"><img src={logo.src} alt="Logo da SKYNET GAMING" width="180" height="180" /></div>
+          {i === 0 ? <h1>{s.title}</h1> : <h2 class="h1">{s.title}</h2>}
+          <p class="tagline">{s.tagline}</p>
+          {s.online && <p class="online"><span class="dot" aria-hidden="true"></span>{s.online}</p>}
+          <ul class="chips">{s.chips.map((c) => <li>{t(c)}</li>)}</ul>
+          <a class="btn btn-discord" href={site.discordUrl} target="_blank" rel="noopener noreferrer">
+            <Icon name="discord" size={26} />{t('btn.discord')}<span class="sr"> ({t('external')})</span>
+          </a>
+          <code class="ip" aria-label={t('server.ip')}>{s.server.ip}</code>
+          <div class="secondary">
+            <a class="btn btn-ghost" href={steamConnect(s.server)}><Icon name="play" size={18} />{t('btn.play')}</a>
+            <button class="btn btn-ghost" type="button" data-copy={s.server.ip} data-done={t('btn.copied')}>
+              <Icon name="copy" size={18} /><span class="copy-label" aria-live="polite">{t('btn.copy')}</span>
+            </button>
+          </div>
+          <a class="new" href={s.newHref}>{s.newText}</a>
+        </div>
+      </div>
+    ))}
   </div>
 </section>
+<script>
+  // Carrossel de dois slides (padrão ARIA APG "carousel with tabs"). O deslize e o arrastar com o dedo
+  // são do scroll-snap nativo; este script cuida das abas, da troca automática e do link /#l4d2.
+  const root = document.querySelector<HTMLElement>('[data-hero]');
+  if (root) {
+    const viewport = root.querySelector<HTMLElement>('[data-viewport]')!;
+    const slides = [...root.querySelectorAll<HTMLElement>('[data-slide]')];
+    const tabs = [...root.querySelectorAll<HTMLElement>('[role="tab"]')];
+    const rotate = root.querySelector<HTMLButtonElement>('[data-rotate]')!;
+    const lazy = [...root.querySelectorAll<HTMLImageElement>('img[data-defer]')];
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)');
+    const DELAY = 8000;
+    const n = slides.length;
+    let index = 0;
+    let stopped = false;      // parou na primeira interação ou pelo botão de pausa
+    let resumed = false;      // o visitante apertou "retomar": interações seguintes não param de novo
+    let hovering = false, focused = false, offscreen = false;
+    let timer = 0, settle = 0;
+    let warm: Promise<unknown> | null = null;
+
+    // A imagem do Left só é buscada depois do load e de um momento ocioso; aqui ela também é decodificada,
+    // então a primeira troca não pisca. Se alguém trocar antes disso, a troca espera (no máximo 600 ms).
+    const warmUp = () => (warm ??= Promise.all(lazy.map((img) => {
+      img.sizes = img.dataset.sizes!; img.srcset = img.dataset.srcset!; img.src = img.dataset.src!;
+      return img.decode().catch(() => {});
+    })));
+    const idle = (fn: () => void) => ('requestIdleCallback' in window ? requestIdleCallback(fn, { timeout: 3000 }) : setTimeout(fn, 1500));
+    if (document.readyState === 'complete') idle(warmUp); else addEventListener('load', () => idle(warmUp), { once: true });
+
+    const paint = (i: number) => {
+      index = i;
+      tabs.forEach((tab, k) => { tab.setAttribute('aria-selected', String(k === i)); tab.tabIndex = k === i ? 0 : -1; });
+      slides.forEach((s, k) => { s.inert = k !== i; }); // slide fora da tela não entra na ordem de foco nem na leitura
+    };
+    const live = (on: boolean) => viewport.setAttribute('aria-live', on ? 'polite' : 'off');
+
+    const go = async (to: number, { manual = false, instant = false } = {}) => {
+      const i = (to + n) % n;
+      if (manual) live(true); // aria-live só em troca manual
+      paint(i);
+      if (i > 0 && !instant) await Promise.race([warmUp(), new Promise((r) => setTimeout(r, 600))]);
+      viewport.scrollTo({ left: i * viewport.clientWidth, behavior: instant || reduce.matches ? 'auto' : 'smooth' });
+    };
+
+    const canRun = () => !reduce.matches && !stopped && !hovering && !focused && !offscreen && !document.hidden;
+    const schedule = () => {
+      clearTimeout(timer);
+      if (canRun()) timer = window.setTimeout(() => { go(index + 1); schedule(); }, DELAY);
+    };
+    const syncRotate = () => {
+      rotate.setAttribute('aria-label', rotate.dataset[stopped ? 'labelPlay' : 'labelPause']!);
+      rotate.classList.toggle('is-stopped', stopped);
+    };
+    const stop = () => { stopped = true; live(true); syncRotate(); schedule(); };
+
+    // Primeira interação do visitante dentro do hero (toque, clique ou tecla): a troca automática para de vez.
+    const interact = (e: Event) => {
+      if (stopped || resumed || rotate.contains(e.target as Node)) return;
+      stop();
+    };
+    ['pointerdown', 'touchstart', 'keydown'].forEach((type) => root.addEventListener(type, interact, { passive: true }));
+    rotate.addEventListener('click', () => {
+      if (stopped) { stopped = false; resumed = true; live(false); } else { stopped = true; live(true); }
+      syncRotate(); schedule();
+    });
+
+    // Pausa enquanto o mouse está em cima ou o foco do teclado está dentro do hero.
+    root.addEventListener('pointerenter', (e) => { if (e.pointerType === 'mouse') { hovering = true; schedule(); } });
+    root.addEventListener('pointerleave', () => { hovering = false; schedule(); });
+    // Só o foco de teclado pausa: depois de um clique do mouse o botão fica focado, e isso não pode travar a troca.
+    root.addEventListener('focusin', (e) => { focused = (e.target as HTMLElement).matches(':focus-visible'); schedule(); });
+    root.addEventListener('focusout', (e) => { if (!root.contains(e.relatedTarget as Node | null)) { focused = false; schedule(); } });
+    document.addEventListener('visibilitychange', schedule);
+    reduce.addEventListener('change', schedule);
+    new IntersectionObserver(([en]) => { offscreen = !en.isIntersecting; schedule(); }, { threshold: 0.2 }).observe(root);
+
+    tabs.forEach((tab, k) => tab.addEventListener('click', () => go(k, { manual: true })));
+    root.querySelector('[data-prev]')!.addEventListener('click', () => go(index - 1, { manual: true }));
+    root.querySelector('[data-next]')!.addEventListener('click', () => go(index + 1, { manual: true }));
+    root.querySelector('[role="tablist"]')!.addEventListener('keydown', (e) => {
+      const key = (e as KeyboardEvent).key;
+      const to = key === 'ArrowRight' ? index + 1 : key === 'ArrowLeft' ? index - 1 : key === 'Home' ? 0 : key === 'End' ? n - 1 : null;
+      if (to === null) return;
+      e.preventDefault();
+      const i = (to + n) % n;
+      tabs[i].focus();
+      go(i, { manual: true });
+    });
+
+    // Arrastar com o dedo: o scroll-snap move, e aqui só acompanhamos onde ele parou.
+    viewport.addEventListener('scroll', () => {
+      clearTimeout(settle);
+      settle = window.setTimeout(() => {
+        const i = Math.round(viewport.scrollLeft / viewport.clientWidth);
+        if (i !== index && i >= 0 && i < n) { paint(i); if (stopped) live(true); }
+      }, 90);
+    }, { passive: true });
+    addEventListener('resize', () => { viewport.scrollTo({ left: index * viewport.clientWidth, behavior: 'auto' }); });
+
+    // Link direto: /#l4d2 abre a home no slide do Left (não há elemento com esse id, então a página não rola).
+    const fromHash = () => {
+      const i = slides.findIndex((s) => `#${s.dataset.slide}` === location.hash);
+      if (i < 0) return false;
+      if (i > 0) warmUp();
+      go(i, { instant: true });
+      return true;
+    };
+    fromHash();
+    addEventListener('hashchange', fromHash);
+
+    root.dataset.ready = '';
+    syncRotate();
+    schedule();
+  }
+</script>
 <style>
-  /* A imagem fica ancorada no topo (abaixo do cabeçalho) e nunca é ampliada além da largura da tela,
+  .hero { position: relative; background: var(--bg); }
+
+  /* --- carrossel --- */
+  .viewport { display: flex; overflow-x: auto; overflow-y: hidden; scroll-snap-type: x mandatory; overscroll-behavior-x: contain; scrollbar-width: none; }
+  .viewport::-webkit-scrollbar { display: none; }
+  .slide { flex: 0 0 100%; min-width: 0; scroll-snap-align: start; scroll-snap-stop: always; }
+
+  /* Controles: só aparecem com o script ativo. As abas ficam logo abaixo do menu, sempre visíveis. */
+  .controls, .arrow { display: none; }
+  .hero[data-ready] .controls { display: flex; }
+  .controls { position: absolute; z-index: 5; top: 68px; left: 0; right: 0; justify-content: center; align-items: center; gap: .5rem; pointer-events: none; }
+  .controls > * { pointer-events: auto; }
+  .tabs { display: flex; gap: .25rem; padding: .25rem; border-radius: 999px; background: rgba(13,15,18,.78); border: 1px solid rgba(255,215,0,.4); backdrop-filter: blur(6px); }
+  .tab { min-height: 40px; padding: .2rem 1rem; border: 0; border-radius: 999px; background: transparent; color: var(--text); font: 700 .95rem/1 var(--font-display); letter-spacing: .06em; text-transform: uppercase; cursor: pointer; white-space: nowrap; transition: background .2s, color .2s; }
+  .tab:hover { color: var(--gold); }
+  .tab[aria-selected='true'] { background: var(--gold); color: #111; }
+  .round { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; padding: 0; border-radius: 50%; border: 1px solid rgba(255,215,0,.4); background: rgba(13,15,18,.78); backdrop-filter: blur(6px); color: var(--text); cursor: pointer; transition: border-color .2s, color .2s; }
+  .round:hover { border-color: var(--gold); color: var(--gold); }
+  .rotate .i-play, .rotate.is-stopped .i-pause { display: none; }
+  .rotate.is-stopped .i-play { display: inline-flex; }
+  .rotate .i-pause { display: inline-flex; }
+  .rotate :global(svg) { display: block; }
+  /* Setas laterais só onde sobra espaço ao lado do conteúdo; no celular vale o arrastar e as abas. */
+  @media (min-width: 1024px) {
+    .hero[data-ready] .arrow { display: inline-flex; position: absolute; z-index: 5; top: 50%; translate: 0 -50%; width: 52px; height: 52px; }
+    .arrow-prev { left: 20px; } .arrow-next { right: 20px; }
+  }
+  @media (max-width: 400px) { .tab { padding: .2rem .7rem; font-size: .85rem; } }
+  /* Sem animação: sem troca automática, então o botão de pausa não tem função. */
+  @media (prefers-reduced-motion: reduce) { .rotate { display: none; } }
+
+  /* --- cada slide é o hero completo do jogo --- */
+  /* A imagem de TF2 fica ancorada no topo (abaixo do cabeçalho) e nunca é ampliada além da largura da tela,
      então as cabeças não são cortadas. O conteúdo começa abaixo dos rostos (--pad) sempre que cabe. */
-  .hero {
+  .slide {
     --head: 56px;
-    --pad: max(calc(var(--head) + 8px), min(calc(var(--head) + 28vw), calc(100svh - 590px)));
+    --pad: max(calc(var(--head) + 64px), min(calc(var(--head) + 28vw), calc(100svh - 665px)));
     position: relative; min-height: 100svh; display: flex; flex-direction: column; justify-content: flex-start;
     padding: var(--pad) 0 3rem; isolation: isolate; text-align: center; overflow: hidden; background: var(--bg);
   }
-  .hero :global(.bg) {
+  .slide :global(.bg) {
     position: absolute; top: var(--head); left: 0; width: 100%; height: auto; z-index: -2;
     -webkit-mask-image: linear-gradient(to bottom, #000 70%, transparent 100%);
     mask-image: linear-gradient(to bottom, #000 70%, transparent 100%);
   }
-  .hero::after {
+  .slide::after {
     content: ''; position: absolute; inset: 0; z-index: -1;
     background: linear-gradient(to bottom, rgba(13,15,18,.15) 0, rgba(13,15,18,.25) calc(var(--pad) - 40px), rgba(13,15,18,.82) calc(var(--pad) + 140px), var(--bg) 100%);
   }
+  /* Left 4 Dead 2: a arte cobre o slide inteiro. O céu do topo é claro, então o overlay começa bem mais escuro
+     (menu, abas e título precisam de contraste) e termina no fundo do site, como no slide de TF2. */
+  .slide :global(.bg-cover) { top: 0; height: 100%; object-fit: cover; object-position: 50% 35%; -webkit-mask-image: none; mask-image: none; }
+  .slide-l4d2::after {
+    background: linear-gradient(to bottom, rgba(13,15,18,.62) 0, rgba(13,15,18,.4) calc(var(--pad) - 40px), rgba(13,15,18,.8) calc(var(--pad) + 150px), var(--bg) 100%);
+  }
+  /* Celular em pé: mostra o grupo de zumbis da esquerda (a lápide e a cruz ficam de fora). */
+  @media (max-width: 767px) { .slide :global(.bg-cover) { object-position: 12% 40%; } }
+
   .content { display: flex; flex-direction: column; align-items: center; gap: 1rem; }
   .logo img { width: clamp(120px, 12vw, 180px); height: auto; filter: drop-shadow(0 0 22px rgba(207,106,50,.45)); }
-  h1 { font-size: clamp(2.2rem, 6vw, 4.2rem); text-transform: uppercase; text-shadow: 0 2px 20px rgba(0,0,0,.9); }
+  h1, .h1 { font-size: clamp(2.2rem, 6vw, 4.2rem); text-transform: uppercase; text-shadow: 0 2px 20px rgba(0,0,0,.9); }
   .tagline { font-size: clamp(1.05rem, 2.2vw, 1.4rem); margin: 0; text-shadow: 0 1px 10px rgba(0,0,0,.9); }
   .online { display: inline-flex; align-items: center; gap: .55rem; margin: 0; padding: .35rem 1rem; border-radius: 999px; background: rgba(20,60,32,.75); border: 1px solid #3ddc84; color: #b8f5cf; font-weight: 600; font-size: .92rem; }
   .dot { width: 10px; height: 10px; border-radius: 50%; background: #3ddc84; animation: ping 1.6s infinite; }
   @keyframes ping { 0% { box-shadow: 0 0 0 0 rgba(61,220,132,.7); } 70%,100% { box-shadow: 0 0 0 9px rgba(61,220,132,0); } }
   .chips { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: .5rem; padding: 0; margin: 0; }
   .chips li { background: rgba(0,0,0,.55); border: 1px solid rgba(255,215,0,.4); border-radius: 999px; padding: .3rem .9rem; font-size: .9rem; }
+  .ip { font-size: clamp(1.15rem, 3vw, 1.5rem); font-weight: 600; letter-spacing: .03em; background: rgba(0,0,0,.75); border: 1px solid rgba(255,255,255,.18); padding: .45rem 1rem; border-radius: 10px; }
   .secondary { display: flex; flex-wrap: wrap; justify-content: center; gap: .8rem; }
   .new { display: inline-flex; align-items: center; gap: .55rem; padding: .3rem 1rem; border-radius: 999px; background: rgba(0,0,0,.55); border: 1px solid rgba(255,215,0,.55); font-weight: 600; color: var(--text); font-size: .88rem; text-decoration: none; transition: border-color .2s, color .2s; }
   .new:hover { border-color: var(--gold); color: var(--gold); }

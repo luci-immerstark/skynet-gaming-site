@@ -15,6 +15,8 @@ export const site = {
   servers: {
     classic: {
       id: 'classic',
+      game: 'tf2',
+      short: 'Classic Maps',
       name: 'SKYNET GAMING BRASIL / LATAM - CLASSIC MAPS',
       ip: '212.38.89.226:27015',
       slots: 40,
@@ -24,12 +26,24 @@ export const site = {
     },
     dodgeball: {
       id: 'dodgeball',
+      game: 'tf2',
+      short: 'Dodgeball',
       name: 'SKYNET GAMING BRASIL / LATAM - DODGEBALL',
       ip: '212.38.89.226:27025',
       slots: 8,
       tick: 100,
       launchDate: '2026-10-06',
       rankingUrl: 'https://stats.skynet-tf2.com.br/hlstats.php?game=tfdb',
+    },
+    l4d2: {
+      id: 'l4d2',
+      game: 'l4d2',
+      short: 'Coop',
+      name: '[COOP] SKYNET GAMING BRASIL / LATAM [100-Tick Rate]', // nome exato no navegador de servidores do jogo
+      ip: '212.38.89.226:27035',
+      slots: 20,
+      tick: 100,
+      rankingUrl: 'https://stats.skynet-tf2.com.br/hlstats.php?game=l4d2',
     },
   },
   // Evento em destaque. Para o próximo evento, edite só este bloco.
@@ -59,5 +73,11 @@ export const site = {
 } as const;
 
 export type Server = (typeof site.servers)[keyof typeof site.servers];
-export const serverList: Server[] = [site.servers.classic, site.servers.dodgeball];
+export type Game = Server['game'];
+export const serverList: Server[] = [site.servers.classic, site.servers.dodgeball, site.servers.l4d2];
+/** Servidores agrupados por jogo, na ordem de exibição. Todo lugar que lista IPs usa isto. */
+export const games: { id: Game; servers: Server[] }[] = [
+  { id: 'tf2', servers: serverList.filter((s) => s.game === 'tf2') },
+  { id: 'l4d2', servers: serverList.filter((s) => s.game === 'l4d2') },
+];
 export const steamConnect = (s: Server) => `steam://connect/${s.ip}`;

@@ -1,4 +1,5 @@
 ---
+import { games } from '../config/site';
 import { useT, faqItems, postPath } from '../i18n/utils';
 import { type Lang } from '../i18n/ui';
 const { lang } = Astro.props as { lang: Lang };
@@ -11,7 +12,20 @@ const items = faqItems(lang);
     {items.map((i) => (
       <details>
         <summary>{i.q}</summary>
-        <p>{i.a}{i.n === 6 && <> <a href={postPath(lang, 'dodgeball')}>{t('faq.6.link')}</a></>}</p>
+        {i.n === 2 ? (
+          // Os IPs aparecem agrupados por jogo (o texto corrido de faq.2.a só alimenta os dados estruturados).
+          <div class="ips">
+            {games.map((g) => (
+              <div>
+                <strong>{t(`servers.${g.id}`)}</strong>
+                <ul>{g.servers.map((s) => <li>{s.short}: <code>{s.ip}</code></li>)}</ul>
+              </div>
+            ))}
+            <p>{t('faq.2.hint')}</p>
+          </div>
+        ) : (
+          <p>{i.a}{i.n === 6 && <> <a href={postPath(lang, 'dodgeball')}>{t('faq.6.link')}</a></>}</p>
+        )}
       </details>
     ))}
   </div>
@@ -26,4 +40,9 @@ const items = faqItems(lang);
   details[open] summary::after { content: '–'; }
   p { margin: 0; padding: 0 1.2rem 1.1rem; color: #d6d9de; }
   p a { font-weight: 600; }
+  .ips { padding: 0 1.2rem 1.1rem; color: #d6d9de; display: grid; gap: .8rem; }
+  .ips strong { color: var(--text); font-family: var(--font-display); font-size: 1.1rem; letter-spacing: .05em; text-transform: uppercase; }
+  .ips ul { margin: .3rem 0 0; padding-left: 1.2rem; } .ips li::marker { color: var(--gold); }
+  .ips code { background: #000; padding: .1rem .45rem; border-radius: 6px; }
+  .ips p { padding: 0; }
 </style>

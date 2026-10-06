@@ -1,5 +1,6 @@
 // Idioma: a escolha manual (localStorage) tem prioridade. Na primeira visita à raiz:
 // navegador em espanhol => /es/, em inglês => /en/, qualquer outro => português.
+// O redirecionamento preserva ?query e #hash (ex.: /#l4d2 dos anúncios).
 (function () {
   try {
     var p = location.pathname;
@@ -10,9 +11,9 @@
       var nav = (navigator.language || '').toLowerCase();
       var pref = nav.indexOf('es') === 0 ? 'es' : nav.indexOf('en') === 0 ? 'en' : 'pt-br';
       localStorage.setItem('lang', here !== 'pt-br' ? here : pref);
-      if (p === '/' && pref !== 'pt-br') location.replace('/' + pref + '/');
+      if (p === '/' && pref !== 'pt-br') location.replace('/' + pref + '/' + location.search + location.hash);
     } else if (p === '/' && saved !== 'pt-br' && saved !== here) {
-      location.replace('/' + saved + '/');
+      location.replace('/' + saved + '/' + location.search + location.hash);
     }
   } catch (e) {}
 })();

@@ -1,12 +1,14 @@
 # SKYNET Gaming Brasil
 
-> Comunidade de Team Fortress 2 (TF2) para Brasil e América Latina com dois servidores dedicados de 100 tick, hospedados em São Paulo: Classic Maps (40 slots, mapas clássicos) e Dodgeball (8 slots, só Pyro), cada um com ranking próprio. / Team Fortress 2 community for Brazil and Latin America with two dedicated 100 tick servers hosted in São Paulo: Classic Maps and Dodgeball, each with its own ranking.
+> Comunidade para Brasil e América Latina com três servidores dedicados de 100 tick. Team Fortress 2 (TF2), hospedados em São Paulo: Classic Maps (40 slots, mapas clássicos) e Dodgeball (8 slots, só Pyro). Left 4 Dead 2: Coop (campanha cooperativa, até 20 jogadores). Cada servidor tem ranking próprio. / Community for Brazil and Latin America with three dedicated 100 tick servers: Team Fortress 2 (Classic Maps and Dodgeball, hosted in São Paulo) and Left 4 Dead 2 (Coop), each with its own ranking.
 
 O site está em português (padrão), espanhol da América Latina e inglês. Cada página abaixo existe nos três idiomas: `/` (pt-BR), `/es/` (es-419) e `/en/` (en).
 
 ## Servidores
 
-Jogo: Team Fortress 2 (gratuito na Steam). Região: Brasil e América Latina; hospedagem em São Paulo, Brasil. Os dois servidores compartilham SourceBans, administração, regras e o comando !report; um ban vale nos dois.
+Jogos: Team Fortress 2 (gratuito na Steam) e Left 4 Dead 2. Região: Brasil e América Latina; os servidores de TF2 são hospedados em São Paulo, Brasil. Os bans de todos os servidores ficam no mesmo painel SourceBans. Os servidores estão agrupados por jogo abaixo.
+
+## Team Fortress 2
 
 ### SKYNET GAMING BRASIL / LATAM - CLASSIC MAPS
 
@@ -30,15 +32,27 @@ Jogo: Team Fortress 2 (gratuito na Steam). Região: Brasil e América Latina; ho
 - Ranking próprio, separado do Classic Maps: https://stats.skynet-tf2.com.br/hlstats.php?game=tfdb. Todos começam com 1000 pontos: +1 por kill, -1 por morte, +2 para cada jogador do time que vence a rodada; só conta com 4 ou mais jogadores no servidor; comandos no chat: rank, top10, session, place
 - Data de lançamento: 6 de outubro de 2026 (2026-10-06)
 
+## Left 4 Dead 2
+
+### [COOP] SKYNET GAMING BRASIL / LATAM [100-Tick Rate]
+
+- Endereço (IP:porta): 212.38.89.226:27035
+- Comando para conectar no console do jogo: `connect 212.38.89.226:27035`
+- Link para abrir o jogo já conectado: steam://connect/212.38.89.226:27035
+- Campanha cooperativa com até 20 jogadores; tickrate: 100 tick; dificuldade Expert por padrão
+- Sistema de pontos: matar infectados dá pontos, e o comando !buy abre a loja de armas, munição e cura. Os pontos zeram a cada mapa
+- Quanto mais sobreviventes, mais infectados especiais
+- Ranking: https://stats.skynet-tf2.com.br/hlstats.php?game=l4d2
+
 ## Evento de inauguração
 
-De 30/10/2026 às 20h até 02/11/2026 às 20h (horário de Brasília, UTC-3); R$ 500 em prêmios para o TOP 5 do ranking do servidor Classic Maps. O evento vale somente para o ranking do Classic Maps, não para o do Dodgeball.
+De 30/10/2026 às 20h até 02/11/2026 às 20h (horário de Brasília, UTC-3); R$ 500 em prêmios para o TOP 5 do ranking do servidor Classic Maps. O evento vale somente para o ranking do Classic Maps, não para os do Dodgeball nem do Left 4 Dead 2.
 
 ## Páginas principais
 
-- [Página inicial](https://skynet-tf2.com.br/): resumo dos dois servidores, seção Nossos servidores (IPs para copiar e jogar), evento de inauguração e links. Versões: [es](https://skynet-tf2.com.br/es/), [en](https://skynet-tf2.com.br/en/).
-- [Regras do servidor](https://skynet-tf2.com.br/#regras): as 9 regras da comunidade, válidas nos dois servidores (respeito, sem conteúdo impróprio, sem spam, cheats = banimento, entre outras). Versões: [es](https://skynet-tf2.com.br/es/#regras), [en](https://skynet-tf2.com.br/en/#regras).
-- [Perguntas frequentes](https://skynet-tf2.com.br/#faq): como entrar, qual é o IP de cada servidor, se é preciso baixar algo, como funcionam os dois rankings, o que é o servidor de Dodgeball e como denunciar. Versões: [es](https://skynet-tf2.com.br/es/#faq), [en](https://skynet-tf2.com.br/en/#faq).
+- [Página inicial](https://skynet-tf2.com.br/): resumo dos três servidores, seção Nossos servidores (IPs por jogo, para copiar e jogar); o link /#l4d2 abre a página já no slide do Left 4 Dead 2, evento de inauguração e links. Versões: [es](https://skynet-tf2.com.br/es/), [en](https://skynet-tf2.com.br/en/).
+- [Regras do servidor](https://skynet-tf2.com.br/#regras): as 9 regras da comunidade, válidas em todos os nossos servidores (respeito, sem conteúdo impróprio, sem spam, cheats = banimento, entre outras). Versões: [es](https://skynet-tf2.com.br/es/#regras), [en](https://skynet-tf2.com.br/en/#regras).
+- [Perguntas frequentes](https://skynet-tf2.com.br/#faq): como entrar, qual é o IP de cada servidor, se é preciso baixar algo, como funcionam os rankings, o que é o servidor de Dodgeball e como denunciar. Versões: [es](https://skynet-tf2.com.br/es/#faq), [en](https://skynet-tf2.com.br/en/#faq).
 - [Blog](https://skynet-tf2.com.br/blog/): novidades, atualizações e guias da comunidade. Versões: [es](https://skynet-tf2.com.br/es/blog/), [en](https://skynet-tf2.com.br/en/blog/).
 
 ## Guias no blog
@@ -51,12 +65,12 @@ De 30/10/2026 às 20h até 02/11/2026 às 20h (horário de Brasília, UTC-3); R$
 
 ## Links da comunidade
 
-- [Ranking (HLstatsZ)](https://stats.skynet-tf2.com.br/hlstats.php): escolha entre o ranking do Classic Maps (?game=tf) e o do Dodgeball (?game=tfdb).
+- [Ranking (HLstatsZ)](https://stats.skynet-tf2.com.br/hlstats.php): escolha entre o ranking do Classic Maps (?game=tf), o do Dodgeball (?game=tfdb) e o do Left 4 Dead 2 (?game=l4d2).
 - [SourceBans](https://bans.skynet-tf2.com.br/index.php?p=home): lista pública de bans e punições aplicados.
 - [Discord oficial](https://discord.gg/HV7d6x8pEK): comunidade, suporte, anúncios e denúncias.
 - [Grupo na Steam](https://steamcommunity.com/groups/skynetgaming-tf2): grupo da comunidade e eventos pela Steam.
 
 ## Notas
 
-- Team Fortress 2 é uma marca registrada da Valve Corporation. Este site não é afiliado à Valve.
+- Team Fortress 2 e Left 4 Dead 2 são marcas registradas da Valve Corporation. Este site não é afiliado à Valve.
 - Sitemap: https://skynet-tf2.com.br/sitemap.xml

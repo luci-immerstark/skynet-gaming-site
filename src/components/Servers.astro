@@ -3,58 +3,68 @@ import { Image } from 'astro:assets';
 import Icon from './Icon.astro';
 import heroBg from '../assets/img/hero-bg.jpg';
 import pyroBg from '../assets/img/dodgeball-pyro-mascara.jpg';
-import { serverList, steamConnect } from '../config/site';
+import l4d2Bg from '../assets/img/hero-l4d2.jpg';
+import { games, steamConnect, type Server } from '../config/site';
 import { useT } from '../i18n/utils';
 import { type Lang } from '../i18n/ui';
 const { lang } = Astro.props as { lang: Lang };
 const t = useT(lang);
 const n = (key: 'server.chip.slots' | 'server.chip.tick', v: number) => t(key).replace('{n}', String(v));
-const cards = serverList.map((s) => {
-  const dodge = s.id === 'dodgeball';
-  return {
-    s, dodge,
-    img: dodge ? pyroBg : heroBg,
-    desc: t(dodge ? 'server.dodgeball.desc' : 'server.classic.desc'),
-    chips: [n('server.chip.slots', s.slots), n('server.chip.tick', s.tick), ...(dodge ? [t('server.chip.pyro'), t('server.chip.ranking')] : [t('server.chip.classic')])],
-  };
-});
+const card = (s: Server) => {
+  const base = [n('server.chip.slots', s.slots), n('server.chip.tick', s.tick)];
+  if (s.id === 'dodgeball') return { s, isNew: true, img: pyroBg, desc: t('server.dodgeball.desc'), chips: [...base, t('server.chip.pyro'), t('server.chip.ranking')] };
+  if (s.id === 'l4d2') return { s, isNew: true, img: l4d2Bg, desc: t('server.l4d2.desc'), chips: [...base, t('server.chip.coop'), t('chips.l4d2.expert'), t('server.chip.ranking')] };
+  return { s, isNew: false, img: heroBg, desc: t('server.classic.desc'), chips: [...base, t('server.chip.classic')] };
+};
+// Servidores agrupados por jogo: nunca uma lista única misturada.
+const groups = games.map((g) => ({ id: g.id, title: t(`servers.${g.id}`), cards: g.servers.map(card) }));
 ---
 <section class="section servers" id="servidores" aria-labelledby="servers-title">
   <div class="container">
     <h2 class="section-title" id="servers-title">{t('servers.title')}</h2>
-    <div class="grid">
-      {cards.map(({ s, dodge, img, desc, chips }) => (
-        <article class="srv" data-server={s.id}>
-          <Image class="bg" src={img} alt="" widths={[600, 900, 1400]} sizes="(min-width: 800px) 600px, 100vw" loading="lazy" />
-          {dodge && <span class="badge new">{t('badge.new')}</span>}
-          <h3>{s.name}</h3>
-          <p class="desc">{desc}</p>
-          <ul class="chips">{chips.map((c) => <li>{c}</li>)}</ul>
-          <code class="ip" aria-label={t('server.ip')}>{s.ip}</code>
-          <div class="actions">
-            <a class="btn btn-gold" href={steamConnect(s)}><Icon name="play" size={18} />{t('btn.play')}</a>
-            <button class="btn btn-ghost" type="button" data-copy={s.ip} data-done={t('btn.copied')}>
-              <Icon name="copy" size={18} /><span class="copy-label" aria-live="polite">{t('btn.copy')}</span>
-            </button>
-          </div>
-          <a class="rank" href={s.rankingUrl} target="_blank" rel="noopener noreferrer">{t('btn.ranking')} <Icon name="external" size={15} /><span class="sr"> ({t('external')})</span></a>
-        </article>
-      ))}
-    </div>
+    {groups.map((g) => (
+      <div class="group" id={`srv-${g.id}`} aria-labelledby={`srv-${g.id}-title`}>
+        <h3 class="group-title" id={`srv-${g.id}-title`}>{g.title}</h3>
+        <div class:list={['grid', { solo: g.cards.length === 1 }]}>
+          {g.cards.map(({ s, isNew, img, desc, chips }) => (
+            <article class="srv" data-server={s.id}>
+              <Image class="bg" src={img} alt="" widths={[600, 900, 1400]} sizes="(min-width: 800px) 600px, 100vw" loading="lazy" />
+              {isNew && <span class="badge new">{t('badge.new')}</span>}
+              <h4>{s.name}</h4>
+              <p class="desc">{desc}</p>
+              <ul class="chips">{chips.map((c) => <li>{c}</li>)}</ul>
+              <code class="ip" aria-label={t('server.ip')}>{s.ip}</code>
+              <div class="actions">
+                <a class="btn btn-gold" href={steamConnect(s)}><Icon name="play" size={18} />{t('btn.play')}</a>
+                <button class="btn btn-ghost" type="button" data-copy={s.ip} data-done={t('btn.copied')}>
+                  <Icon name="copy" size={18} /><span class="copy-label" aria-live="polite">{t('btn.copy')}</span>
+                </button>
+              </div>
+              <a class="rank" href={s.rankingUrl} target="_blank" rel="noopener noreferrer">{t('btn.ranking')} <Icon name="external" size={15} /><span class="sr"> ({t('external')})</span></a>
+            </article>
+          ))}
+        </div>
+      </div>
+    ))}
   </div>
 </section>
 <style>
   .servers { scroll-margin-top: 56px; padding-bottom: 1rem; }
+  .group { scroll-margin-top: 72px; }
+  .group + .group { margin-top: 2.5rem; }
+  .group-title { font-size: clamp(1.4rem, 3vw, 1.9rem); color: var(--text); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 1rem; padding-left: .8rem; border-left: 4px solid var(--gold); }
   .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
-  /* Cada card ocupa 6 linhas da grade (subgrid): título, texto, selos, IP, botões e ranking ficam alinhados entre os dois. */
+  .grid.solo { grid-template-columns: 1fr; }
+  /* Cada card ocupa 6 linhas da grade (subgrid): título, texto, selos, IP, botões e ranking ficam alinhados entre os cards do grupo. */
   .srv { position: relative; isolation: isolate; overflow: hidden; border-radius: var(--radius); border: 2px solid rgba(255,215,0,.3); background: var(--surface); display: grid; grid-row: span 6; grid-template-rows: subgrid; row-gap: .9rem; justify-items: start; align-content: start; padding: 1.6rem; }
   .srv :global(.bg) { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
   /* Sem style inline: a CSP só aceita estilos de arquivo. */
   .srv[data-server='classic'] :global(.bg) { object-position: center 20%; }
   .srv[data-server='dodgeball'] :global(.bg) { object-position: right center; }
+  .srv[data-server='l4d2'] :global(.bg) { object-position: 30% 50%; }
   .srv::after { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(to top, rgba(13,15,18,.96) 0%, rgba(13,15,18,.82) 55%, rgba(13,15,18,.62) 100%); }
   .new { position: absolute; top: 1rem; right: 1rem; }
-  h3 { font-size: clamp(1.3rem, 2.4vw, 1.7rem); color: var(--gold); text-shadow: 0 2px 12px rgba(0,0,0,.9); padding-right: 4.5rem; }
+  h4 { font-size: clamp(1.3rem, 2.4vw, 1.7rem); color: var(--gold); text-shadow: 0 2px 12px rgba(0,0,0,.9); padding-right: 4.5rem; }
   .desc { margin: 0; color: #e3e5e9; text-shadow: 0 1px 8px rgba(0,0,0,.9); }
   .chips { list-style: none; display: flex; flex-wrap: wrap; align-content: flex-start; gap: .5rem; padding: 0; margin: 0; }
   .chips li { background: rgba(0,0,0,.6); border: 1px solid rgba(255,215,0,.4); border-radius: 999px; padding: .25rem .8rem; font-size: .88rem; }
