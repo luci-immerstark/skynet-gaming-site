@@ -55,6 +55,10 @@ const groups = games.map((g) => ({ id: g.id, title: t(`servers.${g.id}`), cards:
   .group-title { font-size: clamp(1.4rem, 3vw, 1.9rem); color: var(--text); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 1rem; padding-left: .8rem; border-left: 4px solid var(--gold); }
   .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
   .grid.solo { grid-template-columns: 1fr; }
+  /* Card único (Left 4 Dead 2): conteúdo centralizado. */
+  .grid.solo .srv { justify-items: center; text-align: center; }
+  .grid.solo h4 { padding: 0 4.5rem; }
+  .grid.solo .chips, .grid.solo .actions { justify-content: center; }
   /* Cada card ocupa 6 linhas da grade (subgrid): título, texto, selos, IP, botões e ranking ficam alinhados entre os cards do grupo. */
   .srv { position: relative; isolation: isolate; overflow: hidden; border-radius: var(--radius); border: 2px solid rgba(255,215,0,.3); background: var(--surface); display: grid; grid-row: span 6; grid-template-rows: subgrid; row-gap: .9rem; justify-items: start; align-content: start; padding: 1.6rem; }
   .srv :global(.bg) { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
