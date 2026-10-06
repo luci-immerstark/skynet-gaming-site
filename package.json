@@ -10,7 +10,8 @@
     "dev": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "brand": "node scripts/make-brand-assets.mjs"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.10",
@@ -23,6 +24,7 @@
     "typescript": "^6.0.3"
   },
   "devDependencies": {
+    "svgo": "^4.1.0",
     "wrangler": "^4.147.0"
   }
 }

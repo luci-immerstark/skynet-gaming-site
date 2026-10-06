@@ -5,8 +5,7 @@ import '@fontsource/inter/400.css';
 import '@fontsource/inter/600.css';
 import '../styles/global.css';
 import { getImage } from 'astro:assets';
-import ogImg from '../assets/img/og-banner.jpg';
-import favImg from '../assets/img/logo-robo.png';
+import ogImg from '../assets/img/og-image.jpg';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import JsonLd from '../components/JsonLd.astro';
@@ -18,16 +17,13 @@ import { localePath, htmlLang } from '../i18n/utils';
 interface Props { lang: Lang; title: string; description: string; path: string; missing?: Lang[]; fallback?: string; paths?: Partial<Record<Lang, string>>; jsonLd?: Record<string, unknown>[]; noindex?: boolean; }
 const { lang, title, description, path, missing = [], fallback = '/', paths = {}, jsonLd = [], noindex = false } = Astro.props;
 const og = await getImage({ src: ogImg, width: 1200, format: 'jpg' });
-const fav32 = await getImage({ src: favImg, width: 32, height: 32, format: 'png' });
-const fav180 = await getImage({ src: favImg, width: 180, height: 180, format: 'png' });
-const logo512 = await getImage({ src: favImg, width: 512, height: 512, format: 'png' });
 const abs = (p: string) => new URL(p, site.url).href;
 const alt = Object.fromEntries((['pt-br', 'es', 'en'] as Lang[]).map((l) => [l, localePath(l, missing.includes(l) ? fallback : (paths[l] ?? path))])) as Record<Lang, string>;
 const has = (l: Lang) => !missing.includes(l);
 const canonical = abs(alt[lang]);
 const organization = {
   '@context': 'https://schema.org', '@type': 'Organization', '@id': abs('/#organization'),
-  name: 'SKYNET GAMING BRASIL', alternateName: site.name, url: site.url, logo: abs(logo512.src),
+  name: 'SKYNET GAMING BRASIL', alternateName: site.name, url: site.url, logo: abs('/icon-512.png'),
   sameAs: [site.discordUrl, site.steamGroupUrl],
 };
 // Evento em destaque: gerado de site.event, então atualiza sozinho no próximo evento.
@@ -55,8 +51,10 @@ const graph = [organization, ...(eventLd ? [eventLd] : []), ...jsonLd];
     {!noindex && has('es') && <link rel="alternate" hreflang="es-419" href={abs(alt.es)} />}
     {!noindex && has('en') && <link rel="alternate" hreflang="en" href={abs(alt.en)} />}
     {!noindex && has('pt-br') && <link rel="alternate" hreflang="x-default" href={abs(alt['pt-br'])} />}
-    <link rel="icon" type="image/png" sizes="32x32" href={fav32.src} />
-    <link rel="apple-touch-icon" href={fav180.src} />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={site.name} />
     <meta property="og:title" content={title} />

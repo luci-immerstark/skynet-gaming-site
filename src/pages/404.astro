@@ -1,10 +1,12 @@
 ---
 import Base from '../layouts/Base.astro';
 import { ui } from '../i18n/ui';
+import logo from '../assets/img/logo-grande-colorido.svg';
 ---
 <Base lang="pt-br" title={ui['pt-br']['meta.404.title']} description={ui['pt-br']['404.text']} path="/404" noindex missing={["pt-br", "es", "en"]} fallback="/">
   <section class="nf">
     <div class="container">
+      <img class="mark" src={logo.src} alt="Logo da SKYNET GAMING" width="120" height="120" />
       <p class="code">404</p>
       {(['pt-br', 'es', 'en'] as const).map((l) => (
         <div class="msg" data-l={l} hidden={l !== 'pt-br'}>
@@ -18,6 +20,7 @@ import { ui } from '../i18n/ui';
 </Base>
 <style>
   .nf { min-height: 100svh; display: grid; place-items: center; text-align: center; padding: 6rem 0 3rem; }
+  .mark { margin: 0 auto 1rem; filter: drop-shadow(0 0 18px rgba(207,106,50,.4)); }
   .code { font: 700 clamp(6rem, 25vw, 12rem)/1 var(--font-display); color: var(--gold); margin: 0; text-shadow: 0 0 40px rgba(255,215,0,.35); }
   h1 { font-size: clamp(1.8rem, 5vw, 3rem); margin-bottom: .8rem; }
   .msg p { margin: 0 0 1.5rem; color: var(--muted); }
