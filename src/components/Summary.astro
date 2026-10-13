@@ -7,7 +7,8 @@ const t = useT(lang);
 // Definição em uma frase, útil para leitores e para buscadores com IA.
 const text = t('summary.text')
   .replace('{classicDate}', formatLong(site.servers.classic.launchDate, lang))
-  .replace('{dodgeballDate}', formatLong(site.servers.dodgeball.launchDate, lang));
+  .replace('{dodgeballDate}', formatLong(site.servers.dodgeball.launchDate, lang))
+  .replace('{ziDate}', formatLong(site.servers.zombieInfection.launchDate, lang));
 // Os comandos connect viram <code>; os IPs vêm de site.servers.
 const parts = text.split(/(connect \{(?:classic|dodgeball|zi|l4d2)\})/).map((p) => {
   const m = p.match(/^connect \{(classic|dodgeball|zi|l4d2)\}$/);

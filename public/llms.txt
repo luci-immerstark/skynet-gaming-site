@@ -39,6 +39,7 @@ Jogos: Team Fortress 2 (gratuito na Steam) e Left 4 Dead 2. Região: Brasil e Am
 - Link para abrir o jogo já conectado: steam://connect/212.38.89.226:27045
 - Capacidade: 24 slots; roda no tick padrão do modo (não é 100 tick); hospedado em São Paulo
 - Modo oficial de zumbis do TF2: todos começam como sobreviventes no RED, alguns são sorteados para virar zumbi no BLU, e quem morre vira zumbi; os zumbis vencem se infectarem todo mundo, e o RED vence se algum sobrevivente aguentar até o tempo acabar
+- Data de lançamento: 12 de outubro de 2026 (2026-10-12)
 - Mapas oficiais em rodízio, 30 minutos cada: zi_atoll, zi_blazehattan, zi_devastation_final1, zi_murky, zi_sanitarium, zi_woods
 - Ranking próprio: https://stats.skynet-tf2.com.br/hlstats.php?game=tfzi; só conta com 6 ou mais jogadores no servidor. Zumbi infecta um sobrevivente: +5 (quem foi infectado perde 1); sobrevivente mata um zumbi: +1; assistência como zumbi: +1; fim da rodada: +8 para cada sobrevivente vivo se o RED vencer, +4 para cada zumbi se o BLU vencer
 

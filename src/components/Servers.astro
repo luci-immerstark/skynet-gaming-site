@@ -21,6 +21,8 @@ const card = (s: Server) => {
 };
 // Servidores agrupados por jogo: nunca uma lista única misturada.
 const groups = games.map((g) => ({ id: g.id, title: t(`servers.${g.id}`), cards: g.servers.map(card) }));
+// Grupo com número ímpar de cards (mais de um): o primeiro ocupa a largura toda e os demais ficam lado a lado.
+const isWide = (n: number, i: number) => n > 1 && n % 2 === 1 && i === 0;
 ---
 <section class="section servers" id="servidores" aria-labelledby="servers-title">
   <div class="container">
@@ -29,9 +31,9 @@ const groups = games.map((g) => ({ id: g.id, title: t(`servers.${g.id}`), cards:
       <div class="group" id={`srv-${g.id}`} aria-labelledby={`srv-${g.id}-title`}>
         <h3 class="group-title" id={`srv-${g.id}-title`}>{g.title}</h3>
         <div class:list={['grid', { solo: g.cards.length === 1 }]}>
-          {g.cards.map(({ s, isNew, img, desc, chips }) => (
-            <article class="srv" data-server={s.id} id={s.id === 'zombieInfection' ? 'srv-zi' : undefined}>
-              <Image class="bg" src={img} alt="" widths={[600, 900, 1400]} sizes="(min-width: 800px) 600px, 100vw" loading="lazy" />
+          {g.cards.map(({ s, isNew, img, desc, chips }, i) => (
+            <article class:list={['srv', { wide: isWide(g.cards.length, i) }]} data-server={s.id} id={s.id === 'zombieInfection' ? 'srv-zi' : undefined}>
+              <Image class="bg" src={img} alt="" widths={[600, 900, 1400, 1800]} sizes={isWide(g.cards.length, i) ? '(min-width: 800px) 1200px, 100vw' : '(min-width: 800px) 600px, 100vw'} loading="lazy" />
               {isNew && <span class="badge new">{t('badge.new')}</span>}
               <h4>{s.name}</h4>
               <p class="desc">{desc}</p>
@@ -72,6 +74,13 @@ const groups = games.map((g) => ({ id: g.id, title: t(`servers.${g.id}`), cards:
   .srv[data-server='zombieInfection'] :global(.bg) { object-position: 50% 15%; }
   .srv[data-server='l4d2'] :global(.bg) { object-position: 30% 50%; }
   .srv::after { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(to top, rgba(13,15,18,.96) 0%, rgba(13,15,18,.82) 55%, rgba(13,15,18,.62) 100%); }
+  /* Card largo: texto na metade esquerda, imagem à direita (o degradê é horizontal). */
+  @media (min-width: 800px) {
+    .srv.wide { grid-column: 1 / -1; padding-right: 52%; }
+    .srv.wide::after { background: linear-gradient(to right, rgba(13,15,18,.96) 0%, rgba(13,15,18,.85) 45%, rgba(13,15,18,.1) 80%, rgba(13,15,18,0) 100%); }
+    .srv.wide h4 { padding-right: 0; }
+    .srv[data-server='classic'].wide :global(.bg) { object-position: center 30%; }
+  }
   .new { position: absolute; top: 1rem; right: 1rem; }
   h4 { font-size: clamp(1.3rem, 2.4vw, 1.7rem); color: var(--gold); text-shadow: 0 2px 12px rgba(0,0,0,.9); padding-right: 4.5rem; }
   .desc { margin: 0; color: #e3e5e9; text-shadow: 0 1px 8px rgba(0,0,0,.9); }

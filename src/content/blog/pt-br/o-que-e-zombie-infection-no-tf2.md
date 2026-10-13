@@ -3,7 +3,7 @@ translationKey: "zombie-infection"
 title: "O que é Zombie Infection no TF2: como surgiu e como jogar"
 seoTitle: "O que é Zombie Infection no TF2 e como jogar | SKYNET"
 description: "Entenda o modo Zombie Infection do TF2: sobreviventes contra zumbis, as habilidades de cada classe, como surgiu e como jogar no servidor da SKYNET Gaming, com ranking próprio."
-date: 2026-10-13
+date: 2026-10-12
 updated: 2026-10-13
 cover: ../../../assets/img/zombie-infection-horda.webp
 draft: false
@@ -61,6 +61,7 @@ Os fatos abaixo vêm da [Team Fortress Wiki](https://wiki.teamfortress.com/wiki/
 ## Como é o nosso servidor
 
 - **Nome:** SKYNET GAMING BRASIL / LATAM - ZOMBIE INFECTION
+- **No ar desde:** 12/10/2026
 - **Capacidade:** 24 slots, hospedado em São Paulo, no tick padrão do modo.
 - **Mapas oficiais em rodízio:** `zi_atoll`, `zi_blazehattan`, `zi_devastation_final1`, `zi_murky`, `zi_sanitarium` e `zi_woods`. Cada mapa dura 30 minutos.
 - **Ranking próprio**, separado dos outros servidores. Só conta com 6 jogadores ou mais no servidor:

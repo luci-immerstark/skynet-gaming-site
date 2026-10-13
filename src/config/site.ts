@@ -43,6 +43,7 @@ export const site = {
       ip: '212.38.89.226:27045',
       slots: 24,
       tick: null, // tick padrão do modo: não anunciar como 100 tick
+      launchDate: '2026-10-12',
       rankingUrl: 'https://stats.skynet-tf2.com.br/hlstats.php?game=tfzi',
     },
     l4d2: {
