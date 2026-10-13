@@ -36,7 +36,7 @@ main { min-height: 60vh; }
 .prose { max-width: 70ch; margin-inline: auto; font-size: 1.08rem; line-height: 1.8; }
 .prose h2, .prose h3 { color: var(--gold); margin: 2rem 0 .8rem; }
 .prose p { margin: 0 0 1.2rem; }
-.prose img { border-radius: var(--radius); margin: 1.5rem 0; }
+.prose img { border-radius: var(--radius); margin: 1.5rem auto; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }

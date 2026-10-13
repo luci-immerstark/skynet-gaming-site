@@ -10,7 +10,7 @@ export const site = {
   // Cloudflare Web Analytics: cole o token aqui (Analytics & Logs → Web Analytics → Manage site). Vazio = sem script.
   analyticsToken: '' as string,
   // Páginas ainda sem conteúdo real: ficam com noindex e fora do sitemap. Remova a chave quando a página estiver pronta.
-  paginasProvisorias: ['eventos'] as string[],
+  paginasProvisorias: [] as string[],
   // Servidores da comunidade, na ordem em que aparecem no site. O IP só é escrito aqui.
   servers: {
     classic: {
@@ -34,6 +34,16 @@ export const site = {
       tick: 100,
       launchDate: '2026-10-06',
       rankingUrl: 'https://stats.skynet-tf2.com.br/hlstats.php?game=tfdb',
+    },
+    zombieInfection: {
+      id: 'zombieInfection',
+      game: 'tf2',
+      short: 'Zombie Infection',
+      name: 'SKYNET GAMING BRASIL / LATAM - ZOMBIE INFECTION',
+      ip: '212.38.89.226:27045',
+      slots: 24,
+      tick: null, // tick padrão do modo: não anunciar como 100 tick
+      rankingUrl: 'https://stats.skynet-tf2.com.br/hlstats.php?game=tfzi',
     },
     l4d2: {
       id: 'l4d2',
@@ -74,7 +84,7 @@ export const site = {
 
 export type Server = (typeof site.servers)[keyof typeof site.servers];
 export type Game = Server['game'];
-export const serverList: Server[] = [site.servers.classic, site.servers.dodgeball, site.servers.l4d2];
+export const serverList: Server[] = [site.servers.classic, site.servers.dodgeball, site.servers.zombieInfection, site.servers.l4d2];
 /** Servidores agrupados por jogo, na ordem de exibição. Todo lugar que lista IPs usa isto. */
 export const games: { id: Game; servers: Server[] }[] = [
   { id: 'tf2', servers: serverList.filter((s) => s.game === 'tf2') },

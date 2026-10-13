@@ -1,6 +1,6 @@
 # SKYNET Gaming Brasil
 
-> Comunidade para Brasil e América Latina com três servidores dedicados de 100 tick. Team Fortress 2 (TF2), hospedados em São Paulo: Classic Maps (40 slots, mapas clássicos) e Dodgeball (8 slots, só Pyro). Left 4 Dead 2: Coop (campanha cooperativa, até 20 jogadores). Cada servidor tem ranking próprio. / Community for Brazil and Latin America with three dedicated 100 tick servers: Team Fortress 2 (Classic Maps and Dodgeball, hosted in São Paulo) and Left 4 Dead 2 (Coop), each with its own ranking.
+> Comunidade para Brasil e América Latina com quatro servidores dedicados. Team Fortress 2 (TF2), hospedados em São Paulo: Classic Maps (40 slots, 100 tick, mapas clássicos), Dodgeball (8 slots, 100 tick, só Pyro) e Zombie Infection (24 slots, modo oficial de zumbis, no tick padrão do modo). Left 4 Dead 2: Coop (campanha cooperativa, até 20 jogadores, 100 tick). Cada servidor tem ranking próprio. / Community for Brazil and Latin America with four dedicated servers: Team Fortress 2 (Classic Maps and Dodgeball at 100 tick, and Zombie Infection at the mode's default tick rate, hosted in São Paulo) and Left 4 Dead 2 (Coop, 100 tick), each with its own ranking.
 
 O site está em português (padrão), espanhol da América Latina e inglês. Cada página abaixo existe nos três idiomas: `/` (pt-BR), `/es/` (es-419) e `/en/` (en).
 
@@ -32,6 +32,16 @@ Jogos: Team Fortress 2 (gratuito na Steam) e Left 4 Dead 2. Região: Brasil e Am
 - Ranking próprio, separado do Classic Maps: https://stats.skynet-tf2.com.br/hlstats.php?game=tfdb. Todos começam com 1000 pontos: +1 por kill, -1 por morte, +2 para cada jogador do time que vence a rodada; só conta com 4 ou mais jogadores no servidor; comandos no chat: rank, top10, session, place
 - Data de lançamento: 6 de outubro de 2026 (2026-10-06)
 
+### SKYNET GAMING BRASIL / LATAM - ZOMBIE INFECTION
+
+- Endereço (IP:porta): 212.38.89.226:27045
+- Comando para conectar no console do jogo: `connect 212.38.89.226:27045`
+- Link para abrir o jogo já conectado: steam://connect/212.38.89.226:27045
+- Capacidade: 24 slots; roda no tick padrão do modo (não é 100 tick); hospedado em São Paulo
+- Modo oficial de zumbis do TF2: todos começam como sobreviventes no RED, alguns são sorteados para virar zumbi no BLU, e quem morre vira zumbi; os zumbis vencem se infectarem todo mundo, e o RED vence se algum sobrevivente aguentar até o tempo acabar
+- Mapas oficiais em rodízio, 30 minutos cada: zi_atoll, zi_blazehattan, zi_devastation_final1, zi_murky, zi_sanitarium, zi_woods
+- Ranking próprio: https://stats.skynet-tf2.com.br/hlstats.php?game=tfzi; só conta com 6 ou mais jogadores no servidor. Zumbi infecta um sobrevivente: +5 (quem foi infectado perde 1); sobrevivente mata um zumbi: +1; assistência como zumbi: +1; fim da rodada: +8 para cada sobrevivente vivo se o RED vencer, +4 para cada zumbi se o BLU vencer
+
 ## Left 4 Dead 2
 
 ### [COOP] SKYNET GAMING BRASIL / LATAM [100-Tick Rate]
@@ -46,17 +56,18 @@ Jogos: Team Fortress 2 (gratuito na Steam) e Left 4 Dead 2. Região: Brasil e Am
 
 ## Evento de inauguração
 
-De 30/10/2026 às 20h até 02/11/2026 às 20h (horário de Brasília, UTC-3); R$ 500 em prêmios para o TOP 5 do ranking do servidor Classic Maps. O evento vale somente para o ranking do Classic Maps, não para os do Dodgeball nem do Left 4 Dead 2.
+De 30/10/2026 às 20h até 02/11/2026 às 20h (horário de Brasília, UTC-3); R$ 500 em prêmios para o TOP 5 do ranking do servidor Classic Maps. O evento vale somente para o ranking do Classic Maps, não para os do Dodgeball, do Zombie Infection nem do Left 4 Dead 2.
 
 ## Páginas principais
 
-- [Página inicial](https://skynet-tf2.com.br/): resumo dos três servidores, seção Nossos servidores (IPs por jogo, para copiar e jogar); o link /#l4d2 abre a página já no slide do Left 4 Dead 2, evento de inauguração e links. Versões: [es](https://skynet-tf2.com.br/es/), [en](https://skynet-tf2.com.br/en/).
+- [Página inicial](https://skynet-tf2.com.br/): resumo dos quatro servidores, seção Nossos servidores (IPs por jogo, para copiar e jogar); o link /#l4d2 abre a página já no slide do Left 4 Dead 2, evento de inauguração e links. Versões: [es](https://skynet-tf2.com.br/es/), [en](https://skynet-tf2.com.br/en/).
 - [Regras do servidor](https://skynet-tf2.com.br/#regras): as 9 regras da comunidade, válidas em todos os nossos servidores (respeito, sem conteúdo impróprio, sem spam, cheats = banimento, entre outras). Versões: [es](https://skynet-tf2.com.br/es/#regras), [en](https://skynet-tf2.com.br/en/#regras).
-- [Perguntas frequentes](https://skynet-tf2.com.br/#faq): como entrar, qual é o IP de cada servidor, se é preciso baixar algo, como funcionam os rankings, o que é o servidor de Dodgeball e como denunciar. Versões: [es](https://skynet-tf2.com.br/es/#faq), [en](https://skynet-tf2.com.br/en/#faq).
+- [Perguntas frequentes](https://skynet-tf2.com.br/#faq): como entrar, qual é o IP de cada servidor, se é preciso baixar algo, como funcionam os rankings, o que é o servidor de Dodgeball, o que é o servidor de Zombie Infection e como denunciar. Versões: [es](https://skynet-tf2.com.br/es/#faq), [en](https://skynet-tf2.com.br/en/#faq).
 - [Blog](https://skynet-tf2.com.br/blog/): novidades, atualizações e guias da comunidade. Versões: [es](https://skynet-tf2.com.br/es/blog/), [en](https://skynet-tf2.com.br/en/blog/).
 
 ## Guias no blog
 
+- [O que é Zombie Infection no TF2: como surgiu e como jogar](https://skynet-tf2.com.br/blog/o-que-e-zombie-infection-no-tf2/): o modo Zombie Infection, sua origem, como jogar, as habilidades dos zumbis e como é o nosso servidor. Versões: [es](https://skynet-tf2.com.br/es/blog/que-es-zombie-infection-en-tf2/), [en](https://skynet-tf2.com.br/en/blog/what-is-tf2-zombie-infection/).
 - [O que é Dodgeball no TF2: como surgiu e como jogar](https://skynet-tf2.com.br/blog/o-que-e-dodgeball-no-tf2/): o modo Dodgeball, sua origem, como jogar e como é o nosso servidor. Versões: [es](https://skynet-tf2.com.br/es/blog/que-es-dodgeball-en-tf2/), [en](https://skynet-tf2.com.br/en/blog/what-is-tf2-dodgeball/).
 - [Bem-vindos ao SKYNET GAMING BRASIL & LATAM!](https://skynet-tf2.com.br/blog/bem-vindos/): apresentação dos servidores, rotação de mapas, evento e equipe.
 - [Como entrar em um servidor comunitário de TF2?](https://skynet-tf2.com.br/blog/como-entrar-em-servidor-de-tf2/): passo a passo pelo console e pelo navegador de servidores.
@@ -65,7 +76,7 @@ De 30/10/2026 às 20h até 02/11/2026 às 20h (horário de Brasília, UTC-3); R$
 
 ## Links da comunidade
 
-- [Ranking (HLstatsZ)](https://stats.skynet-tf2.com.br/hlstats.php): escolha entre o ranking do Classic Maps (?game=tf), o do Dodgeball (?game=tfdb) e o do Left 4 Dead 2 (?game=l4d2).
+- [Ranking (HLstatsZ)](https://stats.skynet-tf2.com.br/hlstats.php): escolha entre o ranking do Classic Maps (?game=tf), o do Dodgeball (?game=tfdb), o do Zombie Infection (?game=tfzi) e o do Left 4 Dead 2 (?game=l4d2).
 - [SourceBans](https://bans.skynet-tf2.com.br/index.php?p=home): lista pública de bans e punições aplicados.
 - [Discord oficial](https://discord.gg/HV7d6x8pEK): comunidade, suporte, anúncios e denúncias.
 - [Grupo na Steam](https://steamcommunity.com/groups/skynetgaming-tf2): grupo da comunidade e eventos pela Steam.

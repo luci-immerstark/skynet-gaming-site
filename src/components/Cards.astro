@@ -5,8 +5,8 @@ import blog from '../assets/img/card-blog.jpg';
 import ranking from '../assets/img/card-ranking.jpg';
 import sourcebans from '../assets/img/card-sourcebans.jpg';
 import steam from '../assets/img/card-steam.jpg';
-import eventos from '../assets/img/card-eventos.jpg';
 import dodgeball from '../assets/img/card-dodgeball.jpg';
+import zombie from '../assets/img/zombie-infection-horda.webp';
 import l4d2 from '../assets/img/hero-l4d2.jpg';
 import { site } from '../config/site';
 import { useT, pagePath, postPath } from '../i18n/utils';
@@ -18,7 +18,7 @@ const cards = [
   { k: 'ranking', img: ranking, href: site.rankingUrl, ext: true, badge: null, alt: 'Heavy robô' },
   { k: 'sourcebans', img: sourcebans, href: site.sourcebansUrl, ext: true, badge: null, alt: 'Heavy' },
   { k: 'steam', img: steam, href: site.steamGroupUrl, ext: true, badge: null, steam: true, alt: 'Todas as classes do TF2' },
-  { k: 'eventos', img: eventos, href: pagePath(lang, 'eventos'), ext: false, badge: 'soon', alt: 'Personagens em evento sazonal' },
+  { k: 'zi', img: zombie, href: postPath(lang, 'zombieInfection'), ext: false, badge: 'new', alt: t('card.zi.alt') },
   { k: 'dodgeball', img: dodgeball, href: postPath(lang, 'dodgeball'), ext: false, badge: 'new', alt: 'Pyro' },
   { k: 'l4d2', img: l4d2, href: '#srv-l4d2', ext: false, badge: 'new', alt: 'Zumbis em um cemitério ao pôr do sol' },
 ] as const;
@@ -26,7 +26,7 @@ const cards = [
 <section class="section" aria-label="Links">
   <div class="container grid">
     {cards.map((c, i) => (
-      <a class:list={['card', { wide: i === cards.length - 1 && cards.length % 3 === 1 }]} href={c.href} {...(c.ext ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>
+      <a data-card={c.k} class:list={['card', { wide: i === cards.length - 1 && cards.length % 3 === 1 }]} href={c.href} {...(c.ext ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>
         <Image src={c.img} alt={c.alt} widths={[400, 700, 1000, 1400]} sizes={i === cards.length - 1 ? "(min-width: 640px) 1200px, 100vw" : "(min-width: 960px) 380px, (min-width: 640px) 50vw, 100vw"} loading="lazy" />
         <div class="shade"></div>
         {c.badge && <span class="badge soon">{t(`badge.${c.badge}` as const)}</span>}
@@ -44,6 +44,8 @@ const cards = [
   .card { position: relative; display: block; aspect-ratio: 16 / 10; border-radius: var(--radius); overflow: hidden; border: 2px solid transparent; color: var(--text); text-decoration: none; background: var(--surface); transition: border-color .25s, box-shadow .25s; }
   .card :global(img) { width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
   /* Com 7 cards, o último ocuparia sozinho a linha: ele passa a ocupar a linha toda. */
+  /* Zombie Infection: o Heavy (rosto no alto, no centro) fica sempre visível. */
+  .card[data-card='zi'] :global(img) { object-position: 50% 15%; }
   .card.wide :global(img) { object-position: center 45%; }
   @media (min-width: 640px) { .card.wide { grid-column: 1 / -1; aspect-ratio: 16 / 6; } }
   @media (min-width: 960px) { .card.wide { aspect-ratio: 21 / 6; } }

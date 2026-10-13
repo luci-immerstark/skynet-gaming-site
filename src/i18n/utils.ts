@@ -51,11 +51,10 @@ export function formatLong(date: Date | string, lang: Lang, timeZone = 'America/
 /** Endereço de cada página fixa por idioma (o slug pode ser traduzido). */
 export const pageRoutes = {
   blog: { 'pt-br': '/blog/', es: '/blog/', en: '/blog/' },
-  eventos: { 'pt-br': '/eventos/', es: '/eventos/', en: '/events/' },
 } as const;
 export type PageKey = keyof typeof pageRoutes;
 
-/** URL localizada de uma página fixa: pagePath('en', 'eventos') => '/en/events/'. */
+/** URL localizada de uma página fixa: pagePath('en', 'blog') => '/en/blog/'. */
 export function pagePath(lang: Lang, page: PageKey): string {
   return localePath(lang, pageRoutes[page][lang]);
 }
@@ -63,6 +62,7 @@ export function pagePath(lang: Lang, page: PageKey): string {
 /** Slug de cada post citado em páginas fixas (traduzido por idioma). */
 export const postSlugs = {
   dodgeball: { 'pt-br': 'o-que-e-dodgeball-no-tf2', es: 'que-es-dodgeball-en-tf2', en: 'what-is-tf2-dodgeball' },
+  zombieInfection: { 'pt-br': 'o-que-e-zombie-infection-no-tf2', es: 'que-es-zombie-infection-en-tf2', en: 'what-is-tf2-zombie-infection' },
 } as const;
 
 /** URL localizada de um post: postPath('es', 'dodgeball') => '/es/blog/que-es-dodgeball-en-tf2/'. */
@@ -70,15 +70,15 @@ export function postPath(lang: Lang, post: keyof typeof postSlugs): string {
   return localePath(lang, `/blog/${postSlugs[post][lang]}`);
 }
 
-/** Troca {classic}, {dodgeball} e {l4d2} pelo IP:porta de cada servidor (os IPs ficam só em site.ts). */
+/** Troca {classic}, {dodgeball}, {zi} e {l4d2} pelo IP:porta de cada servidor (os IPs ficam só em site.ts). */
 export function fillIps(text: string): string {
-  return text.replaceAll('{classic}', site.servers.classic.ip).replaceAll('{dodgeball}', site.servers.dodgeball.ip).replaceAll('{l4d2}', site.servers.l4d2.ip);
+  return text.replaceAll('{classic}', site.servers.classic.ip).replaceAll('{dodgeball}', site.servers.dodgeball.ip).replaceAll('{zi}', site.servers.zombieInfection.ip).replaceAll('{l4d2}', site.servers.l4d2.ip);
 }
 
 /** Perguntas do FAQ (página inicial e dados estruturados), com os IPs já preenchidos. */
 export function faqItems(lang: Lang) {
   const t = useT(lang);
-  return ([1, 2, 3, 4, 5, 6] as const).map((n) => ({
+  return ([1, 2, 3, 4, 5, 6, 7] as const).map((n) => ({
     n,
     q: t(`faq.${n}.q` as const),
     a: fillIps(t(`faq.${n}.a` as const)),

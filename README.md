@@ -48,4 +48,4 @@ As imagens estão em `src/assets/img/`. Substitua o arquivo mantendo o mesmo nom
 - Cloudflare Web Analytics: preencha `analyticsToken` em `src/config/site.ts`. Vazio = nenhum script. A CSP em `public/_headers` já permite o script.
 
 ## Páginas provisórias (noindex)
-`paginasProvisorias` em `src/config/site.ts` lista as páginas sem conteúdo real (hoje só `eventos`). Elas recebem `noindex, follow` e ficam fora do sitemap. Quando uma página ganhar conteúdo, remova a chave da lista: ela volta a ser indexada e entra no sitemap. Os endereços fixos de cada idioma estão em `pageRoutes` (`src/i18n/utils.ts`), por exemplo `/en/events/`.
+`paginasProvisorias` em `src/config/site.ts` lista as páginas sem conteúdo real (hoje nenhuma: a lista está vazia). Elas recebem `noindex, follow` e ficam fora do sitemap. Quando uma página ganhar conteúdo, remova a chave da lista: ela volta a ser indexada e entra no sitemap. Os endereços fixos de cada idioma estão em `pageRoutes` (`src/i18n/utils.ts`).

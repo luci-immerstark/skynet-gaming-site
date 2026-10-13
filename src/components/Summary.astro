@@ -9,9 +9,9 @@ const text = t('summary.text')
   .replace('{classicDate}', formatLong(site.servers.classic.launchDate, lang))
   .replace('{dodgeballDate}', formatLong(site.servers.dodgeball.launchDate, lang));
 // Os comandos connect viram <code>; os IPs vêm de site.servers.
-const parts = text.split(/(connect \{(?:classic|dodgeball|l4d2)\})/).map((p) => {
-  const m = p.match(/^connect \{(classic|dodgeball|l4d2)\}$/);
-  return m ? { code: `connect ${site.servers[m[1] as 'classic' | 'dodgeball' | 'l4d2'].ip}` } : { text: p };
+const parts = text.split(/(connect \{(?:classic|dodgeball|zi|l4d2)\})/).map((p) => {
+  const m = p.match(/^connect \{(classic|dodgeball|zi|l4d2)\}$/);
+  return m ? { code: `connect ${site.servers[(m[1] === 'zi' ? 'zombieInfection' : m[1]) as 'classic' | 'dodgeball' | 'zombieInfection' | 'l4d2'].ip}` } : { text: p };
 });
 ---
 <section class="summary" aria-label="SKYNET Gaming">
