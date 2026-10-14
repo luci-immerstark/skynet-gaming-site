@@ -4,7 +4,7 @@ title: "What Is TF2 Dodgeball: How It Started and How to Play"
 seoTitle: "What Is TF2 Dodgeball and How to Play | SKYNET"
 description: "Learn about TF2's Dodgeball mode: homing rockets, Pyro only, how it started and how to play on the SKYNET Gaming server, with its own ranking."
 date: 2026-10-06
-updated: 2026-10-06
+updated: 2026-10-14
 cover: ../../../assets/img/dodgeball-pyro-mascara.jpg
 draft: false
 ---
@@ -51,8 +51,6 @@ If you're just starting out: play it calm, focus only on deflecting, and leave s
 - **Homing rockets:** they speed up with every deflection, and about 10% are "Nukes".
 - **Its own ranking**, separate from the main server. Everyone starts at 1000 points: +1 per kill, -1 per death and +2 for every player on the team that wins the round. It only counts with 4 or more players on the server. Chat commands are the same: `rank`, `top10`, `session` and `place`.
 - **Same staff:** SourceBans, admins, rules and `!report` are the same on both servers, and a ban applies on both.
-
-The grand opening event (R$ 500 for the TOP 5, from Oct 30 at 8 PM to Nov 2 at 8 PM, Brasília time) applies **only** to the Classic Maps server ranking, not to the Dodgeball one.
 
 ## How to join
 

@@ -1,4 +1,23 @@
 // Configuração central do site. Troque aqui links, servidores (IP, slots, ranking) e dados do evento.
+/** Evento em destaque. status 'adiado': banner sem datas, prêmio nem contagem (start/end/prize/dates não são usados).
+ *  status 'agendado': banner com contagem regressiva, prêmio e datas (start/end: ISO com fuso fixo). enabled: false esconde o banner. */
+export type SiteEvent = {
+  enabled: boolean;
+  status: 'agendado' | 'adiado';
+  start?: string;
+  end?: string;
+  text: Record<'pt-br' | 'es' | 'en', { title: string; prize?: string; dates?: string }>;
+};
+const event: SiteEvent = {
+  enabled: true,
+  status: 'adiado',
+  text: {
+    'pt-br': { title: 'EVENTO DE INAUGURAÇÃO ADIADO' },
+    es: { title: 'EVENTO DE INAUGURACIÓN POSPUESTO' },
+    en: { title: 'GRAND OPENING EVENT POSTPONED' },
+  },
+};
+
 export const site = {
   name: 'SKYNET GAMING TF2',
   url: 'https://skynet-tf2.com.br',
@@ -57,30 +76,8 @@ export const site = {
       rankingUrl: 'https://stats.skynet-tf2.com.br/hlstats.php?game=l4d2',
     },
   },
-  // Evento em destaque. Para o próximo evento, edite só este bloco.
-  // enabled: false esconde o banner. start/end: ISO com fuso fixo.
-  event: {
-    enabled: true,
-    start: '2026-10-30T20:00:00-03:00',
-    end: '2026-11-02T20:00:00-03:00',
-    text: {
-      'pt-br': {
-        title: 'EVENTO DE INAUGURAÇÃO',
-        prize: 'R$ 500 em prêmios para o TOP 5 do ranking do servidor Classic Maps!',
-        dates: 'De 30/10 às 20h até 02/11 às 20h (horário de Brasília)',
-      },
-      es: {
-        title: 'EVENTO DE INAUGURACIÓN',
-        prize: '¡R$ 500 en premios para el TOP 5 del ranking del servidor Classic Maps!',
-        dates: 'Del 30/10 a las 20h al 02/11 a las 20h (hora de Brasil, UTC-3)',
-      },
-      en: {
-        title: 'GRAND OPENING EVENT',
-        prize: 'R$ 500 in prizes for the TOP 5 of the Classic Maps server ranking!',
-        dates: 'From Oct 30 at 8 PM to Nov 2 at 8 PM (Brasília time, UTC-3)',
-      },
-    },
-  },
+  // Evento em destaque. Para o próximo evento, edite só o `event` acima.
+  event,
 } as const;
 
 export type Server = (typeof site.servers)[keyof typeof site.servers];

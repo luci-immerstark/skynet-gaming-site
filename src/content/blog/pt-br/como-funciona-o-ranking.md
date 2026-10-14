@@ -4,7 +4,7 @@ title: "Como funciona o ranking do servidor?"
 seoTitle: "Como funciona o ranking do servidor de TF2 | SKYNET"
 description: "Como o ranking HLstatsZ do servidor SKYNET Gaming pontua jogadores, quais comandos usar no chat (rank, top10, session, place) e onde ver o ranking."
 date: 2026-10-02
-updated: 2026-10-06
+updated: 2026-10-14
 cover: ../../../assets/img/card-ranking.jpg
 draft: false
 ---
@@ -34,6 +34,6 @@ Digite no chat do jogo:
 
 O ranking completo, com estatísticas por jogador, armas e mapas, fica em [stats.skynet-tf2.com.br](https://stats.skynet-tf2.com.br/hlstats.php?game=tf).
 
-## Ranking e o evento de inauguração
+## Evento de inauguração adiado
 
-No evento de inauguração (de 30/10 às 20h até 02/11 às 20h, horário de Brasília), o TOP 5 do ranking do Classic Maps ao final do evento leva **R$ 500 em prêmios**. Para participar, basta jogar no Classic Maps. O ranking do Dodgeball não vale para o evento. Antes, leia as [regras do servidor](/#regras): o uso de cheats leva a banimento.
+O evento de inauguração foi adiado por tempo indeterminado. A nova data será anunciada aqui no site e no Discord. Antes de jogar, leia as [regras do servidor](/#regras): o uso de cheats leva a banimento.

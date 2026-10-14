@@ -26,10 +26,10 @@ const organization = {
   name: 'SKYNET GAMING BRASIL', alternateName: site.name, url: site.url, logo: abs('/icon-512.png'),
   sameAs: [site.discordUrl, site.steamGroupUrl],
 };
-// Evento em destaque: gerado de site.event, então atualiza sozinho no próximo evento.
+// Evento em destaque: gerado de site.event só no modo 'agendado' (adiado não tem data, então não gera o bloco).
 const ev = site.event;
-const eventLd = ev.enabled && path === '/' ? {
-  '@context': 'https://schema.org', '@type': 'Event', name: ev.text[lang].title, description: ev.text[lang].prize,
+const eventLd = ev.enabled && ev.status === 'agendado' && ev.start && ev.end && path === '/' ? {
+  '@context': 'https://schema.org', '@type': 'Event', name: ev.text[lang].title, description: ev.text[lang].prize ?? ev.text[lang].title,
   startDate: ev.start, endDate: ev.end, inLanguage: htmlLang(lang),
   eventStatus: 'https://schema.org/EventScheduled', eventAttendanceMode: 'https://schema.org/OnlineEventAttendanceMode',
   location: { '@type': 'VirtualLocation', url: site.url }, image: [abs(og.src)], url: canonical,

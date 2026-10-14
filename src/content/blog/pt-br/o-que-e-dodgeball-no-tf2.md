@@ -4,7 +4,7 @@ title: "O que é Dodgeball no TF2: como surgiu e como jogar"
 seoTitle: "O que é Dodgeball no TF2 e como jogar | SKYNET"
 description: "Entenda o modo Dodgeball do TF2: foguetes teleguiados, só Pyro, como surgiu e como jogar no servidor da SKYNET Gaming, com ranking próprio."
 date: 2026-10-06
-updated: 2026-10-06
+updated: 2026-10-14
 cover: ../../../assets/img/dodgeball-pyro-mascara.jpg
 draft: false
 ---
@@ -51,8 +51,6 @@ Para quem está começando: jogue com calma, foque só em rebater e deixe a velo
 - **Foguetes teleguiados:** aceleram a cada rebatida, e cerca de 10% são "Nuke".
 - **Ranking próprio**, separado do servidor principal. Todos começam com 1000 pontos: +1 por kill, -1 por morte e +2 para cada jogador do time que vence a rodada. Só conta com 4 ou mais jogadores no servidor. Os comandos no chat são os mesmos: `rank`, `top10`, `session` e `place`.
 - **Mesma administração:** SourceBans, admins, regras e `!report` são os mesmos dos dois servidores, e um ban vale nos dois.
-
-O evento de inauguração (R$ 500 para o TOP 5, de 30/10 às 20h até 02/11 às 20h, horário de Brasília) vale **somente** para o ranking do servidor Classic Maps, não para o de Dodgeball.
 
 ## Como entrar
 

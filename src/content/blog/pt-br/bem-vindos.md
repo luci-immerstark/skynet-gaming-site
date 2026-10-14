@@ -1,10 +1,10 @@
 ---
 translationKey: "welcome"
 title: "Bem-vindos ao SKYNET GAMING BRASIL & LATAM!"
-seoTitle: "Servidor TF2 Brasil: boas-vindas e evento | SKYNET"
-description: "Conheça o servidor de TF2 100 tick em São Paulo: rotação de mapas clássicos, ranking ao vivo, regras e o evento de inauguração com R$ 500 em prêmios."
+seoTitle: "Servidor TF2 Brasil: boas-vindas e servidores | SKYNET"
+description: "Conheça o servidor de TF2 100 tick em São Paulo: rotação de mapas clássicos, ranking ao vivo e regras."
 date: 2026-10-02
-updated: 2026-10-06
+updated: 2026-10-14
 cover: ../../../assets/img/hero-bg.jpg
 draft: false
 ---
@@ -31,15 +31,9 @@ Badwater, Dustbowl, Upward, Goldrush e 2Fort.
 
 Agora a SKYNET GAMING tem um segundo servidor: o **Dodgeball**, onde todo mundo joga de Pyro e rebate foguetes teleguiados. Ele tem 8 slots, 100 tick, ranking próprio e está no ar desde 06/10/2026. Para entrar, digite `connect 212.38.89.226:27025`. Quer entender o modo? Leia [O que é Dodgeball no TF2](/blog/o-que-e-dodgeball-no-tf2/).
 
-## 🏆 Evento de inauguração
+## 🏆 Evento de inauguração adiado
 
-**R$ 500 em prêmios para o TOP 5 do ranking do servidor Classic Maps!**
-
-- Início: 30/10 às 20h
-- Encerramento: 02/11 às 20h
-- Horário de Brasília
-
-Para participar, basta jogar no servidor. Os 5 primeiros colocados do ranking do Classic Maps ao final do evento levam os prêmios. O ranking do Dodgeball é separado e não vale para o evento.
+O evento de inauguração foi adiado por tempo indeterminado. Antes, queremos formar uma base sólida de jogadores. A nova data será anunciada aqui no site e no Discord.
 
 ## 📊 Ranking
 

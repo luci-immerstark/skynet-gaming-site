@@ -4,7 +4,7 @@ title: "Qué es Zombie Infection en TF2: cómo surgió y cómo jugar"
 seoTitle: "Qué es Zombie Infection en TF2 y cómo jugar | SKYNET"
 description: "Conoce el modo Zombie Infection de TF2: sobrevivientes contra zombis, las habilidades de cada clase, cómo surgió y cómo jugar en el servidor de SKYNET Gaming, con ranking propio."
 date: 2026-10-12
-updated: 2026-10-13
+updated: 2026-10-14
 cover: ../../../assets/img/zombie-infection-horda.webp
 draft: false
 ---
@@ -70,8 +70,6 @@ Los hechos de abajo vienen de la [Team Fortress Wiki](https://wiki.teamfortress.
   - asistencia como zombi: +1;
   - al final de la ronda, si RED gana, cada sobreviviente vivo recibe +8; si BLU gana, cada zombi recibe +4.
 - **Misma administración:** reglas, admins, SourceBans y Discord son los mismos de los otros servidores.
-
-El evento de inauguración (R$ 500 para el TOP 5, del 30/10 a las 20h al 02/11 a las 20h, hora de Brasil) vale **solo** para el ranking del servidor Classic Maps, no para el de Zombie Infection.
 
 ## Cómo entrar
 

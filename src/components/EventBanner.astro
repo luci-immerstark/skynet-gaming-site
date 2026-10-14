@@ -9,7 +9,25 @@ const ev = site.event;
 const txt = ev.text[lang];
 const units = [['d', t('unit.days')], ['h', t('unit.hours')], ['m', t('unit.minutes')], ['s', t('unit.seconds')]];
 ---
-{ev.enabled && (
+{ev.enabled && ev.status === 'adiado' && (
+  <section class="event-wrap" aria-labelledby="event-title">
+    <div class="container">
+      <div class="event postponed">
+        <div class="trophy"><Icon name="trophy" size={64} /></div>
+        <div class="body">
+          <span class="live paused">{t('event.postponed.badge')}</span>
+          <h2 id="event-title">{txt.title}</h2>
+          <p class="intro">{t('event.postponed.reason')}</p>
+          <p class="dates">{t('event.postponed.next')}</p>
+          <div class="actions">
+            <a class="btn btn-gold" href={site.discordUrl} target="_blank" rel="noopener noreferrer">{t('event.postponed.cta')}<span class="sr"> ({t('external')})</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+)}
+{ev.enabled && ev.status === 'agendado' && (
   <section class="event-wrap" aria-labelledby="event-title">
     <div class="container">
       <div class="event" data-start={ev.start} data-end={ev.end}>
@@ -47,6 +65,7 @@ const units = [['d', t('unit.days')], ['h', t('unit.hours')], ['m', t('unit.minu
   .prize { font-size: clamp(1.1rem, 2.5vw, 1.5rem); font-weight: 600; margin: 0; }
   .dates { color: var(--muted); margin: 0; }
   .scope { margin: 0; color: #d6d9de; font-size: .95rem; }
+  .live.paused { animation: none; background: #7a5c00; color: #fff3c4; }
   .live { background: #e5322d; color: #fff; font: 700 .85rem/1 var(--font-display); letter-spacing: .12em; padding: .35rem .8rem; border-radius: 999px; animation: pulse 1.4s infinite; }
   @keyframes pulse { 0%,100% { box-shadow: 0 0 0 0 rgba(229,50,45,.7); } 50% { box-shadow: 0 0 0 10px rgba(229,50,45,0); } }
   .countdown { width: 100%; display: flex; flex-direction: column; align-items: center; }
@@ -70,7 +89,7 @@ const units = [['d', t('unit.days')], ['h', t('unit.hours')], ['m', t('unit.minu
 </style>
 <script>
   const el = document.querySelector<HTMLElement>('.event');
-  if (el) {
+  if (el && el.dataset.start) {
     const start = Date.parse(el.dataset.start!), end = Date.parse(el.dataset.end!);
     // Só em desenvolvimento: ?fase=antes|durante|depois simula as fases do evento.
     const forced = import.meta.env.DEV ? new URLSearchParams(location.search).get('fase') : null;

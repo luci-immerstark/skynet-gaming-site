@@ -4,7 +4,7 @@ title: "What Is TF2 Zombie Infection: How It Started and How to Play"
 seoTitle: "What Is TF2 Zombie Infection and How to Play | SKYNET"
 description: "Learn about TF2's Zombie Infection mode: survivors versus zombies, each class's ability, how it started and how to play on the SKYNET Gaming server, with its own ranking."
 date: 2026-10-12
-updated: 2026-10-13
+updated: 2026-10-14
 cover: ../../../assets/img/zombie-infection-horda.webp
 draft: false
 ---
@@ -70,8 +70,6 @@ The facts below come from the [Team Fortress Wiki](https://wiki.teamfortress.com
   - assist as a zombie: +1;
   - at the end of the round, if RED wins, each surviving player gets +8; if BLU wins, each zombie gets +4.
 - **Same administration:** rules, admins, SourceBans and Discord are the same as on the other servers.
-
-The grand opening event (R$ 500 for the TOP 5, from Oct 30 at 8 PM to Nov 2 at 8 PM, Brasília time) applies **only** to the Classic Maps server ranking, not to the Zombie Infection one.
 
 ## How to join
 
