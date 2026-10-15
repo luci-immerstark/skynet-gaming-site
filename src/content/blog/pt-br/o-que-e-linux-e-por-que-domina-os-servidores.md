@@ -4,11 +4,13 @@ title: "O que é Linux e por que ele domina os servidores do mundo"
 seoTitle: "O que é Linux? História, distribuições e servidores | SKYNET"
 description: "Entenda o que é Linux, software livre e open source, a história do GNU e do kernel, as distribuições, comandos básicos e por que ele domina os servidores."
 date: 2026-10-15
-cover: ../../../assets/img/card-blog.jpg
+cover: ../../../assets/img/blog-linux.jpg
 draft: false
 ---
 
 Se você joga online, quase com certeza já usou o Linux sem perceber: ele roda em uma enorme parte dos servidores da internet, e também dentro de celulares Android e de muitos aparelhos do dia a dia. Neste guia explicamos, do zero, o que é o Linux, de onde ele veio, como usá-lo e por que ele é a escolha número um para servidores, inclusive os nossos.
+
+![Tux, o pinguim mascote do Linux](../../../assets/img/blog-linux-tux.webp)
 
 ## O que é open source e software livre
 

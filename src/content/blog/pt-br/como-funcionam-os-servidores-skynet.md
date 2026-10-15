@@ -4,7 +4,7 @@ title: "Como funcionam os servidores SKYNET por dentro"
 seoTitle: "Como funcionam os servidores SKYNET por dentro | Bastidores"
 description: "Bastidores da SKYNET Gaming: VPS em São Paulo, Docker, SourceMod, ranking HLstatsZ, SourceBans, backups e monitoramento dos servidores de TF2 e Left 4 Dead 2."
 date: 2026-10-15
-cover: ../../../assets/img/card-blog.jpg
+cover: ../../../assets/img/blog-navegador-de-servidores.jpg
 draft: false
 ---
 
