@@ -1,11 +1,13 @@
 ---
 import logo from '../assets/img/logo-pequeno-colorido.svg';
 import Flag from './Flag.astro';
-import { localePath, useT, htmlLang } from '../i18n/utils';
+import { localePath, pagePath, useT, htmlLang } from '../i18n/utils';
 import { type Lang } from '../i18n/ui';
 interface Props { lang: Lang; alt: Record<Lang, string>; }
 const { lang, alt } = Astro.props;
 const t = useT(lang);
+const blogHref = pagePath(lang, 'blog');
+const inBlog = Astro.url.pathname.replace(/\/+$/, '').startsWith(blogHref.replace(/\/+$/, ''));
 const names: Record<Lang, string> = { 'pt-br': 'Português (Brasil)', es: 'Español', en: 'English' };
 ---
 <header class="site-header">
@@ -14,7 +16,10 @@ const names: Record<Lang, string> = { 'pt-br': 'Português (Brasil)', es: 'Espa�
       <img src={logo.src} alt="Logo SKYNET GAMING" width="36" height="36" decoding="async" />
       <span>SKYNET GAMING</span>
     </a>
-    <nav class="nav" aria-label="Menu"><a href={`${localePath(lang)}#regras`}>{t('nav.rules')}</a></nav>
+    <nav class="nav" aria-label="Menu">
+      <a href={`${localePath(lang)}#regras`}>{t('nav.rules')}</a>
+      <a href={blogHref} aria-current={inBlog ? 'page' : undefined}>{t('nav.blog')}</a>
+    </nav>
     <div class="lang" role="group" aria-label={t('nav.lang')}>
       {(['pt-br', 'es', 'en'] as Lang[]).map((l) => (
         <a href={alt[l]} data-lang={l} hreflang={htmlLang(l)} lang={htmlLang(l)}
@@ -30,7 +35,7 @@ const names: Record<Lang, string> = { 'pt-br': 'Português (Brasil)', es: 'Espa�
   .bar { display: flex; align-items: center; justify-content: space-between; height: 56px; }
   .brand { display: flex; align-items: center; gap: .6rem; font-family: var(--font-display); font-weight: 700; letter-spacing: .08em; color: var(--text); text-decoration: none; }
   .brand img { display: block; }
-  .nav { margin-left: auto; margin-right: 1.2rem; } .nav a { color: var(--text); text-decoration: none; font: 700 1rem var(--font-display); letter-spacing: .08em; text-transform: uppercase; padding: .3rem .2rem; } .nav a:hover { color: var(--gold); }
+  .nav { margin-left: auto; margin-right: 1.2rem; } .nav a { color: var(--text); text-decoration: none; font: 700 1rem var(--font-display); letter-spacing: .08em; text-transform: uppercase; padding: .3rem .2rem; } .nav a:hover, .nav a[aria-current='page'] { color: var(--gold); } .nav a + a { margin-left: 1rem; }
   .lang { display: flex; gap: .5rem; }
   .lang a { display: block; line-height: 0; padding: 4px; border-radius: 6px; border: 2px solid transparent; opacity: .55; transition: opacity .2s, border-color .2s; }
   .lang a:hover { opacity: .9; }
