@@ -3,6 +3,9 @@
 // O redirecionamento preserva ?query e #hash (ex.: /#l4d2 dos anúncios).
 (function () {
   try {
+    // Robôs de busca (Googlebot e cia.) não são redirecionados: cada endereço precisa ser lido no próprio idioma.
+    // Sem isso, o Google abria a raiz, era levado para /en/ e passava a tratar /en/ como cópia da página inicial.
+    if (/bot|crawl|spider|slurp|inspectiontool|facebookexternalhit/i.test(navigator.userAgent || '')) return;
     var p = location.pathname;
     var m = p.match(/^\/(es|en)(\/|$)/);
     var here = m ? m[1] : 'pt-br';

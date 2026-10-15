@@ -27,3 +27,11 @@
 /es/dodgeball /es/blog/que-es-dodgeball-en-tf2/ 301
 /en/dodgeball/ /en/blog/what-is-tf2-dodgeball/ 301
 /en/dodgeball /en/blog/what-is-tf2-dodgeball/ 301
+
+# Página provisória de eventos (removida): os endereços antigos levam à página inicial do idioma.
+/eventos/ / 301
+/eventos / 301
+/es/eventos/ /es/ 301
+/es/eventos /es/ 301
+/en/events/ /en/ 301
+/en/events /en/ 301
