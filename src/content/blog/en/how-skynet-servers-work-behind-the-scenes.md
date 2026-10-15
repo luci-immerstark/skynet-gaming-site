@@ -65,7 +65,7 @@ A mode built in **VScript** (the game's own scripting language), running at **66
 
 ### Left 4 Dead 2
 
-A **co-op campaign for 20 players**, at **100 tick** and **always on Expert**. The match starts with **4 survivor bots**. The server has the **`!buy`** menu: you earn points by killing infected (**including common zombies**) and spend them in the menu. Your points stay with you **until you leave the server**.
+A **co-op campaign for 20 players**, at **100 tick** and **always on Expert**. The match starts with **4 survivor bots**. The server has the **`!buy`** menu: you earn points by killing infected (**including common zombies**) and spend them in the menu. Your points **reset every map**.
 
 ## SourceMod and plugins
 

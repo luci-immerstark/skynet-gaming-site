@@ -65,7 +65,7 @@ Modo feito em **VScript** (a linguagem de scripts do próprio jogo), rodando a *
 
 ### Left 4 Dead 2
 
-**Campanha cooperativa para 20 jogadores**, em **100 tick** e **sempre no nível Expert**. A partida começa com **4 bots sobreviventes**. O servidor tem o menu **`!buy`**: você ganha pontos matando infectados (**inclusive os zumbis comuns**) e gasta esses pontos no menu. Os pontos ficam com você **até você sair do servidor**.
+**Campanha cooperativa para 20 jogadores**, em **100 tick** e **sempre no nível Expert**. A partida começa com **4 bots sobreviventes**. O servidor tem o menu **`!buy`**: você ganha pontos matando infectados (**inclusive os zumbis comuns**) e gasta esses pontos no menu. Os pontos **zeram a cada mapa**.
 
 ## SourceMod e plugins
 
