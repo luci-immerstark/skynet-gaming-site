@@ -51,7 +51,7 @@ A server for **40 players**, at **100 tick**, with classic TF2 maps. At the end 
 
 ### TF2 Dodgeball
 
-A server for **8 players**, at **100 tick**, **Pyro only** and **no bots**: the goal is to deflect the rockets. It has its own ranking:
+A server for **16 players**, **Pyro only** and **no bots**: the goal is to deflect the rockets. It has its own ranking:
 
 - **+1** for each kill;
 - **−1** for each death, including deaths from a rocket that wasn't deflected;

@@ -51,7 +51,7 @@ Servidor para **40 jugadores**, en **100 tick**, con mapas clásicos de TF2. Al 
 
 ### TF2 Dodgeball
 
-Servidor para **8 jugadores**, en **100 tick**, **solo con Pyro** y **sin bots**: el objetivo es devolver los cohetes. Tiene un ranking propio:
+Servidor para **16 jugadores**, **solo con Pyro** y **sin bots**: el objetivo es devolver los cohetes. Tiene un ranking propio:
 
 - **+1** por cada kill;
 - **−1** por cada muerte, incluida la causada por un cohete que no fue devuelto;

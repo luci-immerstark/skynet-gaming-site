@@ -49,8 +49,8 @@ export const site = {
       short: 'Dodgeball',
       name: 'SKYNET GAMING BRASIL / LATAM - DODGEBALL',
       ip: '212.38.89.226:27025',
-      slots: 8,
-      tick: 100,
+      slots: 16,
+      tick: null, // tick padrão do modo: não anunciar como 100 tick
       launchDate: '2026-10-06',
       rankingUrl: 'https://stats.skynet-tf2.com.br/hlstats.php?game=tfdb',
     },

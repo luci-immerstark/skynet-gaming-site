@@ -4,7 +4,7 @@ title: "Welcome to SKYNET GAMING BRASIL & LATAM!"
 seoTitle: "TF2 Server Brazil & LATAM: Welcome & Servers | SKYNET"
 description: "Meet our 100 tick TF2 server in São Paulo: classic map rotation, live ranking and rules."
 date: 2026-10-02
-updated: 2026-10-14
+updated: 2026-10-15
 cover: ../../../assets/img/hero-bg.jpg
 draft: false
 ---
@@ -29,7 +29,7 @@ Badwater, Dustbowl, Upward, Goldrush and 2Fort.
 
 ## 🚀 New: Dodgeball server
 
-SKYNET GAMING now has a second server: **Dodgeball**, where everyone plays Pyro and deflects homing rockets. It has 8 slots, 100 tick, its own ranking and has been online since 10/06/2026. To join, type `connect 212.38.89.226:27025`. Want to understand the mode? Read [What Is TF2 Dodgeball](/en/blog/what-is-tf2-dodgeball/).
+SKYNET GAMING now has a second server: **Dodgeball**, where everyone plays Pyro and deflects homing rockets. It has 16 slots, its own ranking and has been online since 10/06/2026. To join, type `connect 212.38.89.226:27025`. Want to understand the mode? Read [What Is TF2 Dodgeball](/en/blog/what-is-tf2-dodgeball/).
 
 ## 🏆 Grand opening event postponed
 

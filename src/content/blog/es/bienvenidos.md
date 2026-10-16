@@ -4,7 +4,7 @@ title: "¡Bienvenidos a SKYNET GAMING BRASIL & LATAM!"
 seoTitle: "Servidor TF2 Latinoamérica: bienvenida y servidores | SKYNET"
 description: "Conoce el servidor de TF2 de 100 tick en São Paulo: rotación de mapas clásicos, ranking en vivo y reglas."
 date: 2026-10-02
-updated: 2026-10-14
+updated: 2026-10-15
 cover: ../../../assets/img/hero-bg.jpg
 draft: false
 ---
@@ -29,7 +29,7 @@ Badwater, Dustbowl, Upward, Goldrush y 2Fort.
 
 ## 🚀 Nuevo: servidor de Dodgeball
 
-Ahora SKYNET GAMING tiene un segundo servidor: **Dodgeball**, donde todos juegan de Pyro y devuelven cohetes teledirigidos. Tiene 8 slots, 100 tick, ranking propio y está en línea desde el 06/10/2026. Para entrar, escribe `connect 212.38.89.226:27025`. ¿Quieres entender el modo? Lee [Qué es Dodgeball en TF2](/es/blog/que-es-dodgeball-en-tf2/).
+Ahora SKYNET GAMING tiene un segundo servidor: **Dodgeball**, donde todos juegan de Pyro y devuelven cohetes teledirigidos. Tiene 16 slots, ranking propio y está en línea desde el 06/10/2026. Para entrar, escribe `connect 212.38.89.226:27025`. ¿Quieres entender el modo? Lee [Qué es Dodgeball en TF2](/es/blog/que-es-dodgeball-en-tf2/).
 
 ## 🏆 Evento de inauguración pospuesto
 

@@ -1,6 +1,6 @@
 # SKYNET Gaming Brasil
 
-> Comunidade para Brasil e América Latina com quatro servidores dedicados. Team Fortress 2 (TF2), hospedados em São Paulo: Classic Maps (40 slots, 100 tick, mapas clássicos), Dodgeball (8 slots, 100 tick, só Pyro) e Zombie Infection (24 slots, modo oficial de zumbis, no tick padrão do modo). Left 4 Dead 2: Coop (campanha cooperativa, até 20 jogadores, 100 tick). Cada servidor tem ranking próprio. / Community for Brazil and Latin America with four dedicated servers: Team Fortress 2 (Classic Maps and Dodgeball at 100 tick, and Zombie Infection at the mode's default tick rate, hosted in São Paulo) and Left 4 Dead 2 (Coop, 100 tick), each with its own ranking.
+> Comunidade para Brasil e América Latina com quatro servidores dedicados. Team Fortress 2 (TF2), hospedados em São Paulo: Classic Maps (40 slots, 100 tick, mapas clássicos), Dodgeball (16 slots, só Pyro) e Zombie Infection (24 slots, modo oficial de zumbis, no tick padrão do modo). Left 4 Dead 2: Coop (campanha cooperativa, até 20 jogadores, 100 tick). Cada servidor tem ranking próprio. / Community for Brazil and Latin America with four dedicated servers: Team Fortress 2 (Classic Maps at 100 tick, and Dodgeball and Zombie Infection at the default tick rate, hosted in São Paulo) and Left 4 Dead 2 (Coop, 100 tick), each with its own ranking.
 
 O site está em português (padrão), espanhol da América Latina e inglês. Cada página abaixo existe nos três idiomas: `/` (pt-BR), `/es/` (es-419) e `/en/` (en).
 
@@ -25,9 +25,9 @@ Jogos: Team Fortress 2 (gratuito na Steam) e Left 4 Dead 2. Região: Brasil e Am
 - Endereço (IP:porta): 212.38.89.226:27025
 - Comando para conectar no console do jogo: `connect 212.38.89.226:27025`
 - Link para abrir o jogo já conectado: steam://connect/212.38.89.226:27025
-- Capacidade: 8 slots; tickrate: 100 tick
+- Capacidade: 16 slots; roda no tick padrão do TF2 (não é 100 tick); hospedado em São Paulo
 - Só Pyro: a classe é escolhida automaticamente ao entrar num time
-- 8 mapas (tfdb_amazon_b1, tfdb_catland_v1, tfdb_gov_spacedodgeball, tfdb_lithium, tfdb_majix, tfdb_ovni_v7, tfdb_potato_v3, tfdb_trainfalls_v3), baixados automaticamente na primeira entrada; cada mapa dura 20 minutos e, faltando 3 minutos, abre uma votação entre 3 mapas
+- 10 mapas (tfdb_amazon_b1, tfdb_backyard, tfdb_baseball, tfdb_blockland_v4_1, tfdb_hellspawn_b2, tfdb_indoor_tennis_b1a, tfdb_pacmen_a4, tfdb_risky_heights_v2, tfdb_rocketbucks_v2, tfdb_toolsheds_b4), baixados automaticamente na primeira entrada; cada mapa dura 20 minutos e, faltando 3 minutos, abre uma votação entre 3 mapas
 - Foguetes teleguiados que aceleram a cada rebatida; cerca de 10% são "Nuke" (mais lento, mais dano, explode com onda de choque)
 - Ranking próprio, separado do Classic Maps: https://stats.skynet-tf2.com.br/hlstats.php?game=tfdb. Todos começam com 1000 pontos: +1 por kill, -1 por morte, +2 para cada jogador do time que vence a rodada; só conta com 4 ou mais jogadores no servidor; comandos no chat: rank, top10, session, place
 - Data de lançamento: 6 de outubro de 2026 (2026-10-06)

@@ -4,7 +4,7 @@ title: "O que é Dodgeball no TF2: como surgiu e como jogar"
 seoTitle: "O que é Dodgeball no TF2 e como jogar | SKYNET"
 description: "Entenda o modo Dodgeball do TF2: foguetes teleguiados, só Pyro, como surgiu e como jogar no servidor da SKYNET Gaming, com ranking próprio."
 date: 2026-10-06
-updated: 2026-10-14
+updated: 2026-10-15
 cover: ../../../assets/img/dodgeball-pyro-mascara.jpg
 draft: false
 ---
@@ -43,10 +43,10 @@ Para quem está começando: jogue com calma, foque só em rebater e deixe a velo
 ## Como é o nosso servidor
 
 - **Nome:** SKYNET GAMING BRASIL / LATAM - DODGEBALL
-- **Capacidade e rede:** 8 slots, 100 tick, hospedado em São Paulo
+- **Capacidade e rede:** 16 slots, hospedado em São Paulo
 - **No ar desde:** 06/10/2026
 - **Só Pyro:** a classe é escolhida automaticamente quando você entra em um time.
-- **8 mapas:** `tfdb_amazon_b1`, `tfdb_catland_v1`, `tfdb_gov_spacedodgeball`, `tfdb_lithium`, `tfdb_majix`, `tfdb_ovni_v7`, `tfdb_potato_v3` e `tfdb_trainfalls_v3`. Os mapas são baixados automaticamente na primeira vez que você entra.
+- **10 mapas:** `tfdb_amazon_b1`, `tfdb_backyard`, `tfdb_baseball`, `tfdb_blockland_v4_1`, `tfdb_hellspawn_b2`, `tfdb_indoor_tennis_b1a`, `tfdb_pacmen_a4`, `tfdb_risky_heights_v2`, `tfdb_rocketbucks_v2` e `tfdb_toolsheds_b4`. Os mapas são baixados automaticamente na primeira vez que você entra.
 - **Votação de mapas:** cada mapa dura 20 minutos. Faltando 3 minutos, abre uma votação entre 3 mapas.
 - **Foguetes teleguiados:** aceleram a cada rebatida, e cerca de 10% são "Nuke".
 - **Ranking próprio**, separado do servidor principal. Todos começam com 1000 pontos: +1 por kill, -1 por morte e +2 para cada jogador do time que vence a rodada. Só conta com 4 ou mais jogadores no servidor. Os comandos no chat são os mesmos: `rank`, `top10`, `session` e `place`.

@@ -4,7 +4,7 @@ title: "What Is TF2 Dodgeball: How It Started and How to Play"
 seoTitle: "What Is TF2 Dodgeball and How to Play | SKYNET"
 description: "Learn about TF2's Dodgeball mode: homing rockets, Pyro only, how it started and how to play on the SKYNET Gaming server, with its own ranking."
 date: 2026-10-06
-updated: 2026-10-14
+updated: 2026-10-15
 cover: ../../../assets/img/dodgeball-pyro-mascara.jpg
 draft: false
 ---
@@ -43,10 +43,10 @@ If you're just starting out: play it calm, focus only on deflecting, and leave s
 ## What our server is like
 
 - **Name:** SKYNET GAMING BRASIL / LATAM - DODGEBALL
-- **Capacity and network:** 8 slots, 100 tick, hosted in São Paulo
+- **Capacity and network:** 16 slots, hosted in São Paulo
 - **Online since:** 10/06/2026
 - **Pyro only:** your class is picked automatically when you join a team.
-- **8 maps:** `tfdb_amazon_b1`, `tfdb_catland_v1`, `tfdb_gov_spacedodgeball`, `tfdb_lithium`, `tfdb_majix`, `tfdb_ovni_v7`, `tfdb_potato_v3` and `tfdb_trainfalls_v3`. Maps download automatically the first time you join.
+- **10 maps:** `tfdb_amazon_b1`, `tfdb_backyard`, `tfdb_baseball`, `tfdb_blockland_v4_1`, `tfdb_hellspawn_b2`, `tfdb_indoor_tennis_b1a`, `tfdb_pacmen_a4`, `tfdb_risky_heights_v2`, `tfdb_rocketbucks_v2` and `tfdb_toolsheds_b4`. Maps download automatically the first time you join.
 - **Map vote:** each map lasts 20 minutes. With 3 minutes left, a vote between 3 maps opens.
 - **Homing rockets:** they speed up with every deflection, and about 10% are "Nukes".
 - **Its own ranking**, separate from the main server. Everyone starts at 1000 points: +1 per kill, -1 per death and +2 for every player on the team that wins the round. It only counts with 4 or more players on the server. Chat commands are the same: `rank`, `top10`, `session` and `place`.
