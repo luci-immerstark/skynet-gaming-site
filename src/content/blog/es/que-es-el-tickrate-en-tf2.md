@@ -5,7 +5,7 @@ seoTitle: "Qué es el tickrate en TF2 y por qué importa 100 tick"
 description: "Entiende qué es el tickrate, la diferencia entre 66 y 100 tick y qué cambia (y qué no) un servidor de 100 tick en Team Fortress 2."
 date: 2026-10-02
 updated: 2026-10-02
-cover: ../../../assets/img/hero-bg.jpg
+cover: ../../../assets/img/blog-tickrate.png
 draft: false
 ---
 
