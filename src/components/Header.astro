@@ -17,8 +17,10 @@ const names: Record<Lang, string> = { 'pt-br': 'PortuguÃªs (Brasil)', es: 'EspaÃ
       <span>SKYNET GAMING</span>
     </a>
     <nav class="nav" aria-label="Menu">
-      <a href={`${localePath(lang)}#regras`}>{t('nav.rules')}</a>
       <a href={blogHref} aria-current={inBlog ? 'page' : undefined}>{t('nav.blog')}</a>
+      <a href="https://stats.skynet-tf2.com.br/hlstats.php" target="_blank" rel="noopener">{t('nav.ranking')}</a>
+      <a href="https://bans.skynet-tf2.com.br/index.php?p=home" target="_blank" rel="noopener">{t('nav.bans')}</a>
+      <a href={`${localePath(lang)}#regras`}>{t('nav.rules')}</a>
     </nav>
     <div class="lang" role="group" aria-label={t('nav.lang')}>
       {(['pt-br', 'es', 'en'] as Lang[]).map((l) => (
@@ -35,10 +37,10 @@ const names: Record<Lang, string> = { 'pt-br': 'PortuguÃªs (Brasil)', es: 'EspaÃ
   .bar { display: flex; align-items: center; justify-content: space-between; height: 56px; }
   .brand { display: flex; align-items: center; gap: .6rem; font-family: var(--font-display); font-weight: 700; letter-spacing: .08em; color: var(--text); text-decoration: none; }
   .brand img { display: block; }
-  .nav { margin-left: auto; margin-right: 1.2rem; } .nav a { color: var(--text); text-decoration: none; font: 700 1rem var(--font-display); letter-spacing: .08em; text-transform: uppercase; padding: .3rem .2rem; } .nav a:hover, .nav a[aria-current='page'] { color: var(--gold); } .nav a + a { margin-left: 1rem; }
+  .nav { margin-left: auto; margin-right: 1.2rem; } .nav a { color: var(--text); text-decoration: none; font: 700 1rem var(--font-display); letter-spacing: .08em; text-transform: uppercase; padding: .3rem .2rem; } .nav a:hover, .nav a[aria-current='page'] { color: var(--gold); } .nav a + a { margin-left: 1rem; } .nav a { white-space: nowrap; }
   .lang { display: flex; gap: .5rem; }
   .lang a { display: block; line-height: 0; padding: 4px; border-radius: 6px; border: 2px solid transparent; opacity: .55; transition: opacity .2s, border-color .2s; }
   .lang a:hover { opacity: .9; }
   .lang a[aria-pressed='true'] { opacity: 1; border-color: var(--gold); }
-  @media (max-width: 480px) { .brand span { display: none; } .nav { margin-right: .6rem; } .lang { gap: .15rem; } }
+  @media (max-width: 480px) { .brand span { display: none; } .nav { margin-right: .6rem; min-width: 0; overflow-x: auto; white-space: nowrap; scrollbar-width: none; } .nav::-webkit-scrollbar { display: none; } .nav a { font-size: .8rem; letter-spacing: .04em; } .nav a + a { margin-left: .6rem; } .lang { gap: .15rem; } }
 </style>
