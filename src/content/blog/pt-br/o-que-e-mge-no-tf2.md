@@ -4,7 +4,7 @@ title: "O que é MGE no TF2: como jogar e como funciona o ranking"
 seoTitle: "O que é MGE no TF2 e como jogar | SKYNET"
 description: "Entenda o MGE do TF2: duelos 1x1 em arenas, como entrar numa arena, os comandos, o ELO e o ranking do servidor MGE da SKYNET Gaming, em 100 tick."
 date: 2026-10-21
-cover: ../../../assets/img/mge-duelo.jpg
+cover: ../../../assets/img/mge-soldier-capa.jpg
 draft: false
 ---
 
