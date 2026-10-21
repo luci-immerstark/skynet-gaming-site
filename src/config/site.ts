@@ -23,7 +23,7 @@ export const site = {
   url: 'https://skynet-tf2.com.br',
   discordUrl: 'https://discord.gg/HV7d6x8pEK',
   steamGroupUrl: 'https://steamcommunity.com/groups/skynetgaming-tf2',
-  // Link geral do ranking: mostra os dois rankings para escolher. Cada servidor tem o seu em `servers`.
+  // Link geral do ranking: mostra todos os rankings para escolher. Cada servidor tem o seu em `servers`.
   rankingUrl: 'https://stats.skynet-tf2.com.br/hlstats.php',
   sourcebansUrl: 'https://bans.skynet-tf2.com.br/index.php?p=home',
   // Cloudflare Web Analytics: cole o token aqui (Analytics & Logs → Web Analytics → Manage site). Vazio = sem script.
@@ -54,6 +54,17 @@ export const site = {
       launchDate: '2026-10-06',
       rankingUrl: 'https://stats.skynet-tf2.com.br/hlstats.php?game=tfdb',
     },
+    mge: {
+      id: 'mge',
+      game: 'tf2',
+      short: 'MGE',
+      name: 'SKYNET GAMING BRASIL / LATAM - MGE',
+      ip: '212.38.89.226:27055',
+      slots: 12,
+      tick: 100,
+      launchDate: '2026-10-21',
+      rankingUrl: 'https://stats.skynet-tf2.com.br/hlstats.php?game=tfmge',
+    },
     zombieInfection: {
       id: 'zombieInfection',
       game: 'tf2',
@@ -82,7 +93,7 @@ export const site = {
 
 export type Server = (typeof site.servers)[keyof typeof site.servers];
 export type Game = Server['game'];
-export const serverList: Server[] = [site.servers.classic, site.servers.dodgeball, site.servers.zombieInfection, site.servers.l4d2];
+export const serverList: Server[] = [site.servers.classic, site.servers.dodgeball, site.servers.mge, site.servers.zombieInfection, site.servers.l4d2];
 /** Servidores agrupados por jogo, na ordem de exibição. Todo lugar que lista IPs usa isto. */
 export const games: { id: Game; servers: Server[] }[] = [
   { id: 'tf2', servers: serverList.filter((s) => s.game === 'tf2') },

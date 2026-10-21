@@ -4,6 +4,7 @@ import Icon from './Icon.astro';
 import heroBg from '../assets/img/hero-bg.jpg';
 import pyroBg from '../assets/img/dodgeball-pyro-mascara.jpg';
 import ziBg from '../assets/img/zombie-infection-horda.webp';
+import mgeBg from '../assets/img/mge-duelo.jpg';
 import l4d2Bg from '../assets/img/hero-l4d2.jpg';
 import { games, steamConnect, type Server } from '../config/site';
 import { useT } from '../i18n/utils';
@@ -15,6 +16,7 @@ const n = (key: 'server.chip.slots' | 'server.chip.tick', v: number) => t(key).r
 const card = (s: Server) => {
   const base = [n('server.chip.slots', s.slots), ...(s.tick ? [n('server.chip.tick', s.tick)] : [])];
   if (s.id === 'zombieInfection') return { s, isNew: true, img: ziBg, desc: t('server.zi.desc'), chips: [n('server.chip.slots', s.slots), t('server.chip.official'), t('server.chip.ranking')] };
+  if (s.id === 'mge') return { s, isNew: true, img: mgeBg, desc: t('server.mge.desc'), chips: [...base, t('server.chip.duel'), t('server.chip.ranking')] };
   if (s.id === 'dodgeball') return { s, isNew: true, img: pyroBg, desc: t('server.dodgeball.desc'), chips: [...base, t('server.chip.pyro'), t('server.chip.ranking')] };
   if (s.id === 'l4d2') return { s, isNew: true, img: l4d2Bg, desc: t('server.l4d2.desc'), chips: [...base, t('server.chip.coop'), t('chips.l4d2.expert'), t('server.chip.ranking')] };
   return { s, isNew: false, img: heroBg, desc: t('server.classic.desc'), chips: [...base, t('server.chip.classic')] };
@@ -32,7 +34,7 @@ const isWide = (n: number, i: number) => n > 1 && n % 2 === 1 && i === 0;
         <h3 class="group-title" id={`srv-${g.id}-title`}>{g.title}</h3>
         <div class:list={['grid', { solo: g.cards.length === 1 }]}>
           {g.cards.map(({ s, isNew, img, desc, chips }, i) => (
-            <article class:list={['srv', { wide: isWide(g.cards.length, i) }]} data-server={s.id} id={s.id === 'zombieInfection' ? 'srv-zi' : undefined}>
+            <article class:list={['srv', { wide: isWide(g.cards.length, i) }]} data-server={s.id} id={s.id === 'zombieInfection' ? 'srv-zi' : s.id === 'mge' ? 'srv-mge' : undefined}>
               <Image class="bg" src={img} alt="" widths={[600, 900, 1400, 1800]} sizes={isWide(g.cards.length, i) ? '(min-width: 800px) 1200px, 100vw' : '(min-width: 800px) 600px, 100vw'} loading="lazy" />
               {isNew && <span class="badge new">{t('badge.new')}</span>}
               <h4>{s.name}</h4>
@@ -72,6 +74,7 @@ const isWide = (n: number, i: number) => n > 1 && n % 2 === 1 && i === 0;
   .srv[data-server='classic'] :global(.bg) { object-position: center 20%; }
   .srv[data-server='dodgeball'] :global(.bg) { object-position: right center; }
   .srv[data-server='zombieInfection'] :global(.bg) { object-position: 50% 15%; }
+  .srv[data-server='mge'] :global(.bg) { object-position: center 40%; }
   .srv[data-server='l4d2'] :global(.bg) { object-position: 30% 50%; }
   .srv::after { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(to top, rgba(13,15,18,.96) 0%, rgba(13,15,18,.82) 55%, rgba(13,15,18,.62) 100%); }
   /* Card largo: texto na metade esquerda, imagem à direita (o degradê é horizontal). */

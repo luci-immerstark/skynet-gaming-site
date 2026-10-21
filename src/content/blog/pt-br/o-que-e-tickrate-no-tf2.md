@@ -4,7 +4,7 @@ title: "O que é tickrate e por que um servidor de 100 tick faz diferença no TF
 seoTitle: "O que é tickrate no TF2 e por que 100 tick importa"
 description: "Entenda o que é tickrate, a diferença entre 66 e 100 tick e o que um servidor de 100 tick muda (e não muda) no Team Fortress 2."
 date: 2026-10-02
-updated: 2026-10-02
+updated: 2026-10-21
 cover: ../../../assets/img/blog-tickrate.png
 draft: false
 ---
@@ -31,4 +31,4 @@ O servidor não processa o jogo de forma contínua: ele avança em passos discre
 
 Para aproveitar um servidor de 100 tick, o ideal é ter uma conexão estável e um FPS confortavelmente acima de 100. Os valores `cl_cmdrate` e `cl_updaterate` do seu jogo também influenciam a taxa de dados trocada com o servidor (que impõe seus próprios limites); você pode conferir sua conexão no console com `net_graph 1`, que mostra ping, perda de pacotes e a taxa de atualização.
 
-O servidor da SKYNET Gaming roda a 100 tick, com 40 slots e hospedagem em São Paulo. Para entrar, veja [como entrar em um servidor comunitário de TF2](/blog/como-entrar-em-servidor-de-tf2/).
+Na SKYNET Gaming, o Classic Maps (40 slots) e o MGE (12 slots, duelos 1x1) rodam a 100 tick, hospedados em São Paulo. No MGE a diferença aparece ainda mais, porque cada duelo é decidido no detalhe de um tiro. Para entrar, veja [como entrar em um servidor comunitário de TF2](/blog/como-entrar-em-servidor-de-tf2/).

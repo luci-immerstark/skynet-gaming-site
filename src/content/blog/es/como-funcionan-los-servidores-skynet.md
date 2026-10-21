@@ -4,6 +4,7 @@ title: "Cómo funcionan los servidores SKYNET por dentro"
 seoTitle: "Cómo funcionan los servidores SKYNET por dentro | Entre bastidores"
 description: "Entre bastidores de SKYNET Gaming: VPS en São Paulo, Docker, SourceMod, ranking HLstatsZ, SourceBans, backups y monitoreo de los servidores de TF2 y Left 4 Dead 2."
 date: 2026-10-15
+updated: 2026-10-21
 cover: ../../../assets/img/blog-navegador-de-servidores.jpg
 draft: false
 ---
@@ -12,10 +13,11 @@ Entras al servidor, juegas tu partida y sales. ¿Pero qué hay detrás de todo e
 
 ## Visión general
 
-SKYNET Gaming Brasil mantiene **4 servidores**, todos en la misma máquina en São Paulo:
+SKYNET Gaming Brasil mantiene **5 servidores**, todos en la misma máquina en São Paulo:
 
 - **TF2 Classic Maps**, con mapas clásicos de Team Fortress 2;
 - **TF2 Dodgeball**, solo con Pyro;
+- **TF2 MGE**, de duelos 1 contra 1;
 - **TF2 Zombie Infection**, el modo de zombis;
 - **Left 4 Dead 2**, una campaña cooperativa.
 
@@ -30,7 +32,7 @@ Los servidores corren en una **VPS en São Paulo** (un servidor virtual alquilad
 - **180 GB de SSD**;
 - sistema **Ubuntu Linux**.
 
-Estar en São Paulo es importante para quien juega desde Brasil y Latinoamérica, porque la distancia hasta el servidor es corta y el ping, bajo. Como la máquina la comparten cuatro servidores de juego, los **núcleos de CPU se reparten entre ellos**: cada servidor usa su propio grupo de núcleos, y así un servidor lleno no perjudica el rendimiento de los demás. ¿Quieres entender por qué importa tanto el procesador? Lee [Qué es el tickrate y por qué 100 tick hace la diferencia en TF2](/es/blog/que-es-el-tickrate-en-tf2/).
+Estar en São Paulo es importante para quien juega desde Brasil y Latinoamérica, porque la distancia hasta el servidor es corta y el ping, bajo. Como la máquina la comparten cinco servidores de juego, los **núcleos de CPU se reparten entre ellos**: cada servidor usa su propio grupo de núcleos, y así un servidor lleno no perjudica el rendimiento de los demás. ¿Quieres entender por qué importa tanto el procesador? Lee [Qué es el tickrate y por qué 100 tick hace la diferencia en TF2](/es/blog/que-es-el-tickrate-en-tf2/).
 
 ## Docker: un contenedor para cada servidor
 
@@ -43,7 +45,7 @@ En lugar de instalar todo "suelto" en el sistema, cada servidor corre dentro de 
 
 Los servidores de TF2 usan las imágenes del proyecto de código abierto **melkortf/tf2-servers**, que ya traen Team Fortress 2 listo para correr en Docker. Si quieres entender mejor la base de todo esto, lee también [Qué es Linux y por qué domina los servidores del mundo](/es/blog/que-es-linux-y-por-que-domina-los-servidores/).
 
-## Los cuatro servidores
+## Los cinco servidores
 
 ### TF2 Classic Maps
 
@@ -59,6 +61,10 @@ Servidor para **16 jugadores**, **solo con Pyro** y **sin bots**: el objetivo es
 
 La puntuación solo cuenta cuando hay **4 o más jugadores** en el servidor. Para saber más sobre el modo, mira [Qué es Dodgeball en TF2](/es/blog/que-es-dodgeball-en-tf2/).
 
+### TF2 MGE
+
+Servidor de **duelos 1 contra 1** para **12 jugadores**, a **100 tick**, con el mapa `mge_training_v8_beta4b` y sus 18 arenas. Tiene ranking propio: **+5** por cada duelo ganado y **−2** por cada duelo perdido; las kills y las muertes no cuentan. Comparte el procesador con el sitio y la base de datos, pero con **prioridad sobre ellos**: si atacan los paneles web, quienes pierden rendimiento son los paneles, no el juego. Mira cómo jugar en [Qué es MGE en TF2](/es/blog/que-es-mge-en-tf2/).
+
 ### TF2 Zombie Infection
 
 Modo hecho en **VScript** (el lenguaje de scripts del propio juego), que corre a **66,7 tick** y con **puntuación propia** en el ranking. Los sobrevivientes enfrentan una horda de zombis, y quien muere se convierte en zombi. Mira los detalles en [Qué es Zombie Infection en TF2](/es/blog/que-es-zombie-infection-en-tf2/).
@@ -73,7 +79,7 @@ Modo hecho en **VScript** (el lenguaje de scripts del propio juego), que corre a
 
 ## Ranking: HLstatsZ
 
-El ranking usa **HLstatsZ** ([SnipeZilla/HLSTATS-2](https://github.com/SnipeZilla/HLSTATS-2)), con el frontend **hlstatsz-web**. Registra lo que pasa en cada partida y arma las estadísticas de cada jugador. Los rankings están **separados por servidor y por juego**: Classic Maps, Dodgeball, Zombie Infection y Left 4 Dead 2 tienen cada uno su propia tabla. Míralo todo en el [ranking de SKYNET](https://stats.skynet-tf2.com.br/hlstats.php). Para entender la puntuación, lee [Cómo funciona el ranking del servidor](/es/blog/como-funciona-el-ranking/).
+El ranking usa **HLstatsZ** ([SnipeZilla/HLSTATS-2](https://github.com/SnipeZilla/HLSTATS-2)), con el frontend **hlstatsz-web**. Registra lo que pasa en cada partida y arma las estadísticas de cada jugador. Los rankings están **separados por servidor y por juego**: Classic Maps, Dodgeball, MGE, Zombie Infection y Left 4 Dead 2 tienen cada uno su propia tabla. Míralo todo en el [ranking de SKYNET](https://stats.skynet-tf2.com.br/hlstats.php). Para entender la puntuación, lee [Cómo funciona el ranking del servidor](/es/blog/como-funciona-el-ranking/).
 
 ## SourceBans++
 
@@ -100,6 +106,7 @@ Para saber rápido cuando algo se cae, usamos un **monitoreo externo con UptimeR
 
 - Ranking HLstatsZ: `rank`, `top10`, `statsme` y `session`.
 - Left 4 Dead 2: `!buy` abre el menú de compras.
+- MGE: `!add` elige una arena y `!rank` muestra tu ELO.
 
 **Para admins:**
 
@@ -112,6 +119,7 @@ Abre la consola del juego (o usa el botón "Jugar ahora" de la página de inicio
 
 - Classic Maps: `connect 212.38.89.226:27015`
 - Dodgeball: `connect 212.38.89.226:27025`
+- MGE: `connect 212.38.89.226:27055`
 - Zombie Infection: `connect 212.38.89.226:27045`
 - Left 4 Dead 2: `connect 212.38.89.226:27035`
 

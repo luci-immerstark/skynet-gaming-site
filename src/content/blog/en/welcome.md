@@ -4,7 +4,7 @@ title: "Welcome to SKYNET GAMING BRASIL & LATAM!"
 seoTitle: "TF2 Server Brazil & LATAM: Welcome & Servers | SKYNET"
 description: "Meet our 100 tick TF2 server in São Paulo: classic map rotation, live ranking and rules."
 date: 2026-10-02
-updated: 2026-10-15
+updated: 2026-10-21
 cover: ../../../assets/img/hero-bg.jpg
 draft: false
 ---
@@ -27,9 +27,14 @@ Badwater, Dustbowl, Upward, Goldrush and 2Fort.
 
 *Note: the server has 20+ maps installed. Maps outside the rotation may be added at the admins' discretion, on special occasions only.*
 
-## 🚀 New: Dodgeball server
+## 🚀 Our other servers
 
-SKYNET GAMING now has a second server: **Dodgeball**, where everyone plays Pyro and deflects homing rockets. It has 16 slots, its own ranking and has been online since 10/06/2026. To join, type `connect 212.38.89.226:27025`. Want to understand the mode? Read [What Is TF2 Dodgeball](/en/blog/what-is-tf2-dodgeball/).
+Besides Classic Maps, SKYNET GAMING has four more servers, each with its own ranking:
+
+- **Dodgeball** (16 slots, Pyro only): `connect 212.38.89.226:27025`. See [What Is TF2 Dodgeball](/en/blog/what-is-tf2-dodgeball/).
+- **MGE** (12 slots, 1v1 duels at 100 tick): `connect 212.38.89.226:27055`. See [What Is MGE in TF2](/en/blog/what-is-tf2-mge/).
+- **Zombie Infection** (24 slots, the official zombie mode): `connect 212.38.89.226:27045`. See [What Is TF2 Zombie Infection](/en/blog/what-is-tf2-zombie-infection/).
+- **Left 4 Dead 2 Coop** (up to 20 players, 100 tick): `connect 212.38.89.226:27035`.
 
 ## 🏆 Grand opening event postponed
 
@@ -51,7 +56,7 @@ Bans issued: [bans.skynet-tf2.com.br](https://bans.skynet-tf2.com.br)
 
 ## 👥 Team
 
-luci, Unmei, misha and Nissan.
+luci, Unmei, rishi and goiaba.
 
 ## 🔗 How to join Classic Maps
 

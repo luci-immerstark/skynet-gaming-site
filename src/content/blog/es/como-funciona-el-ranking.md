@@ -4,12 +4,12 @@ title: "¿Cómo funciona el ranking del servidor?"
 seoTitle: "Cómo funciona el ranking del servidor de TF2 | SKYNET"
 description: "Cómo el ranking HLstatsZ del servidor SKYNET Gaming puntúa a los jugadores, qué comandos usar en el chat (rank, top10, session, place) y dónde verlo."
 date: 2026-10-02
-updated: 2026-10-14
+updated: 2026-10-21
 cover: ../../../assets/img/card-ranking.jpg
 draft: false
 ---
 
-Esta guía explica el ranking del servidor Classic Maps. El servidor de Dodgeball tiene un ranking propio, con otra puntuación (mira [Qué es Dodgeball en TF2](/es/blog/que-es-dodgeball-en-tf2/)).
+Esta guía explica el ranking del servidor Classic Maps. Los otros servidores tienen rankings propios, con otra puntuación: están resumidos al final de esta guía.
 
 El ranking del servidor usa HLstatsZ: cada kill y cada objetivo de la partida (como capturar puntos o llevar el maletín) suma puntos a tu puntuación. Puedes seguirlo desde el chat del juego, con los comandos `rank`, `top10`, `session` y `place`, o desde el sitio del ranking.
 
@@ -29,6 +29,13 @@ Escribe en el chat del juego:
 - `top10`: lista a los 10 mejores jugadores.
 - `session`: muestra tu rendimiento en la sesión actual.
 - `place`: muestra tu lugar general en el ranking.
+
+## Los rankings de los otros servidores
+
+- **Dodgeball:** +1 por kill, −1 por muerte y +2 para cada jugador del equipo que gana la ronda. Detalles en [Qué es Dodgeball en TF2](/es/blog/que-es-dodgeball-en-tf2/) · [ver ranking](https://stats.skynet-tf2.com.br/hlstats.php?game=tfdb).
+- **MGE:** +5 por duelo ganado y −2 por duelo perdido; las kills y las muertes no cuentan. Detalles en [Qué es MGE en TF2](/es/blog/que-es-mge-en-tf2/) · [ver ranking](https://stats.skynet-tf2.com.br/hlstats.php?game=tfmge).
+- **Zombie Infection:** +5 para el zombi que infecta, +1 para el sobreviviente que mata a un zombi y bonus al final de la ronda. Detalles en [Qué es Zombie Infection en TF2](/es/blog/que-es-zombie-infection-en-tf2/) · [ver ranking](https://stats.skynet-tf2.com.br/hlstats.php?game=tfzi).
+- **Left 4 Dead 2:** ranking propio de la campaña cooperativa · [ver ranking](https://stats.skynet-tf2.com.br/hlstats.php?game=l4d2).
 
 ## Dónde ver el ranking completo
 

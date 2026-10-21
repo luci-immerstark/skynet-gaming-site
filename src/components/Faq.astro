@@ -24,7 +24,7 @@ const items = faqItems(lang);
             <p>{t('faq.2.hint')}</p>
           </div>
         ) : (
-          <p>{i.a}{(i.n === 6 || i.n === 7) && <> <a href={postPath(lang, i.n === 6 ? 'dodgeball' : 'zombieInfection')}>{t('faq.6.link')}</a></>}</p>
+          <p>{i.a}{(i.n === 6 || i.n === 7 || i.n === 8) && <> <a href={postPath(lang, i.n === 6 ? 'dodgeball' : i.n === 8 ? 'mge' : 'zombieInfection')}>{t('faq.6.link')}</a></>}</p>
         )}
       </details>
     ))}
