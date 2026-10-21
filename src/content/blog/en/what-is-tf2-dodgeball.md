@@ -42,7 +42,7 @@ If you're just starting out: play it calm, focus only on deflecting, and leave s
 
 ## What our server is like
 
-- **Name:** SKYNET GAMING BRASIL / LATAM - DODGEBALL
+- **Name:** SKYNET BRASIL - DODGEBALL
 - **Capacity and network:** 16 slots, hosted in São Paulo
 - **Online since:** 10/06/2026
 - **Pyro only:** your class is picked automatically when you join a team.

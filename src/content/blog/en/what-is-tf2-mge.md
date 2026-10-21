@@ -74,7 +74,7 @@ Here whoever plays more and wins more climbs, even against weaker opponents. In 
 
 ## What our server is like
 
-- **Name:** SKYNET GAMING BRASIL / LATAM - MGE [100-Tick Rate]
+- **Name:** SKYNET BRASIL - MGE [100 TICK]
 - **Online since:** 10/21/2026
 - **Capacity:** 12 slots, **100 tick**, hosted in São Paulo.
 - **Map:** `mge_training_v8_beta4b`, with 18 arenas. The first time, the map downloads automatically when you join.

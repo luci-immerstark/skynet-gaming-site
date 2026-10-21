@@ -36,7 +36,7 @@ export const site = {
       id: 'classic',
       game: 'tf2',
       short: 'Classic Maps',
-      name: 'SKYNET GAMING BRASIL / LATAM - CLASSIC MAPS',
+      name: 'SKYNET BRASIL - CLASSIC MAPS [100 TICK]',
       ip: '212.38.89.226:27015',
       slots: 40,
       tick: 100,
@@ -47,7 +47,7 @@ export const site = {
       id: 'dodgeball',
       game: 'tf2',
       short: 'Dodgeball',
-      name: 'SKYNET GAMING BRASIL / LATAM - DODGEBALL',
+      name: 'SKYNET BRASIL - DODGEBALL',
       ip: '212.38.89.226:27025',
       slots: 16,
       tick: null, // tick padrão do modo: não anunciar como 100 tick
@@ -58,7 +58,7 @@ export const site = {
       id: 'mge',
       game: 'tf2',
       short: 'MGE',
-      name: 'SKYNET GAMING BRASIL / LATAM - MGE',
+      name: 'SKYNET BRASIL - MGE [100 TICK]',
       ip: '212.38.89.226:27055',
       slots: 12,
       tick: 100,
@@ -69,7 +69,7 @@ export const site = {
       id: 'zombieInfection',
       game: 'tf2',
       short: 'Zombie Infection',
-      name: 'SKYNET GAMING BRASIL / LATAM - ZOMBIE INFECTION',
+      name: 'SKYNET BRASIL - ZOMBIE INFECTION',
       ip: '212.38.89.226:27045',
       slots: 24,
       tick: null, // tick padrão do modo: não anunciar como 100 tick
@@ -80,7 +80,7 @@ export const site = {
       id: 'l4d2',
       game: 'l4d2',
       short: 'Coop',
-      name: '[COOP] SKYNET GAMING BRASIL / LATAM [100-Tick Rate]', // nome exato no navegador de servidores do jogo
+      name: 'SKYNET BRASIL - COOP EXPERT [100 TICK]', // nome exato no navegador de servidores do jogo
       ip: '212.38.89.226:27035',
       slots: 20,
       tick: 100,

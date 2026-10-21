@@ -74,7 +74,7 @@ Aqui quem joga mais e vence mais sobe, mesmo que os adversários sejam mais frac
 
 ## Como é o nosso servidor
 
-- **Nome:** SKYNET GAMING BRASIL / LATAM - MGE [100-Tick Rate]
+- **Nome:** SKYNET BRASIL - MGE [100 TICK]
 - **No ar desde:** 21/10/2026
 - **Capacidade:** 12 slots, **100 tick**, hospedado em São Paulo.
 - **Mapa:** `mge_training_v8_beta4b`, com 18 arenas. Na primeira vez, o mapa é baixado automaticamente quando você entra.

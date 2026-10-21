@@ -74,7 +74,7 @@ Aquí sube quien juega más y gana más, aunque sus rivales sean más débiles. 
 
 ## Cómo es nuestro servidor
 
-- **Nombre:** SKYNET GAMING BRASIL / LATAM - MGE [100-Tick Rate]
+- **Nombre:** SKYNET BRASIL - MGE [100 TICK]
 - **En línea desde:** 21/10/2026
 - **Capacidad:** 12 slots, **100 tick**, alojado en São Paulo.
 - **Mapa:** `mge_training_v8_beta4b`, con 18 arenas. La primera vez, el mapa se descarga automáticamente al entrar.

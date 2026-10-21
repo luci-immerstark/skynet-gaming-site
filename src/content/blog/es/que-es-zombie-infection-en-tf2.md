@@ -60,7 +60,7 @@ Los hechos de abajo vienen de la [Team Fortress Wiki](https://wiki.teamfortress.
 
 ## Cómo es nuestro servidor
 
-- **Nombre:** SKYNET GAMING BRASIL / LATAM - ZOMBIE INFECTION
+- **Nombre:** SKYNET BRASIL - ZOMBIE INFECTION
 - **En línea desde:** 12/10/2026
 - **Capacidad:** 24 slots, alojado en São Paulo, con el tick estándar del modo.
 - **Mapas oficiales en rotación:** `zi_atoll`, `zi_blazehattan`, `zi_devastation_final1`, `zi_murky`, `zi_sanitarium` y `zi_woods`. Cada mapa dura 30 minutos.

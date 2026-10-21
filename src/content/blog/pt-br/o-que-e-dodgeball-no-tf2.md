@@ -42,7 +42,7 @@ Para quem está começando: jogue com calma, foque só em rebater e deixe a velo
 
 ## Como é o nosso servidor
 
-- **Nome:** SKYNET GAMING BRASIL / LATAM - DODGEBALL
+- **Nome:** SKYNET BRASIL - DODGEBALL
 - **Capacidade e rede:** 16 slots, hospedado em São Paulo
 - **No ar desde:** 06/10/2026
 - **Só Pyro:** a classe é escolhida automaticamente quando você entra em um time.
