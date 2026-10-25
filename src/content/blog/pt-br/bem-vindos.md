@@ -31,7 +31,7 @@ Badwater, Dustbowl, Upward, Goldrush e 2Fort.
 
 Além do Classic Maps, a SKYNET GAMING tem mais quatro servidores, cada um com ranking próprio:
 
-- **Dodgeball** (16 slots, só Pyro): `connect 212.38.89.226:27025`. Veja [O que é Dodgeball no TF2](/blog/o-que-e-dodgeball-no-tf2/).
+- **Dodgeball** (16 slots, 100 tick, só Pyro): `connect 212.38.89.226:27025`. Veja [O que é Dodgeball no TF2](/blog/o-que-e-dodgeball-no-tf2/).
 - **MGE** (12 slots, duelos 1x1 em 100 tick): `connect 212.38.89.226:27055`. Veja [O que é MGE no TF2](/blog/o-que-e-mge-no-tf2/).
 - **Zombie Infection** (24 slots, modo oficial de zumbis): `connect 212.38.89.226:27045`. Veja [O que é Zombie Infection no TF2](/blog/o-que-e-zombie-infection-no-tf2/).
 - **Left 4 Dead 2 Coop** (até 20 jogadores, 100 tick): `connect 212.38.89.226:27035`.

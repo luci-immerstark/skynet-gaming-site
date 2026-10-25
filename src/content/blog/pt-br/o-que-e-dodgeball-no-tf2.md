@@ -42,8 +42,8 @@ Para quem está começando: jogue com calma, foque só em rebater e deixe a velo
 
 ## Como é o nosso servidor
 
-- **Nome:** SKYNET BRASIL - DODGEBALL
-- **Capacidade e rede:** 16 slots, hospedado em São Paulo
+- **Nome:** SKYNET BRASIL - DODGEBALL [100 TICK]
+- **Capacidade e rede:** 16 slots, 100 tick, hospedado em São Paulo
 - **No ar desde:** 06/10/2026
 - **Só Pyro:** a classe é escolhida automaticamente quando você entra em um time.
 - **10 mapas:** `tfdb_amazon_b1`, `tfdb_backyard`, `tfdb_baseball`, `tfdb_blockland_v4_1`, `tfdb_hellspawn_b2`, `tfdb_indoor_tennis_b1a`, `tfdb_pacmen_a4`, `tfdb_risky_heights_v2`, `tfdb_rocketbucks_v2` e `tfdb_toolsheds_b4`. Os mapas são baixados automaticamente na primeira vez que você entra.

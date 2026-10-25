@@ -47,10 +47,10 @@ export const site = {
       id: 'dodgeball',
       game: 'tf2',
       short: 'Dodgeball',
-      name: 'SKYNET BRASIL - DODGEBALL',
+      name: 'SKYNET BRASIL - DODGEBALL [100 TICK]',
       ip: '212.38.89.226:27025',
       slots: 16,
-      tick: null, // tick padrão do modo: não anunciar como 100 tick
+      tick: 100,
       launchDate: '2026-10-06',
       rankingUrl: 'https://stats.skynet-tf2.com.br/hlstats.php?game=tfdb',
     },

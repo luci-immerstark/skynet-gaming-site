@@ -42,8 +42,8 @@ If you're just starting out: play it calm, focus only on deflecting, and leave s
 
 ## What our server is like
 
-- **Name:** SKYNET BRASIL - DODGEBALL
-- **Capacity and network:** 16 slots, hosted in São Paulo
+- **Name:** SKYNET BRASIL - DODGEBALL [100 TICK]
+- **Capacity and network:** 16 slots, 100 tick, hosted in São Paulo
 - **Online since:** 10/06/2026
 - **Pyro only:** your class is picked automatically when you join a team.
 - **10 maps:** `tfdb_amazon_b1`, `tfdb_backyard`, `tfdb_baseball`, `tfdb_blockland_v4_1`, `tfdb_hellspawn_b2`, `tfdb_indoor_tennis_b1a`, `tfdb_pacmen_a4`, `tfdb_risky_heights_v2`, `tfdb_rocketbucks_v2` and `tfdb_toolsheds_b4`. Maps download automatically the first time you join.

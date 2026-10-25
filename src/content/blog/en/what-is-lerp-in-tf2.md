@@ -35,7 +35,7 @@ The default value, **100 ms (0.1 s)**, was designed for people playing on unstab
 The command is `cl_interp`, with the time in seconds. For example, `cl_interp 0.035` is a 35 ms lerp. The tip is to start at the lowest value and raise it little by little if any problem shows up.
 
 - **You can't change it mid-match:** you need to be spectating or out of the server.
-- **Your real lerp never reaches zero.** The game uses the higher value between `cl_interp` and `cl_interp_ratio ÷ cl_updaterate`. On a 66 tick server, the minimum is around **15.2 ms**; on a **100 tick** server, like SKYNET's Classic Maps and MGE, it drops to **10 ms**.
+- **Your real lerp never reaches zero.** The game uses the higher value between `cl_interp` and `cl_interp_ratio ÷ cl_updaterate`. On a 66 tick server, the minimum is around **15.2 ms**; on a **100 tick** server, like SKYNET's Classic Maps, Dodgeball and MGE, it drops to **10 ms**.
 
 ## What are rates
 
@@ -58,7 +58,7 @@ And the same goes as in the lerp section: with rates maxed out, any server FPS d
 
 Start with the first one on the list and only move down if you get constant lag on every server.
 
-**100 tick servers (SKYNET's Classic Maps and MGE)**, for a PC that holds more than 100 FPS:
+**100 tick servers (SKYNET's Classic Maps, Dodgeball and MGE)**, for a PC that holds more than 100 FPS:
 
 ```
 cl_cmdrate 100; cl_updaterate 100; cl_interp_ratio 1; cl_interp 0; rate 196608
