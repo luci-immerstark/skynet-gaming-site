@@ -6,7 +6,7 @@ import ranking from '../assets/img/card-ranking.jpg';
 import sourcebans from '../assets/img/card-sourcebans.jpg';
 import steam from '../assets/img/card-steam.jpg';
 import dodgeball from '../assets/img/card-dodgeball.jpg';
-import zombie from '../assets/img/zombie-infection-horda.webp';
+import ff2 from '../assets/img/hero-bg.jpg';
 import mge from '../assets/img/mge-soldier-card.jpg';
 import l4d2 from '../assets/img/hero-l4d2.jpg';
 import { site } from '../config/site';
@@ -21,7 +21,7 @@ const cards = [
   { k: 'steam', img: steam, href: site.steamGroupUrl, ext: true, badge: null, steam: true, alt: 'Todas as classes do TF2' },
   { k: 'dodgeball', img: dodgeball, href: postPath(lang, 'dodgeball'), ext: false, badge: 'new', alt: 'Pyro' },
   { k: 'mge', img: mge, href: postPath(lang, 'mge'), ext: false, badge: 'new', alt: t('card.mge.alt') },
-  { k: 'zi', img: zombie, href: postPath(lang, 'zombieInfection'), ext: false, badge: 'new', alt: t('card.zi.alt') },
+  { k: 'zi', img: ff2, href: '#srv-zi', ext: false, badge: 'new', alt: t('card.zi.alt') },
   { k: 'l4d2', img: l4d2, href: '#srv-l4d2', ext: false, badge: 'new', alt: 'Zumbis em um cemitério ao pôr do sol' },
 ] as const;
 ---
@@ -46,8 +46,8 @@ const cards = [
   .card { position: relative; display: block; aspect-ratio: 16 / 10; border-radius: var(--radius); overflow: hidden; border: 2px solid transparent; color: var(--text); text-decoration: none; background: var(--surface); transition: border-color .25s, box-shadow .25s; }
   .card :global(img) { width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
   /* Com 7 cards (ou 10, 13...), o último ocuparia sozinho a linha: ele passa a ocupar a linha toda. */
-  /* Zombie Infection: o Heavy (rosto no alto, no centro) fica sempre visível. */
-  .card[data-card='zi'] :global(img) { object-position: 50% 15%; }
+  /* Freak Fortress 2: usa a arte do topo do site por enquanto. */
+  .card[data-card='zi'] :global(img) { object-position: center 30%; }
   .card.wide :global(img) { object-position: center 45%; }
   @media (min-width: 640px) { .card.wide { grid-column: 1 / -1; aspect-ratio: 16 / 6; } }
   @media (min-width: 960px) { .card.wide { aspect-ratio: 21 / 6; } }

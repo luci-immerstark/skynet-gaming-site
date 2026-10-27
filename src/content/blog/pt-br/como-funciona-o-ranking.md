@@ -34,7 +34,7 @@ Digite no chat do jogo:
 
 - **Dodgeball:** +1 por kill, −1 por morte e +2 para cada jogador do time que vence a rodada. Detalhes em [O que é Dodgeball no TF2](/blog/o-que-e-dodgeball-no-tf2/) · [ver ranking](https://stats.skynet-tf2.com.br/hlstats.php?game=tfdb).
 - **MGE:** +5 por duelo vencido e −2 por duelo perdido; kills e mortes não contam. Detalhes em [O que é MGE no TF2](/blog/o-que-e-mge-no-tf2/) · [ver ranking](https://stats.skynet-tf2.com.br/hlstats.php?game=tfmge).
-- **Zombie Infection:** +5 para o zumbi que infecta, +1 para o sobrevivente que mata um zumbi e bônus no fim da rodada. Detalhes em [O que é Zombie Infection no TF2](/blog/o-que-e-zombie-infection-no-tf2/) · [ver ranking](https://stats.skynet-tf2.com.br/hlstats.php?game=tfzi).
+- **Freak Fortress 2:** +3 por kill e −1 por morte, com 6 ou mais jogadores no servidor. · [ver ranking](https://stats.skynet-tf2.com.br/hlstats.php?game=tfzi).
 - **Left 4 Dead 2:** ranking próprio da campanha cooperativa · [ver ranking](https://stats.skynet-tf2.com.br/hlstats.php?game=l4d2).
 
 ## Onde ver o ranking completo

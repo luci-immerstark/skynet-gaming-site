@@ -18,7 +18,7 @@ SKYNET Gaming Brasil runs **5 servers**, all on the same machine in São Paulo:
 - **TF2 24/7 2Fort**, on the 2Fort map only, with instant respawn;
 - **TF2 Dodgeball**, Pyro only;
 - **TF2 MGE**, 1v1 duels;
-- **TF2 Zombie Infection**, the zombie mode;
+- **TF2 Freak Fortress 2**, one giant boss against everyone;
 - **Left 4 Dead 2**, a co-op campaign.
 
 Around them there are a few supporting services: a stats ranking, a public ban list, external monitoring, and restart and backup routines. All of it is described below.
@@ -65,9 +65,9 @@ Points only count when there are **4 or more players** on the server. To learn m
 
 A **1v1 dueling** server for **12 players**, at **100 tick**, with the `mge_training_v8_beta4b` map and its 18 arenas. It has its own ranking: **+5** for every duel won and **−2** for every duel lost; kills and deaths don't count. It shares the processor with the website and the database, but with **priority over them**: if the web panels get attacked, the panels slow down, not the game. See how to play in [What is MGE in TF2](/en/blog/what-is-tf2-mge/).
 
-### TF2 Zombie Infection
+### TF2 Freak Fortress 2
 
-A mode built in **VScript** (the game's own scripting language), running at **66.7 tick** and with **its own scoring** in the ranking. Survivors face a zombie horde, and whoever dies becomes a zombie. See the details in [What is Zombie Infection in TF2](/en/blog/what-is-tf2-zombie-infection/).
+A server for **24 players** running **Freak Fortress 2**: each round, one player becomes a **giant boss** (like Saxton Hale) with lots of health and special abilities, and the rest of the server plays against them. It runs **Freak Fortress 2: Rewrite**, with 10 bosses, on the game's **official arena maps**. In the ranking, each kill is worth **+3** and each death **−1**. Until 10/27/2026 this server was Zombie Infection.
 
 ### Left 4 Dead 2
 
@@ -120,7 +120,7 @@ Open the game console (or use the "Play now" button on the home page) and type:
 - 24/7 2Fort: `connect 212.38.89.226:27015`
 - Dodgeball: `connect 212.38.89.226:27025`
 - MGE: `connect 212.38.89.226:27055`
-- Zombie Infection: `connect 212.38.89.226:27045`
+- Freak Fortress 2: `connect 212.38.89.226:27045`
 - Left 4 Dead 2: `connect 212.38.89.226:27035`
 
 If it's your first time, see the step-by-step guide in [How to join a TF2 community server](/en/blog/how-to-join-a-tf2-community-server/). Also join the [SKYNET Steam group](https://steamcommunity.com/groups/skynetgaming-tf2), check the [ranking](https://stats.skynet-tf2.com.br/hlstats.php) and [SourceBans](https://bans.skynet-tf2.com.br/index.php?p=home), and have fun!

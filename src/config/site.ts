@@ -68,12 +68,12 @@ export const site = {
     zombieInfection: {
       id: 'zombieInfection',
       game: 'tf2',
-      short: 'Zombie Infection',
-      name: 'SKYNET BRASIL - ZOMBIE INFECTION',
+      short: 'Freak Fortress 2',
+      name: 'SKYNET BRASIL - FREAK FORTRESS 2',
       ip: '212.38.89.226:27045',
       slots: 24,
       tick: null, // tick padrão do modo: não anunciar como 100 tick
-      launchDate: '2026-10-12',
+      launchDate: '2026-10-27',
       rankingUrl: 'https://stats.skynet-tf2.com.br/hlstats.php?game=tfzi',
     },
     l4d2: {
