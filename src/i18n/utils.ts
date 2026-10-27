@@ -64,6 +64,7 @@ export const postSlugs = {
   dodgeball: { 'pt-br': 'o-que-e-dodgeball-no-tf2', es: 'que-es-dodgeball-en-tf2', en: 'what-is-tf2-dodgeball' },
   zombieInfection: { 'pt-br': 'o-que-e-zombie-infection-no-tf2', es: 'que-es-zombie-infection-en-tf2', en: 'what-is-tf2-zombie-infection' },
   mge: { 'pt-br': 'o-que-e-mge-no-tf2', es: 'que-es-mge-en-tf2', en: 'what-is-tf2-mge' },
+  ff2: { 'pt-br': 'o-que-e-freak-fortress-2-no-tf2', es: 'que-es-freak-fortress-2-en-tf2', en: 'what-is-tf2-freak-fortress-2' },
 } as const;
 
 /** URL localizada de um post: postPath('es', 'dodgeball') => '/es/blog/que-es-dodgeball-en-tf2/'. */

@@ -3,7 +3,7 @@ import { Image } from 'astro:assets';
 import Icon from './Icon.astro';
 import heroBg from '../assets/img/hero-bg.jpg';
 import pyroBg from '../assets/img/dodgeball-pyro-mascara.jpg';
-import ziBg from '../assets/img/hero-bg.jpg';
+import ziBg from '../assets/img/ff2-bosses.jpg';
 import mgeBg from '../assets/img/mge-red-valley.jpg';
 import l4d2Bg from '../assets/img/hero-l4d2.jpg';
 import { games, steamConnect, type Server } from '../config/site';
@@ -73,7 +73,7 @@ const isWide = (n: number, i: number) => n > 1 && n % 2 === 1 && i === 0;
   /* Sem style inline: a CSP só aceita estilos de arquivo. */
   .srv[data-server='classic'] :global(.bg) { object-position: center 20%; }
   .srv[data-server='dodgeball'] :global(.bg) { object-position: right center; }
-  .srv[data-server='zombieInfection'] :global(.bg) { object-position: center 30%; }
+  .srv[data-server='zombieInfection'] :global(.bg) { object-position: center 20%; }
   .srv[data-server='mge'] :global(.bg) { object-position: center 40%; }
   .srv[data-server='l4d2'] :global(.bg) { object-position: 30% 50%; }
   .srv::after { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(to top, rgba(13,15,18,.96) 0%, rgba(13,15,18,.82) 55%, rgba(13,15,18,.62) 100%); }
