@@ -35,8 +35,8 @@ export const site = {
     classic: {
       id: 'classic',
       game: 'tf2',
-      short: 'Classic Maps',
-      name: 'SKYNET BRASIL - CLASSIC MAPS [100 TICK]',
+      short: '24/7 2Fort',
+      name: 'SKYNET BRASIL - 24/7 2FORT [100 TICK]',
       ip: '212.38.89.226:27015',
       slots: 40,
       tick: 100,

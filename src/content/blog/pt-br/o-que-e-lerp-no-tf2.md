@@ -35,7 +35,7 @@ O valor padrão, **100 ms (0,1 s)**, foi pensado para quem jogava com internet i
 O comando é `cl_interp`, com o tempo em segundos. Por exemplo, `cl_interp 0.035` é um lerp de 35 ms. A dica é começar pelo menor valor e subir aos poucos se aparecer algum problema.
 
 - **Não dá para mudar no meio da partida:** você precisa estar de espectador ou fora do servidor.
-- **O lerp real nunca chega a zero.** O jogo usa o maior valor entre `cl_interp` e `cl_interp_ratio ÷ cl_updaterate`. Num servidor de 66 tick, o mínimo fica em torno de **15,2 ms**; num servidor de **100 tick**, como o Classic Maps, o Dodgeball e o MGE da SKYNET, cai para **10 ms**.
+- **O lerp real nunca chega a zero.** O jogo usa o maior valor entre `cl_interp` e `cl_interp_ratio ÷ cl_updaterate`. Num servidor de 66 tick, o mínimo fica em torno de **15,2 ms**; num servidor de **100 tick**, como o 24/7 2Fort, o Dodgeball e o MGE da SKYNET, cai para **10 ms**.
 
 ## O que são as rates
 
@@ -58,7 +58,7 @@ E vale o mesmo da parte do lerp: com rates no máximo, qualquer queda de FPS do 
 
 Comece pela primeira da lista e só desça se tiver lag constante em todos os servidores.
 
-**Servidores de 100 tick (Classic Maps, Dodgeball e MGE da SKYNET)**, para PC que segura mais de 100 FPS:
+**Servidores de 100 tick (24/7 2Fort, Dodgeball e MGE da SKYNET)**, para PC que segura mais de 100 FPS:
 
 ```
 cl_cmdrate 100; cl_updaterate 100; cl_interp_ratio 1; cl_interp 0; rate 196608

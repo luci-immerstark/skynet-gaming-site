@@ -9,7 +9,7 @@ cover: ../../../assets/img/card-ranking.jpg
 draft: false
 ---
 
-Este guia explica o ranking do servidor Classic Maps. Os outros servidores têm rankings próprios, com outra pontuação: eles estão resumidos no fim deste guia.
+Este guia explica o ranking do servidor 24/7 2Fort. Os outros servidores têm rankings próprios, com outra pontuação: eles estão resumidos no fim deste guia.
 
 O ranking do servidor usa o HLstatsZ: cada kill e cada objetivo da partida (como capturar pontos ou levar a pasta) soma pontos à sua pontuação. Você acompanha tudo pelo chat do jogo, com os comandos `rank`, `top10`, `session` e `place`, ou pelo site do ranking.
 

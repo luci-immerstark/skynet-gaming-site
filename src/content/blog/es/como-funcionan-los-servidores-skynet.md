@@ -15,7 +15,7 @@ Entras al servidor, juegas tu partida y sales. ¿Pero qué hay detrás de todo e
 
 SKYNET Gaming Brasil mantiene **5 servidores**, todos en la misma máquina en São Paulo:
 
-- **TF2 Classic Maps**, con mapas clásicos de Team Fortress 2;
+- **TF2 24/7 2Fort**, solo en el mapa 2Fort, con respawn instantáneo;
 - **TF2 Dodgeball**, solo con Pyro;
 - **TF2 MGE**, de duelos 1 contra 1;
 - **TF2 Zombie Infection**, el modo de zombis;
@@ -47,9 +47,9 @@ Los servidores de TF2 usan las imágenes del proyecto de código abierto **melko
 
 ## Los cinco servidores
 
-### TF2 Classic Maps
+### TF2 24/7 2Fort
 
-Servidor para **40 jugadores**, en **100 tick**, con mapas clásicos de TF2. Al final de cada mapa hay una **votación del siguiente**, con **3 opciones**. No se eligen al azar: se escogen según la **nota de "hype"** de cada mapa (cuánto le gusta a la comunidad) y el **tiempo que lleva sin jugarse**. Así, los mapas queridos aparecen más, y ninguno queda olvidado para siempre.
+Servidor para **40 jugadores**, en **100 tick**, solo en el mapa **2Fort**, las 24 horas, con **respawn instantáneo**. Hasta el 26/10/2026 se llamaba Classic Maps y tenía una rotación de mapas clásicos con votación; ahora es un solo mapa, el más conocido de TF2, para que el servidor se llene más rápido.
 
 ### TF2 Dodgeball
 
@@ -117,7 +117,7 @@ Para saber rápido cuando algo se cae, usamos un **monitoreo externo con UptimeR
 
 Abre la consola del juego (o usa el botón "Jugar ahora" de la página de inicio) y escribe:
 
-- Classic Maps: `connect 212.38.89.226:27015`
+- 24/7 2Fort: `connect 212.38.89.226:27015`
 - Dodgeball: `connect 212.38.89.226:27025`
 - MGE: `connect 212.38.89.226:27055`
 - Zombie Infection: `connect 212.38.89.226:27045`

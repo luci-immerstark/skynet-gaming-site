@@ -9,7 +9,7 @@ cover: ../../../assets/img/card-ranking.jpg
 draft: false
 ---
 
-This guide explains the Classic Maps server ranking. The other servers have their own rankings with different scoring: they are summarized at the end of this guide.
+This guide explains the 24/7 2Fort server ranking. The other servers have their own rankings with different scoring: they are summarized at the end of this guide.
 
 The server ranking runs on HLstatsZ: every kill and every match objective (such as capturing points or carrying the intel) adds points to your score. You can follow it from the in-game chat, using the `rank`, `top10`, `session` and `place` commands, or on the ranking website.
 
