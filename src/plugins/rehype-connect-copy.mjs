@@ -1,4 +1,4 @@
-// Coloca um botão "Copiar" ao lado de qualquer `connect IP:porta` em código inline nos posts.
+// Adds a "Copy" button next to any `connect IP:port` in inline code in posts.
 const labels = {
   'pt-br': ['Copiar IP', 'IP copiado!'],
   es: ['Copiar IP', '¡IP copiada!'],

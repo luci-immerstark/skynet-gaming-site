@@ -4,13 +4,13 @@ import { useT, formatLong } from '../i18n/utils';
 import { type Lang } from '../i18n/ui';
 const { lang } = Astro.props as { lang: Lang };
 const t = useT(lang);
-// Definição em uma frase, útil para leitores e para buscadores com IA.
+// One-sentence definition, useful for readers and for AI search engines.
 const text = t('summary.text')
   .replace('{classicDate}', formatLong(site.servers.classic.launchDate, lang))
   .replace('{dodgeballDate}', formatLong(site.servers.dodgeball.launchDate, lang))
   .replace('{mgeDate}', formatLong(site.servers.mge.launchDate, lang))
   .replace('{ziDate}', formatLong(site.servers.zombieInfection.launchDate, lang));
-// Os comandos connect viram <code>; os IPs vêm de site.servers.
+// The connect commands become <code>; the IPs come from site.servers.
 const parts = text.split(/(connect \{(?:classic|dodgeball|mge|zi|l4d2)\})/).map((p) => {
   const m = p.match(/^connect \{(classic|dodgeball|mge|zi|l4d2)\}$/);
   return m ? { code: `connect ${site.servers[(m[1] === 'zi' ? 'zombieInfection' : m[1]) as 'classic' | 'dodgeball' | 'mge' | 'zombieInfection' | 'l4d2'].ip}` } : { text: p };

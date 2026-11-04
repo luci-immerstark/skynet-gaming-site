@@ -12,5 +12,5 @@ export default defineConfig({
   },
   markdown: { rehypePlugins: [rehypeConnectCopy] },
   build: { inlineStylesheets: 'never' },
-  vite: { build: { assetsInlineLimit: 0 } }, // scripts sempre em arquivo (CSP sem 'unsafe-inline')
+  vite: { build: { assetsInlineLimit: 0 } }, // scripts always in a file (CSP without 'unsafe-inline')
 });

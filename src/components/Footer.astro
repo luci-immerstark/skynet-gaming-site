@@ -5,7 +5,7 @@ import { useT, formatLong } from '../i18n/utils';
 import { type Lang } from '../i18n/ui';
 const { lang } = Astro.props as { lang: Lang };
 const t = useT(lang);
-// Data gerada no build (fuso de Brasília), formatada conforme o idioma.
+// Date generated at build time (Brasília time zone), formatted for the language.
 const built = new Date();
 const builtIso = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Sao_Paulo' }).format(built);
 const links = [

@@ -12,7 +12,7 @@ import { type Lang } from '../i18n/ui';
 const { lang } = Astro.props as { lang: Lang };
 const t = useT(lang);
 const n = (key: 'server.chip.slots' | 'server.chip.tick', v: number) => t(key).replace('{n}', String(v));
-// Freak Fortress 2 roda no tick padrão (tick: null): sem selo de tick.
+// Freak Fortress 2 runs at the default tick (tick: null): no tick badge.
 const card = (s: Server) => {
   const base = [n('server.chip.slots', s.slots), ...(s.tick ? [n('server.chip.tick', s.tick)] : [])];
   if (s.id === 'zombieInfection') return { s, isNew: true, img: ziBg, desc: t('server.zi.desc'), chips: [n('server.chip.slots', s.slots), t('server.chip.ff2'), t('server.chip.ranking')] };
@@ -21,9 +21,9 @@ const card = (s: Server) => {
   if (s.id === 'l4d2') return { s, isNew: true, img: l4d2Bg, desc: t('server.l4d2.desc'), chips: [...base, t('server.chip.coop'), t('chips.l4d2.expert'), t('server.chip.ranking')] };
   return { s, isNew: false, img: heroBg, desc: t('server.classic.desc'), chips: [...base, t('server.chip.classic')] };
 };
-// Servidores agrupados por jogo: nunca uma lista única misturada.
+// Servers grouped by game: never a single mixed list.
 const groups = games.map((g) => ({ id: g.id, title: t(`servers.${g.id}`), cards: g.servers.map(card) }));
-// Grupo com número ímpar de cards (mais de um): o primeiro ocupa a largura toda e os demais ficam lado a lado.
+// Group with an odd number of cards (more than one): the first takes the full width and the rest sit side by side.
 const isWide = (n: number, i: number) => n > 1 && n % 2 === 1 && i === 0;
 ---
 <section class="section servers" id="servidores" aria-labelledby="servers-title">
@@ -63,21 +63,21 @@ const isWide = (n: number, i: number) => n > 1 && n % 2 === 1 && i === 0;
   .group-title { font-size: clamp(1.4rem, 3vw, 1.9rem); color: var(--text); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 1rem; padding-left: .8rem; border-left: 4px solid var(--gold); }
   .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
   .grid.solo { grid-template-columns: 1fr; }
-  /* Card único (Left 4 Dead 2): conteúdo centralizado. */
+  /* Single card (Left 4 Dead 2): centered content. */
   .grid.solo .srv { justify-items: center; text-align: center; }
   .grid.solo h4 { padding: 0 4.5rem; }
   .grid.solo .chips, .grid.solo .actions { justify-content: center; }
-  /* Cada card ocupa 6 linhas da grade (subgrid): título, texto, selos, IP, botões e ranking ficam alinhados entre os cards do grupo. */
+  /* Each card takes 6 grid rows (subgrid): title, text, badges, IP, buttons and ranking line up across the group's cards. */
   .srv { position: relative; isolation: isolate; overflow: hidden; border-radius: var(--radius); border: 2px solid rgba(255,215,0,.3); background: var(--surface); display: grid; grid-row: span 6; grid-template-rows: subgrid; row-gap: .9rem; justify-items: start; align-content: start; padding: 1.6rem; }
   .srv :global(.bg) { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
-  /* Sem style inline: a CSP só aceita estilos de arquivo. */
+  /* No inline style: the CSP only accepts styles from files. */
   .srv[data-server='classic'] :global(.bg) { object-position: center 20%; }
   .srv[data-server='dodgeball'] :global(.bg) { object-position: right center; }
   .srv[data-server='zombieInfection'] :global(.bg) { object-position: center 20%; }
   .srv[data-server='mge'] :global(.bg) { object-position: center 40%; }
   .srv[data-server='l4d2'] :global(.bg) { object-position: 30% 50%; }
   .srv::after { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(to top, rgba(13,15,18,.96) 0%, rgba(13,15,18,.82) 55%, rgba(13,15,18,.62) 100%); }
-  /* Card largo: texto na metade esquerda, imagem à direita (o degradê é horizontal). */
+  /* Wide card: text on the left half, image on the right (the gradient is horizontal). */
   @media (min-width: 800px) {
     .srv.wide { grid-column: 1 / -1; padding-right: 52%; }
     .srv.wide::after { background: linear-gradient(to right, rgba(13,15,18,.96) 0%, rgba(13,15,18,.85) 45%, rgba(13,15,18,.1) 80%, rgba(13,15,18,0) 100%); }

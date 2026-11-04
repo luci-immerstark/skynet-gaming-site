@@ -13,7 +13,7 @@ const items = faqItems(lang);
       <details>
         <summary>{i.q}</summary>
         {i.n === 2 ? (
-          // Os IPs aparecem agrupados por jogo (o texto corrido de faq.2.a só alimenta os dados estruturados).
+          // The IPs are grouped by game (the running text of faq.2.a only feeds the structured data).
           <div class="ips">
             {games.map((g) => (
               <div>

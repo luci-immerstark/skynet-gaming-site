@@ -1,5 +1,5 @@
-# Redirecionamentos 301 dos endereços antigos (Cloudflare Workers Static Assets).
-# Mantenha: links já compartilhados continuam funcionando.
+# 301 redirects from old URLs (Cloudflare Workers Static Assets).
+# Keep them: links already shared keep working.
 
 /blog/welcome/ /blog/bem-vindos/ 301
 /blog/welcome /blog/bem-vindos/ 301
@@ -28,7 +28,7 @@
 /en/dodgeball/ /en/blog/what-is-tf2-dodgeball/ 301
 /en/dodgeball /en/blog/what-is-tf2-dodgeball/ 301
 
-# Página provisória de eventos (removida): os endereços antigos levam à página inicial do idioma.
+# Placeholder events page (removed): the old URLs go to the language's home page.
 /eventos/ / 301
 /eventos / 301
 /es/eventos/ /es/ 301

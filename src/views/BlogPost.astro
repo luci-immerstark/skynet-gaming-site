@@ -11,7 +11,7 @@ const { lang, post, slug } = Astro.props;
 const t = useT(lang);
 const { Content } = await render(post);
 const all = await getCollection('blog', (p) => !p.data.draft);
-// Versões do mesmo post nos outros idiomas, ligadas por translationKey (o slug muda por idioma).
+// Versions of the same post in the other languages, linked by translationKey (the slug changes per language).
 const slugOf = (l: Lang) => all.find((p) => p.data.translationKey === post.data.translationKey && p.id.startsWith(`${l}/`))?.id.split('/').slice(1).join('/');
 const langs = ['pt-br', 'es', 'en'] as Lang[];
 const missing = langs.filter((l) => !slugOf(l));

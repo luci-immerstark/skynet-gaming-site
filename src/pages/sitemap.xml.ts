@@ -4,8 +4,8 @@ import { site } from '../config/site';
 import { localePath, htmlLang, pageRoutes } from '../i18n/utils';
 import type { Lang } from '../i18n/ui';
 
-// Sitemap próprio (o @astrojs/sitemap não aceita o código es-419).
-// Páginas listadas em site.paginasProvisorias ficam de fora (estão com noindex).
+// Custom sitemap (@astrojs/sitemap does not accept the es-419 code).
+// Pages listed in site.paginasProvisorias are left out (they have noindex).
 const langs: Lang[] = ['pt-br', 'es', 'en'];
 const abs = (p: string) => new URL(p, site.url).href;
 
@@ -18,7 +18,7 @@ export const GET: APIRoute = async () => {
       .filter(([key]) => !site.paginasProvisorias.includes(key))
       .map(([, paths]) => ({ paths })),
   ];
-  // Posts: um item por translationKey, com o slug de cada idioma.
+  // Posts: one entry per translationKey, with each language's slug.
   const byKey = new Map<string, Entry>();
   for (const p of await getCollection('blog', (p) => !p.data.draft)) {
     const [lang, ...rest] = p.id.split('/');

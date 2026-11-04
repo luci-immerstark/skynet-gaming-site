@@ -10,10 +10,10 @@ import { type Lang } from '../i18n/ui';
 const { lang } = Astro.props as { lang: Lang };
 const t = useT(lang);
 const online = t('hero.online').replace('{date}', formatLaunch(site.servers.classic.launchDate, lang));
-// Um slide por jogo. O de TF2 é o primeiro e carrega a imagem principal da página (eager, prioridade alta);
-// o do Left só busca a imagem depois do `load` (ver o script abaixo).
-// Mesmo pipeline do hero de TF2 (astro:assets, webp, tamanhos responsivos), mas o HTML não leva `src` nem `srcset`:
-// o navegador não tem como pedir essa imagem junto com o carregamento inicial. O script preenche depois do `load`.
+// One slide per game. The TF2 one comes first and loads the page's main image (eager, high priority);
+// the Left one only fetches its image after `load` (see the script below).
+// Same pipeline as the TF2 hero (astro:assets, webp, responsive sizes), but the HTML has no `src` or `srcset`:
+// the browser has no way to request this image with the initial load. The script fills it in after `load`.
 const l4d2Img = await getImage({ src: bgL4d2, widths: [640, 1024, 1600, 2048, 2560], format: 'webp' });
 const l4d2Sizes = '(max-width: 767px) 140vh, 100vw';
 const slides = [
@@ -75,8 +75,8 @@ const slides = [
   </div>
 </section>
 <script>
-  // Carrossel de dois slides (padrão ARIA APG "carousel with tabs"). O deslize e o arrastar com o dedo
-  // são do scroll-snap nativo; este script cuida das abas, da troca automática e do link /#l4d2.
+  // Two-slide carousel (ARIA APG "carousel with tabs" pattern). Swiping and finger dragging
+  // come from native scroll-snap; this script handles the tabs, the auto-rotation and the /#l4d2 link.
   const root = document.querySelector<HTMLElement>('[data-hero]');
   if (root) {
     const viewport = root.querySelector<HTMLElement>('[data-viewport]')!;
@@ -88,14 +88,14 @@ const slides = [
     const DELAY = 8000;
     const n = slides.length;
     let index = 0;
-    let stopped = false;      // parou na primeira interação ou pelo botão de pausa
-    let resumed = false;      // o visitante apertou "retomar": interações seguintes não param de novo
+    let stopped = false;      // stopped on the first interaction or by the pause button
+    let resumed = false;      // the visitor pressed "resume": later interactions do not stop it again
     let hovering = false, focused = false, offscreen = false;
     let timer = 0, settle = 0;
     let warm: Promise<unknown> | null = null;
 
-    // A imagem do Left só é buscada depois do load e de um momento ocioso; aqui ela também é decodificada,
-    // então a primeira troca não pisca. Se alguém trocar antes disso, a troca espera (no máximo 600 ms).
+    // The Left image is only fetched after load and an idle moment; here it is also decoded,
+    // so the first switch does not flicker. If someone switches before that, the switch waits (600 ms at most).
     const warmUp = () => (warm ??= Promise.all(lazy.map((img) => {
       img.sizes = img.dataset.sizes!; img.srcset = img.dataset.srcset!; img.src = img.dataset.src!;
       return img.decode().catch(() => {});
@@ -106,13 +106,13 @@ const slides = [
     const paint = (i: number) => {
       index = i;
       tabs.forEach((tab, k) => { tab.setAttribute('aria-selected', String(k === i)); tab.tabIndex = k === i ? 0 : -1; });
-      slides.forEach((s, k) => { s.inert = k !== i; }); // slide fora da tela não entra na ordem de foco nem na leitura
+      slides.forEach((s, k) => { s.inert = k !== i; }); // off-screen slide is not in the focus order or the reading order
     };
     const live = (on: boolean) => viewport.setAttribute('aria-live', on ? 'polite' : 'off');
 
     const go = async (to: number, { manual = false, instant = false } = {}) => {
       const i = (to + n) % n;
-      if (manual) live(true); // aria-live só em troca manual
+      if (manual) live(true); // aria-live only on manual switches
       paint(i);
       if (i > 0 && !instant) await Promise.race([warmUp(), new Promise((r) => setTimeout(r, 600))]);
       viewport.scrollTo({ left: i * viewport.clientWidth, behavior: instant || reduce.matches ? 'auto' : 'smooth' });
@@ -129,7 +129,7 @@ const slides = [
     };
     const stop = () => { stopped = true; live(true); syncRotate(); schedule(); };
 
-    // Primeira interação do visitante dentro do hero (toque, clique ou tecla): a troca automática para de vez.
+    // The visitor's first interaction inside the hero (touch, click or key): auto-rotation stops for good.
     const interact = (e: Event) => {
       if (stopped || resumed || rotate.contains(e.target as Node)) return;
       stop();
@@ -140,10 +140,10 @@ const slides = [
       syncRotate(); schedule();
     });
 
-    // Pausa enquanto o mouse está em cima ou o foco do teclado está dentro do hero.
+    // Pauses while the mouse is over it or keyboard focus is inside the hero.
     root.addEventListener('pointerenter', (e) => { if (e.pointerType === 'mouse') { hovering = true; schedule(); } });
     root.addEventListener('pointerleave', () => { hovering = false; schedule(); });
-    // Só o foco de teclado pausa: depois de um clique do mouse o botão fica focado, e isso não pode travar a troca.
+    // Only keyboard focus pauses: after a mouse click the button stays focused, and that must not lock the rotation.
     root.addEventListener('focusin', (e) => { focused = (e.target as HTMLElement).matches(':focus-visible'); schedule(); });
     root.addEventListener('focusout', (e) => { if (!root.contains(e.relatedTarget as Node | null)) { focused = false; schedule(); } });
     document.addEventListener('visibilitychange', schedule);
@@ -163,7 +163,7 @@ const slides = [
       go(i, { manual: true });
     });
 
-    // Arrastar com o dedo: o scroll-snap move, e aqui só acompanhamos onde ele parou.
+    // Finger dragging: scroll-snap moves it, and here we only track where it stopped.
     viewport.addEventListener('scroll', () => {
       clearTimeout(settle);
       settle = window.setTimeout(() => {
@@ -173,7 +173,7 @@ const slides = [
     }, { passive: true });
     addEventListener('resize', () => { viewport.scrollTo({ left: index * viewport.clientWidth, behavior: 'auto' }); });
 
-    // Link direto: /#l4d2 abre a home no slide do Left (não há elemento com esse id, então a página não rola).
+    // Direct link: /#l4d2 opens the home page on the Left slide (no element has that id, so the page does not scroll).
     const fromHash = () => {
       const i = slides.findIndex((s) => `#${s.dataset.slide}` === location.hash);
       if (i < 0) return false;
@@ -197,7 +197,7 @@ const slides = [
   .viewport::-webkit-scrollbar { display: none; }
   .slide { flex: 0 0 100%; min-width: 0; scroll-snap-align: start; scroll-snap-stop: always; }
 
-  /* Controles: só aparecem com o script ativo. As abas ficam logo abaixo do menu, sempre visíveis. */
+  /* Controls: only shown with the script active. The tabs sit right below the menu, always visible. */
   .controls, .arrow { display: none; }
   .hero[data-ready] .controls { display: flex; }
   .controls { position: absolute; z-index: 5; top: 68px; left: 0; right: 0; justify-content: center; align-items: center; gap: .5rem; pointer-events: none; }
@@ -212,18 +212,18 @@ const slides = [
   .rotate.is-stopped .i-play { display: inline-flex; }
   .rotate .i-pause { display: inline-flex; }
   .rotate :global(svg) { display: block; }
-  /* Setas laterais só onde sobra espaço ao lado do conteúdo; no celular vale o arrastar e as abas. */
+  /* Side arrows only where there is room beside the content; on phones, dragging and the tabs do the job. */
   @media (min-width: 1024px) {
     .hero[data-ready] .arrow { display: inline-flex; position: absolute; z-index: 5; top: 50%; translate: 0 -50%; width: 52px; height: 52px; }
     .arrow-prev { left: 20px; } .arrow-next { right: 20px; }
   }
   @media (max-width: 400px) { .tab { padding: .2rem .7rem; font-size: .85rem; } }
-  /* Sem animação: sem troca automática, então o botão de pausa não tem função. */
+  /* No animation: no auto-rotation, so the pause button has no purpose. */
   @media (prefers-reduced-motion: reduce) { .rotate { display: none; } }
 
-  /* --- cada slide é o hero completo do jogo --- */
-  /* A imagem de TF2 fica ancorada no topo (abaixo do cabeçalho) e nunca é ampliada além da largura da tela,
-     então as cabeças não são cortadas. O conteúdo começa abaixo dos rostos (--pad) sempre que cabe. */
+  /* --- each slide is the game's full hero --- */
+  /* The TF2 image is anchored to the top (below the header) and never scaled beyond the screen width,
+     so the heads are not cut off. The content starts below the faces (--pad) whenever it fits. */
   .slide {
     --head: 56px;
     --pad: max(calc(var(--head) + 64px), min(calc(var(--head) + 28vw), calc(100svh - 665px)));
@@ -239,13 +239,13 @@ const slides = [
     content: ''; position: absolute; inset: 0; z-index: -1;
     background: linear-gradient(to bottom, rgba(13,15,18,.15) 0, rgba(13,15,18,.25) calc(var(--pad) - 40px), rgba(13,15,18,.82) calc(var(--pad) + 140px), var(--bg) 100%);
   }
-  /* Left 4 Dead 2: a arte cobre o slide inteiro. O céu do topo é claro, então o overlay começa bem mais escuro
-     (menu, abas e título precisam de contraste) e termina no fundo do site, como no slide de TF2. */
+  /* Left 4 Dead 2: the art covers the whole slide. The sky at the top is light, so the overlay starts much darker
+     (menu, tabs and title need contrast) and ends in the site background, like the TF2 slide. */
   .slide :global(.bg-cover) { top: 0; height: 100%; object-fit: cover; object-position: 50% 35%; -webkit-mask-image: none; mask-image: none; }
   .slide-l4d2::after {
     background: linear-gradient(to bottom, rgba(13,15,18,.62) 0, rgba(13,15,18,.4) calc(var(--pad) - 40px), rgba(13,15,18,.8) calc(var(--pad) + 150px), var(--bg) 100%);
   }
-  /* Celular em pé: mostra o grupo de zumbis da esquerda (a lápide e a cruz ficam de fora). */
+  /* Phone in portrait: shows the group of zombies on the left (the tombstone and the cross are left out). */
   @media (max-width: 767px) { .slide :global(.bg-cover) { object-position: 12% 40%; } }
 
   .content { display: flex; flex-direction: column; align-items: center; gap: 1rem; }

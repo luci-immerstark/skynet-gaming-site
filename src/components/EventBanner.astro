@@ -91,7 +91,7 @@ const units = [['d', t('unit.days')], ['h', t('unit.hours')], ['m', t('unit.minu
   const el = document.querySelector<HTMLElement>('.event');
   if (el && el.dataset.start) {
     const start = Date.parse(el.dataset.start!), end = Date.parse(el.dataset.end!);
-    // Só em desenvolvimento: ?fase=antes|durante|depois simula as fases do evento.
+    // Development only: ?fase=antes|durante|depois simulates the event phases.
     const forced = import.meta.env.DEV ? new URLSearchParams(location.search).get('fase') : null;
     const live = el.querySelector<HTMLElement>('.live')!;
     const cd = el.querySelector<HTMLElement>('.countdown')!;

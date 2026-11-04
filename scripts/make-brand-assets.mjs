@@ -1,5 +1,5 @@
-// Gera os ícones e a imagem de compartilhamento a partir dos SVGs em src/assets/img.
-// Uso: npm run brand   (os PNGs são rasterizados em alta resolução e só reduzidos, nunca ampliados)
+// Generates the icons and the share image from the SVGs in src/assets/img.
+// Usage: npm run brand   (the PNGs are rasterized at high resolution and only scaled down, never up)
 import sharp from 'sharp';
 import { readFile, writeFile } from 'node:fs/promises';
 import { optimize } from 'svgo';
@@ -9,13 +9,13 @@ const IMG = 'src/assets/img/';
 const SMALL = IMG + 'logo-pequeno-colorido.svg';
 const WITH_NAME = IMG + 'logo-grande-colorido-nome-branco.svg';
 
-/** Rasteriza o SVG a 2000 px e recorta a área transparente: devolve o desenho justo. */
+/** Rasterizes the SVG at 2000 px and crops the transparent area: returns the tight drawing. */
 async function art(file) {
   const png = await sharp(file, { density: 144 }).resize(2000, 2000).png().toBuffer();
   return sharp(png).trim().png().toBuffer();
 }
 
-/** Posiciona o desenho (redução apenas) no centro de um quadrado `size`, com largura `w`. */
+/** Places the drawing (scaling down only) in the center of a `size` square, with width `w`. */
 async function square(artBuf, size, w, background) {
   const resized = await sharp(artBuf).resize({ width: Math.round(w), kernel: 'lanczos3' }).png().toBuffer();
   const m = await sharp(resized).metadata();
@@ -24,7 +24,7 @@ async function square(artBuf, size, w, background) {
     .png({ compressionLevel: 9 }).toBuffer();
 }
 
-/** Maior distância (px) do centro até um pixel visível: define a zona de segurança do ícone maskable. */
+/** Largest distance (px) from the center to a visible pixel: defines the maskable icon's safe zone. */
 async function farthest(artBuf) {
   const small = sharp(artBuf).resize({ width: 500 });
   const { data, info } = await small.ensureAlpha().raw().toBuffer({ resolveWithObject: true });
@@ -48,11 +48,11 @@ function ico(images) {
 
 const a = await art(SMALL);
 
-// favicon.svg: o SVG da versão pequena colorida, otimizado (desenho já centrado no quadrado 1000x1000).
+// favicon.svg: the small colored version's SVG, optimized (drawing already centered in the 1000x1000 square).
 const svg = optimize(await readFile(SMALL, 'utf8'), { multipass: true, plugins: ['preset-default'] }).data;
 await writeFile('public/favicon.svg', svg);
 
-// favicon.ico: 16 (gerado do SVG), 32 e 48 (arquivos prontos do designer, nítidos e no mesmo estilo).
+// favicon.ico: 16 (generated from the SVG), 32 and 48 (ready-made designer files, sharp and in the same style).
 const f16 = await square(a, 16, 16);
 await writeFile('public/favicon.ico', ico([
   { size: 16, buf: f16 },
@@ -60,11 +60,11 @@ await writeFile('public/favicon.ico', ico([
   { size: 48, buf: await readFile('scripts/brand/favicon-48.png') },
 ]));
 
-await writeFile('public/apple-touch-icon.png', await square(a, 180, 180 * 0.76, BG)); // ~12% de margem de cada lado
+await writeFile('public/apple-touch-icon.png', await square(a, 180, 180 * 0.76, BG)); // ~12% margin on each side
 await writeFile('public/icon-192.png', await square(a, 192, 192 * 0.92));
 await writeFile('public/icon-512.png', await square(a, 512, 512 * 0.92));
 
-// maskable: fundo sólido e desenho dentro do círculo de segurança (80% do lado).
+// maskable: solid background and the drawing inside the safe circle (80% of the side).
 const { max, width } = await farthest(a);
 const safeW = (0.4 * 512 * width) / max * 0.98;
 await writeFile('public/icon-maskable-512.png', await square(a, 512, safeW, BG));
@@ -79,7 +79,7 @@ await writeFile('public/manifest.webmanifest', JSON.stringify({
   ],
 }, null, 2) + '\n');
 
-// Imagem Open Graph 1200x630: fundo do hero escurecido + logo colorido com nome branco.
+// Open Graph image 1200x630: darkened hero background + colored logo with white name.
 const logo = await sharp(await art(WITH_NAME)).resize({ height: 430, kernel: 'lanczos3' }).png().toBuffer();
 const lm = await sharp(logo).metadata();
 const dark = await sharp({ create: { width: 1200, height: 630, channels: 4, background: { r: 13, g: 15, b: 18, alpha: 0.72 } } }).png().toBuffer();

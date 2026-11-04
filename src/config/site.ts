@@ -1,6 +1,6 @@
-// Configuração central do site. Troque aqui links, servidores (IP, slots, ranking) e dados do evento.
-/** Evento em destaque. status 'adiado': banner sem datas, prêmio nem contagem (start/end/prize/dates não são usados).
- *  status 'agendado': banner com contagem regressiva, prêmio e datas (start/end: ISO com fuso fixo). enabled: false esconde o banner. */
+// Central site configuration. Change links, servers (IP, slots, ranking) and event data here.
+/** Featured event. status 'adiado' (postponed): banner without dates, prize or countdown (start/end/prize/dates are not used).
+ *  status 'agendado' (scheduled): banner with countdown, prize and dates (start/end: ISO with a fixed offset). enabled: false hides the banner. */
 export type SiteEvent = {
   enabled: boolean;
   status: 'agendado' | 'adiado';
@@ -23,14 +23,14 @@ export const site = {
   url: 'https://skynet-tf2.com.br',
   discordUrl: 'https://discord.gg/HV7d6x8pEK',
   steamGroupUrl: 'https://steamcommunity.com/groups/skynetgaming-tf2',
-  // Link geral do ranking: mostra todos os rankings para escolher. Cada servidor tem o seu em `servers`.
+  // General ranking link: shows every ranking to choose from. Each server has its own in `servers`.
   rankingUrl: 'https://stats.skynet-tf2.com.br/hlstats.php',
   sourcebansUrl: 'https://bans.skynet-tf2.com.br/index.php?p=home',
-  // Cloudflare Web Analytics: cole o token aqui (Analytics & Logs → Web Analytics → Manage site). Vazio = sem script.
+  // Cloudflare Web Analytics: paste the token here (Analytics & Logs → Web Analytics → Manage site). Empty = no script.
   analyticsToken: '' as string,
-  // Páginas ainda sem conteúdo real: ficam com noindex e fora do sitemap. Remova a chave quando a página estiver pronta.
+  // Pages without real content yet: they get noindex and stay out of the sitemap. Remove the key when the page is ready.
   paginasProvisorias: [] as string[],
-  // Servidores da comunidade, na ordem em que aparecem no site. O IP só é escrito aqui.
+  // Community servers, in the order they appear on the site. The IP is only written here.
   servers: {
     classic: {
       id: 'classic',
@@ -40,7 +40,7 @@ export const site = {
       ip: '212.38.89.226:27015',
       slots: 40,
       tick: 100,
-      launchDate: '2026-10-02', // no ar desde
+      launchDate: '2026-10-02', // online since
       rankingUrl: 'https://stats.skynet-tf2.com.br/hlstats.php?game=tf',
     },
     dodgeball: {
@@ -72,7 +72,7 @@ export const site = {
       name: 'SKYNET BRASIL - FREAK FORTRESS 2',
       ip: '212.38.89.226:27045',
       slots: 24,
-      tick: null, // tick padrão do modo: não anunciar como 100 tick
+      tick: null, // the mode's default tick: do not advertise it as 100 tick
       launchDate: '2026-10-27',
       rankingUrl: 'https://stats.skynet-tf2.com.br/hlstats.php?game=tfzi',
     },
@@ -80,21 +80,21 @@ export const site = {
       id: 'l4d2',
       game: 'l4d2',
       short: 'Coop',
-      name: 'SKYNET BRASIL - COOP EXPERT [100 TICK]', // nome exato no navegador de servidores do jogo
+      name: 'SKYNET BRASIL - COOP EXPERT [100 TICK]', // exact name in the game's server browser
       ip: '212.38.89.226:27035',
       slots: 20,
       tick: 100,
       rankingUrl: 'https://stats.skynet-tf2.com.br/hlstats.php?game=l4d2',
     },
   },
-  // Evento em destaque. Para o próximo evento, edite só o `event` acima.
+  // Featured event. For the next event, edit only `event` above.
   event,
 } as const;
 
 export type Server = (typeof site.servers)[keyof typeof site.servers];
 export type Game = Server['game'];
 export const serverList: Server[] = [site.servers.classic, site.servers.dodgeball, site.servers.mge, site.servers.zombieInfection, site.servers.l4d2];
-/** Servidores agrupados por jogo, na ordem de exibição. Todo lugar que lista IPs usa isto. */
+/** Servers grouped by game, in display order. Every place that lists IPs uses this. */
 export const games: { id: Game; servers: Server[] }[] = [
   { id: 'tf2', servers: serverList.filter((s) => s.game === 'tf2') },
   { id: 'l4d2', servers: serverList.filter((s) => s.game === 'l4d2') },

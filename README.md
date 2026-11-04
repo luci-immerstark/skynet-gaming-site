@@ -1,51 +1,51 @@
-# SKYNET GAMING BRASIL — site oficial
+# SKYNET GAMING BRASIL — official website
 
-Site estático (Astro + TypeScript) em português (`/`), espanhol (`/es/`) e inglês (`/en/`). Pronto para Cloudflare Pages (veja `DEPLOY.md`).
+Static site (Astro + TypeScript) in Portuguese (`/`), Spanish (`/es/`) and English (`/en/`). Ready for Cloudflare (see `DEPLOY.md`).
 
-## Rodar localmente
-Requer Node 22 (`nvm use`).
+## Running locally
+Requires Node 22 (`nvm use`).
 ```bash
 npm install
 npm run dev      # http://localhost:4321
-npm run build    # checa tipos e gera dist/
-npm run preview  # serve o dist/
+npm run build    # type-checks and builds dist/
+npm run preview  # serves dist/
 ```
-Para testar as fases do evento, em desenvolvimento abra `/?fase=antes`, `/?fase=durante` ou `/?fase=depois`.
+To test the event phases, in development open `/?fase=antes`, `/?fase=durante` or `/?fase=depois` (before, during, after).
 
-## Novo post no blog (pt-br, es e en)
-Crie um arquivo `.md` em cada pasta: `src/content/blog/pt-br/`, `src/content/blog/es/` e `src/content/blog/en/`. O **nome do arquivo é o endereço** de cada idioma e pode ser traduzido (`/blog/bem-vindos/`, `/es/blog/bienvenidos/`, `/en/blog/welcome/`). As três versões são ligadas pelo mesmo `translationKey` no frontmatter, que o seletor de idioma e as tags hreflang usam. Se faltar uma tradução, o seletor leva para a listagem do blog daquele idioma. Ao renomear um post já publicado, adicione um 301 em `public/_redirects`.
+## New blog post (pt-br, es and en)
+Create a `.md` file in each folder: `src/content/blog/pt-br/`, `src/content/blog/es/` and `src/content/blog/en/`. The **file name is the URL** in each language and can be translated (`/blog/bem-vindos/`, `/es/blog/bienvenidos/`, `/en/blog/welcome/`). The three versions are linked by the same `translationKey` in the frontmatter, which the language switcher and the hreflang tags use. If a translation is missing, the switcher goes to that language's blog listing. When renaming a post that is already published, add a 301 in `public/_redirects`.
 ```md
 ---
-translationKey: "chave-unica-do-post"   # igual nos 3 idiomas
-title: "Título do post"
-seoTitle: "Título para o Google (até ~60 caracteres)"   # opcional
-description: "Resumo exibido na listagem e no Google (até ~155 caracteres)"
+translationKey: "unique-post-key"   # same in all 3 languages
+title: "Post title"
+seoTitle: "Title for Google (up to ~60 characters)"   # optional
+description: "Summary shown in the listing and on Google (up to ~155 characters)"
 date: 2026-11-05
-cover: ../../../assets/img/minha-capa.jpg   # opcional
-draft: false                                # true = não aparece
+cover: ../../../assets/img/my-cover.jpg   # optional
+draft: false                              # true = hidden
 ---
 
-Texto em Markdown.
+Markdown text.
 ```
-Qualquer `` `connect IP:porta` `` em código inline ganha automaticamente um botão "Copiar" ao lado.
+Any `` `connect IP:port` `` in inline code automatically gets a "Copy" button next to it.
 
-## Adicionar ou editar textos da interface
-Todos os textos ficam em `src/i18n/ui.ts`; o TypeScript exige as mesmas chaves em `pt-br`, `es` e `en`. As regras do servidor são as chaves `rules.*`. A data "Servidor online desde" vem de `launchDate` em `src/config/site.ts`.
+## Adding or editing interface text
+All texts live in `src/i18n/ui.ts`; TypeScript requires the same keys in `pt-br`, `es` and `en`. The server rules are the `rules.*` keys. The "Server online since" date comes from `launchDate` in `src/config/site.ts`.
 
-## Trocar o evento
-Edite o bloco `event` em `src/config/site.ts`: `enabled` (esconde o banner), `start`/`end` (ISO com `-03:00`) e os textos de cada idioma — pt-br, es e en — (`text`). Textos fixos do banner (Começa em / Termina em…) ficam em `src/i18n/ui.ts`.
+## Changing the event
+Edit the `event` block in `src/config/site.ts`: `enabled` (hides the banner), `start`/`end` (ISO with `-03:00`) and the text for each language — pt-br, es and en — (`text`). The banner's fixed texts (Starts in / Ends in…) are in `src/i18n/ui.ts`.
 
-## Trocar imagens e logo
-As imagens estão em `src/assets/img/`. Substitua o arquivo mantendo o mesmo nome (`hero-bg.jpg`, `card-*.jpg`). O logo são 4 SVGs (viewBox 1000×1000) em `src/assets/img/`: `logo-pequeno-colorido.svg` (cabeçalho e favicon), `logo-grande-colorido.svg` (hero e 404), `logo-grande-nome-branco.svg` (rodapé) e `logo-grande-colorido-nome-branco.svg` (imagem de compartilhamento). Depois de trocar um SVG, rode `npm run brand`: ele regenera `public/favicon.svg`, `favicon.ico`, `apple-touch-icon.png`, `icon-192/512.png`, `icon-maskable-512.png`, `manifest.webmanifest` e `src/assets/img/og-image.jpg` (hero-bg escurecido + logo). O favicon de 32 e 48 px do `.ico` vem de `scripts/brand/`.
+## Changing images and the logo
+Images are in `src/assets/img/`. Replace a file keeping the same name (`hero-bg.jpg`, `card-*.jpg`). The logo is 4 SVGs (viewBox 1000×1000) in `src/assets/img/`: `logo-pequeno-colorido.svg` (header and favicon), `logo-grande-colorido.svg` (hero and 404), `logo-grande-nome-branco.svg` (footer) and `logo-grande-colorido-nome-branco.svg` (share image). After replacing an SVG, run `npm run brand`: it regenerates `public/favicon.svg`, `favicon.ico`, `apple-touch-icon.png`, `icon-192/512.png`, `icon-maskable-512.png`, `manifest.webmanifest` and `src/assets/img/og-image.jpg` (darkened hero-bg + logo). The 32 and 48 px favicons inside the `.ico` come from `scripts/brand/`.
 
-## Trocar o link do Discord (e outros links/IP)
-`discordUrl` em `src/config/site.ts` (também `steamGroupUrl`, `rankingUrl`, `sourcebansUrl`, `servers`: IP, slots e ranking de cada servidor).
+## Changing the Discord link (and other links/IP)
+`discordUrl` in `src/config/site.ts` (also `steamGroupUrl`, `rankingUrl`, `sourcebansUrl`, `servers`: IP, slots and ranking for each server).
 
-## SEO, analytics e sitemap
-- Idiomas no HTML/hreflang: `pt-BR`, `es-419` e `en` (URLs `/`, `/es/`, `/en/`). Títulos e descrições das páginas ficam em `src/i18n/ui.ts` (`meta.*`); os de posts, no frontmatter.
-- Dados estruturados (JSON-LD): Organization em todas as páginas; WebSite, Event (gerado de `site.event`) e FAQPage na inicial; BlogPosting nos posts.
-- O sitemap é gerado por `src/pages/sitemap.xml.ts` (o plugin oficial não aceita `es-419`) e está referenciado em `public/robots.txt`.
-- Cloudflare Web Analytics: preencha `analyticsToken` em `src/config/site.ts`. Vazio = nenhum script. A CSP em `public/_headers` já permite o script.
+## SEO, analytics and sitemap
+- Languages in HTML/hreflang: `pt-BR`, `es-419` and `en` (URLs `/`, `/es/`, `/en/`). Page titles and descriptions are in `src/i18n/ui.ts` (`meta.*`); post ones, in the frontmatter.
+- Structured data (JSON-LD): Organization on every page; WebSite, Event (generated from `site.event`) and FAQPage on the home page; BlogPosting on posts.
+- The sitemap is generated by `src/pages/sitemap.xml.ts` (the official plugin does not accept `es-419`) and is referenced in `public/robots.txt`.
+- Cloudflare Web Analytics: fill in `analyticsToken` in `src/config/site.ts`. Empty = no script. The CSP in `public/_headers` already allows the script.
 
-## Páginas provisórias (noindex)
-`paginasProvisorias` em `src/config/site.ts` lista as páginas sem conteúdo real (hoje nenhuma: a lista está vazia). Elas recebem `noindex, follow` e ficam fora do sitemap. Quando uma página ganhar conteúdo, remova a chave da lista: ela volta a ser indexada e entra no sitemap. Os endereços fixos de cada idioma estão em `pageRoutes` (`src/i18n/utils.ts`).
+## Placeholder pages (noindex)
+`paginasProvisorias` in `src/config/site.ts` lists the pages without real content (none today: the list is empty). They get `noindex, follow` and are left out of the sitemap. When a page gets content, remove its key from the list: it is indexed again and goes into the sitemap. Each language's fixed URLs are in `pageRoutes` (`src/i18n/utils.ts`).
