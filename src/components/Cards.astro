@@ -27,9 +27,9 @@ const cards = [
 ---
 <section class="section" aria-label="Links">
   <div class="container grid">
-    {cards.map((c, i) => (
-      <a data-card={c.k} class:list={['card', { wide: i === cards.length - 1 && cards.length % 3 === 1, duo: i === cards.length - 1 && cards.length % 3 === 2 }]} href={c.href} {...(c.ext ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>
-        <Image src={c.img} alt={c.alt} widths={[400, 700, 1000, 1400]} sizes={i === cards.length - 1 ? "(min-width: 640px) 1200px, 100vw" : "(min-width: 960px) 380px, (min-width: 640px) 50vw, 100vw"} loading="lazy" />
+    {cards.map((c) => (
+      <a data-card={c.k} class="card" href={c.href} {...(c.ext ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>
+        <Image src={c.img} alt={c.alt} widths={[400, 700, 1000, 1400]} sizes="(min-width: 960px) 300px, (min-width: 640px) 50vw, 100vw" loading="lazy" />
         <div class="shade"></div>
         {c.badge && <span class="badge soon">{t(`badge.${c.badge}` as const)}</span>}
         {c.ext && <span class="ext"><Icon name="external" size={18} /><span class="sr">{t('external')}</span></span>}
@@ -42,26 +42,23 @@ const cards = [
   </div>
 </section>
 <style>
-  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
-  .card { position: relative; display: block; aspect-ratio: 16 / 10; border-radius: var(--radius); overflow: hidden; border: 2px solid transparent; color: var(--text); text-decoration: none; background: var(--surface); transition: border-color .25s, box-shadow .25s; }
+  /* Every card is the same size. 4 columns on desktop, 2 on tablet, 1 on mobile.
+     An incomplete last row is centered instead of stretching a card. */
+  .grid { --gap: 1.25rem; display: flex; flex-wrap: wrap; justify-content: center; gap: var(--gap); }
+  .card { position: relative; display: block; flex: 0 0 calc((100% - 3 * var(--gap)) / 4); aspect-ratio: 4 / 3; border-radius: var(--radius); overflow: hidden; border: 2px solid transparent; color: var(--text); text-decoration: none; background: var(--surface); transition: border-color .25s, box-shadow .25s; }
   .card :global(img) { width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
-  /* With 7 cards (or 10, 13...), the last one would sit alone on its row: it takes the whole row instead. */
   /* Freak Fortress 2: the mode's sign and the bosses stay visible. */
   .card[data-card='zi'] :global(img) { object-position: center 20%; }
-  .card.wide :global(img) { object-position: center 45%; }
-  @media (min-width: 640px) { .card.wide { grid-column: 1 / -1; aspect-ratio: 16 / 6; } }
-  @media (min-width: 960px) { .card.wide { aspect-ratio: 21 / 6; } }
-  /* With 8 cards, the last one takes two columns in the 3-column grid (no gap at the end). */
-  @media (min-width: 960px) { .card.duo { grid-column: span 2; aspect-ratio: auto; } .card.duo :global(img) { position: absolute; inset: 0; object-position: center 45%; } }
+  .card[data-card='l4d2'] :global(img) { object-position: center 45%; }
   .shade { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,.92) 0%, rgba(0,0,0,.45) 50%, rgba(0,0,0,.1) 100%); }
   .card:hover, .card:focus-visible { border-color: var(--gold); box-shadow: 0 0 22px rgba(255,215,0,.25); }
   .card:hover :global(img), .card:focus-visible :global(img) { transform: scale(1.07); }
   .text { position: absolute; inset: auto 0 0 0; padding: 1rem 1.1rem; }
-  h3 { font-size: 1.5rem; display: flex; align-items: center; gap: .4rem; }
-  p { margin: .25rem 0 0; font-size: .92rem; color: #d6d9de; }
+  h3 { font-size: 1.3rem; display: flex; align-items: center; gap: .4rem; }
+  p { margin: .25rem 0 0; font-size: .88rem; color: #d6d9de; }
   .soon { position: absolute; top: .8rem; left: .8rem; }
   .ext { position: absolute; top: .8rem; right: .8rem; background: rgba(0,0,0,.65); border-radius: 8px; padding: .3rem; line-height: 0; }
   .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
-  @media (max-width: 959px) { .grid { grid-template-columns: repeat(2, 1fr); } }
-  @media (max-width: 639px) { .grid { grid-template-columns: 1fr; } }
+  @media (max-width: 959px) { .card { flex-basis: calc((100% - var(--gap)) / 2); aspect-ratio: 16 / 10; } h3 { font-size: 1.5rem; } p { font-size: .92rem; } }
+  @media (max-width: 639px) { .card { flex-basis: 100%; aspect-ratio: 2 / 1; } }
 </style>
