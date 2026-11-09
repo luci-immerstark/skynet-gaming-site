@@ -62,6 +62,8 @@ Además de las ventanas y los menús, Linux se puede controlar por texto, en la 
 | `sudo comando` | Ejecuta el comando con permisos de administrador. |
 | `man comando` | Abre el manual de cualquier comando. |
 
+¿Quieres entender las carpetas que aparecen en la terminal, como `/home`, `/etc` y `/usr`? Lee la guía [Directorios de Linux: para qué sirve cada carpeta](/es/blog/directorios-de-linux-para-que-sirve-cada-carpeta/).
+
 Un aviso importante: comandos como `rm` borran archivos **sin pasar por la papelera**, y `sudo` da poder total. Lee con atención antes de ejecutar algo que no entiendes.
 
 ## Por qué Linux domina los servidores

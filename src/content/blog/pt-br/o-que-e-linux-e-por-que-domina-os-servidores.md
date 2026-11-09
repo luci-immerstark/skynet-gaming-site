@@ -62,6 +62,8 @@ Além das janelas e dos menus, o Linux pode ser controlado por texto, no **termi
 | `sudo comando` | Executa o comando com permissões de administrador. |
 | `man comando` | Abre o manual de qualquer comando. |
 
+Quer entender as pastas que aparecem no terminal, como `/home`, `/etc` e `/usr`? Veja o guia [Diretórios do Linux: para que serve cada pasta](/blog/diretorios-do-linux-para-que-serve-cada-pasta/).
+
 Um aviso importante: comandos como `rm` apagam arquivos **sem passar pela lixeira**, e `sudo` dá poder total. Leia com atenção antes de executar algo que você não entende.
 
 ## Por que o Linux domina os servidores

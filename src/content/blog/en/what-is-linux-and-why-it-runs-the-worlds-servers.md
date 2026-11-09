@@ -62,6 +62,8 @@ Besides windows and menus, Linux can be controlled with text, in the **terminal*
 | `sudo command` | Runs the command with administrator permissions. |
 | `man command` | Opens the manual for any command. |
 
+Want to understand the folders you see in the terminal, like `/home`, `/etc` and `/usr`? Read the guide [Linux directories explained: what each folder is for](/en/blog/linux-directory-structure-explained/).
+
 One important warning: commands like `rm` delete files **without going through the trash**, and `sudo` gives full power. Read carefully before running something you don't understand.
 
 ## Why Linux dominates servers
